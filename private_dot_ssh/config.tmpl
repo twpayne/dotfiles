@@ -1,0 +1,15 @@
+HashKnownHosts no
+
+{{ if eq .chezmoi.os "darwin" -}}
+Host *
+UseKeychain yes
+
+{{ end -}}
+Host github.com
+User git
+
+Host raspberrypi
+User pi
+
+Host revo
+ForwardAgent yes

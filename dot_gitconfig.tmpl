@@ -1,0 +1,87 @@
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+[advice]
+	pushNonFastForward = false
+	statusHints = false
+[alias]
+	a = add
+	ap = add -p
+	b = branch
+	bm = branch --merged
+	bnm = branch --no-merged
+	c = clone
+	ca = commit --amend
+	cane = commit --amend --no-edit
+	cf = commit --fixup
+	cm = commit --message
+	co = checkout
+	com = checkout master
+	cp = cherry-pick
+	csm = commit -S --message
+	d = diff --patience
+	dc = diff --cached
+	dom = diff origin/master
+	fo = fetch origin
+	g = grep --break --heading --line-number
+	mbhom = merge-base HEAD origin/master
+	mff = merge --ff-only
+	ol = log --pretty=oneline
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	p = push
+	pf = push --force
+	prb = pull --rebase
+	r = remote
+	ra = rebase --abort
+	rc = rebase --continue
+	ri = rebase --interactive
+	rl = reflog
+	riom = rebase --interactive origin/master
+	rpo = remote prune origin
+	s = status -sb
+	ss = commit --message "snapshot"
+	su = submodule update
+	wd = diff --patience --word-diff
+	# https://golang.org/doc/contribute.html
+	change = codereview change
+	gofmt = codereview gofmt
+	mail = codereview mail
+	pending = codereview pending
+	submit = codereview submit
+	sync = codereview sync
+[color]
+	ui = auto
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+	whitespace = trailing-space,space-before-tab
+[diff]
+	renames = copies
+[fetch]
+	fsckobjects = false
+	prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[http]
+	cookiefile = ~/.gitcookies
+[pager]
+	branch = false
+	grep = false
+[push]
+	default = current
+[rebase]
+	autosquash = true
+	autostash = true
+[receive]
+	fsckobjects = true
+[status]
+	submoduleSummary = true
+[transfer]
+	fsckobjects = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+# vim: set filetype=gitconfig:

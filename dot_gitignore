@@ -1,0 +1,9 @@
+.*.sw*
+*.pyc
+.DS_Store
+.Python
+.envrc
+.pc
+.svn
+vimrc
+/tmp

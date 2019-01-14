@@ -1,4 +1,5 @@
 README.md
+Makefile
 {{ if ne .chezmoi.os "linux" -}}
 .config/i3
 {{ end -}}

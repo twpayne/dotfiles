@@ -97,4 +97,4 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 ssh-add -A -q &> /dev/null
 
 # direnv
-[ -x /usr/local/bin/direnv ] && eval "$(direnv hook zsh)"
+which direnv > /dev/null && eval "$(direnv hook zsh)"

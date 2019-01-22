@@ -54,6 +54,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(mercurial {{ if eq .chezmoi.os "darwin" }}osx {{ end }}per-directory-history vi-mode zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 
 # User configuration
 

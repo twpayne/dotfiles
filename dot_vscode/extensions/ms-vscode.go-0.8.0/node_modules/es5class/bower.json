@@ -1,0 +1,43 @@
+{
+  "name"        : "es5class",
+  "main"        : "index.js",
+  "version"     : "2.3.1",
+  "homepage"    : "https://github.com/pocesar/ES5-Class",
+  "authors"     : [
+    "Paulo Cesar <email@pocesar.e4ward.com>"
+  ],
+  "description" : "Prototypal inheritance based on ES5 Object.create and Object.defineProperty for node.js and modern browsers",
+  "moduleType"  : [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "dependencies": {
+    "better-curry": "1.x.x"
+  },
+  "keywords"    : [
+    "es5",
+    "class",
+    "inheritance",
+    "super",
+    "parent",
+    "singleton",
+    "method",
+    "prototypal",
+    "object.create",
+    "object.defineProperty",
+    "prototype",
+    "__proto__",
+    "setPrototypeOf",
+    "Object.setPrototypeOf"
+  ],
+  "license"     : "MIT",
+  "ignore"      : [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "coverage",
+    "tests"
+  ]
+}

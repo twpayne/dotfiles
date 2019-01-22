@@ -1,0 +1,4 @@
+--reporter list
+--ui exports
+--check-leaks
+test/jsonrpc-test.js

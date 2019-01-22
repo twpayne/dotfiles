@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2015",
+        "sourceMap": true,
+        "outDir": "out",
+        "declaration": true,
+
+        "noUnusedLocals": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "lib": [
+            "es2015"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "node_modules/@types/**/*.ts"
+    ]
+}

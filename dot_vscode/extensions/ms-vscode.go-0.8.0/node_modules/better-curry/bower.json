@@ -1,0 +1,30 @@
+{
+  "name": "better-curry",
+  "main": "index.js",
+  "version": "1.6.0",
+  "authors": [
+    "Paulo Cesar <email@pocesar.e4ward.com>"
+  ],
+  "description": "Forget Function.bind and func.apply(context, arguments), performance matters! For a better curry!",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "curry",
+    "function",
+    "bind",
+    "currying"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/pocesar/js-bettercurry",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "coverage",
+    "test",
+    "tests"
+  ]
+}

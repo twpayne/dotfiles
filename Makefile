@@ -2,8 +2,8 @@ all: update
 
 update:
 	chezmoi apply
-	vim -c GoInstallBinaries -c qa
 	vim -c PlugUpdate -c qa
+	vim -c GoInstallBinaries -c qa
 
 ubuntu-configure-cli: ubuntu-install-packages
 	chsh -s /usr/bin/zsh

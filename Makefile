@@ -13,7 +13,7 @@ ubuntu-configure-gnome:
 
 ubuntu-install-code:
 	wget -q -O code_amd64.deb https://go.microsoft.com/fwlink/?LinkID=760868 
-	sudo dpkg -i code_amd64.deb
+	sudo dpkg -i code_amd64.deb || true
 	sudo apt-get -f -y install
 
 ubuntu-install-google-chrome:

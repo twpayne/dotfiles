@@ -19,6 +19,12 @@ ubuntu-install-bazel:
 		bazel \
 		openjdk-8-jdk
 
+BAZELBUILD_BUILDTOOLS_VERSION=0.20.0
+ubuntu-install-bazelbuild-buildtools:
+	for tool in buildifier buildozer unused_deps ; do \
+		wget -q -O ${HOME}/bin/$${tool} https://github.com/bazelbuild/buildtools/releases/download/${BAZELBUILD_BUILDTOOLS_VERSION}/$${tool} && chmod 755 ${HOME}/bin/$${tool} ; \
+	done
+
 ubuntu-install-code:
 	wget -q -O code_amd64.deb https://go.microsoft.com/fwlink/?LinkID=760868 
 	sudo dpkg -i code_amd64.deb || true

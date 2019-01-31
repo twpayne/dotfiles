@@ -56,7 +56,9 @@ ubuntu-install-lpass:
 
 ubuntu-install-packages:
 	sudo apt-get install -y \
+		curl \
 		direnv \
+		git-lfs \
 		unattended-upgrades \
-		vim-gtk3 \
+		vim-gnome \
 		zsh

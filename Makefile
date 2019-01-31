@@ -29,6 +29,8 @@ ubuntu-install-code:
 	wget -q -O code_amd64.deb https://go.microsoft.com/fwlink/?LinkID=760868 
 	sudo dpkg -i code_amd64.deb || true
 	sudo apt-get -f -y install
+	sudo sh -c "echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf"
+	sudo sysctl -p
 
 ubuntu-install-google-chrome:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -

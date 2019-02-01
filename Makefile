@@ -65,6 +65,7 @@ ubuntu-install-packages:
 		curl \
 		direnv \
 		git-lfs \
+		jq \
 		unattended-upgrades \
 		vim-gnome \
 		zsh

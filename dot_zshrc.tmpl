@@ -68,6 +68,9 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export GOPATH=$HOME
+{{- if eq .email "tom@airmap.com" }}
+export GO111MODULE=on
+{{- end }}
 
 {{ if eq .chezmoi.os "darwin" -}}
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}

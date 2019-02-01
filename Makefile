@@ -9,6 +9,10 @@ ubuntu-configure-cli: ubuntu-install-packages
 	chsh -s /usr/bin/zsh
 
 ubuntu-configure-gnome:
+	gsettings set org.gnome.desktop.interface cursor-size 32
+	gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+	gsettings set org.gnome.nautilus.icon-view default-zoom-level small
+	gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 48
 	gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
 
 ubuntu-install-bazel:

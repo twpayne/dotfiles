@@ -24,7 +24,7 @@ How to install
 [fedora-package]: https://apps.fedoraproject.org/packages/zsh-syntax-highlighting
 [fedora-package-alt]: https://bodhi.fedoraproject.org/updates/?packages=zsh-syntax-highlighting
 [obs-repository]: https://software.opensuse.org//download.html?project=shells%3Azsh-users%3Azsh-syntax-highlighting&package=zsh-syntax-highlighting
-[void-package]: https://github.com/voidlinux/void-packages/tree/master/srcpkgs/zsh-syntax-highlighting
+[void-package]: https://github.com/void-linux/void-packages/tree/master/srcpkgs/zsh-syntax-highlighting
 
 See also [repology's cross-distro index](https://repology.org/metapackage/zsh-syntax-highlighting/versions)
 
@@ -33,17 +33,23 @@ See also [repology's cross-distro index](https://repology.org/metapackage/zsh-sy
 
 Simply clone this repository and source the script:
 
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+```zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+```
 
   Then, enable syntax highlighting in the current interactive shell:
 
-    source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```zsh
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
 
   If `git` is not installed, download and extract a snapshot of the latest
   development tree from:
 
-    https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+```
+https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+```
 
   Note the `source` command must be **at the end** of `~/.zshrc`.
 
@@ -69,15 +75,17 @@ your `.zshrc`.
 
 1. Clone this repository in oh-my-zsh's plugins directory:
 
-       git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    ```zsh
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    ```
 
 2. Activate the plugin in `~/.zshrc`:
 
-       plugins=( [plugins...] zsh-syntax-highlighting)
+    ```zsh
+    plugins=( [plugins...] zsh-syntax-highlighting)
+    ```
 
-3. Source `~/.zshrc`  to take changes into account:
-
-       source ~/.zshrc
+3. Restart zsh (such as by opening a new instance of your terminal emulator).
 
 #### [Prezto](https://github.com/sorin-ionescu/prezto)
 
@@ -106,10 +114,14 @@ Any of the above methods is suitable for a single-user installation,
 which requires no special privileges.  If, however, you desire to install
 zsh-syntax-highlighting system-wide, you may do so by running
 
-    make install
+```zsh
+make install
+```
 
 and directing your users to add
 
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
 
 to their `.zshrc`s.

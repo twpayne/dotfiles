@@ -31,6 +31,11 @@
 
 setopt NO_UNSET WARN_CREATE_GLOBAL
 
+local -r root=${0:h:h}
+local -a anon_argv; anon_argv=("$@")
+
+(){
+set -- "${(@)anon_argv}"
 # Check an highlighter was given as argument.
 [[ -n "$1" ]] || {
   echo >&2 "Bail out! You must provide the name of a valid highlighter as argument."
@@ -38,13 +43,13 @@ setopt NO_UNSET WARN_CREATE_GLOBAL
 }
 
 # Check the highlighter is valid.
-[[ -f ${0:h:h}/highlighters/$1/$1-highlighter.zsh ]] || {
+[[ -f $root/highlighters/$1/$1-highlighter.zsh ]] || {
   echo >&2 "Bail out! Could not find highlighter ${(qq)1}."
   exit 2
 }
 
 # Check the highlighter has test data.
-[[ -d ${0:h:h}/highlighters/$1/test-data ]] || {
+[[ -d $root/highlighters/$1/test-data ]] || {
   echo >&2 "Bail out! Highlighter ${(qq)1} has no test data."
   exit 2
 }
@@ -53,7 +58,7 @@ setopt NO_UNSET WARN_CREATE_GLOBAL
 local results_filter
 if [[ ${QUIET-} == y ]]; then
   if type -w perl >/dev/null; then
-    results_filter=${0:A:h}/tap-filter
+    results_filter=$root/tests/tap-filter
   else
     echo >&2 "Bail out! quiet mode not supported: perl not found"; exit 2
   fi
@@ -64,18 +69,18 @@ fi
 
 # Load the main script.
 # While here, test that it doesn't eat aliases.
-print > >($results_filter | ${0:A:h}/tap-colorizer.zsh) -r -- "# global (driver) tests"
-print > >($results_filter | ${0:A:h}/tap-colorizer.zsh) -r -- "1..1"
+print > >($results_filter | $root/tests/tap-colorizer.zsh) -r -- "# global (driver) tests"
+print > >($results_filter | $root/tests/tap-colorizer.zsh) -r -- "1..1"
 alias -- +plus=plus
 alias -- _other=other
-original_alias_dash_L_output="$(alias -L)"
-. ${0:h:h}/zsh-syntax-highlighting.zsh
+local original_alias_dash_L_output="$(alias -L)"
+. $root/zsh-syntax-highlighting.zsh
 if [[ $original_alias_dash_L_output == $(alias -L) ]]; then
   print -r -- "ok 1 # 'alias -- +foo=bar' is preserved"
 else
   print -r -- "not ok 1 # 'alias -- +foo=bar' is preserved"
   exit 1
-fi > >($results_filter | ${0:A:h}/tap-colorizer.zsh) 
+fi > >($results_filter | $root/tests/tap-colorizer.zsh)
 
 # Overwrite _zsh_highlight_add_highlight so we get the key itself instead of the style
 _zsh_highlight_add_highlight()
@@ -85,6 +90,20 @@ _zsh_highlight_add_highlight()
 
 # Activate the highlighter.
 ZSH_HIGHLIGHT_HIGHLIGHTERS=($1)
+
+# In zsh<5.3, 'typeset -p arrayvar' emits two lines, so we use this wrapper instead.
+typeset_p() {
+	for 1 ; do
+		print -r -- "$1=( ${(@q-P)1} )"
+	done
+}
+
+# Escape # as ♯ and newline as ↵ they are illegal in the 'description' part of TAP output
+# The string to escape is «"$@"»; the result is returned in $REPLY.
+tap_escape() {
+  local s="$@"
+  REPLY="${${s//'#'/♯}//$'\n'/↵}"
+}
 
 # Runs a highlighting test
 # $1: data file
@@ -97,7 +116,8 @@ run_test_internal() {
   echo "# ${1:t:r}"
 
   # Load the data and prepare checking it.
-  local BUFFER CURSOR MARK PENDING PREBUFFER REGION_ACTIVE WIDGET skip_test unsorted=0
+  local BUFFER CURSOR MARK PENDING PREBUFFER REGION_ACTIVE WIDGET REPLY skip_test unsorted=0
+  local expected_mismatch
   local -a expected_region_highlight region_highlight
   . "$srcdir"/"$1"
 
@@ -132,8 +152,8 @@ run_test_internal() {
     fi
     local -a highlight_zone; highlight_zone=( ${(z)region_highlight[i]} )
     integer start=$(( highlight_zone[1] + 1 )) end=$highlight_zone[2]
-    # Escape # as ♯ and newline as ↵ they are illegal in the 'description' part of TAP output
-    local desc="[$start,$end] «${${BUFFER[$start,$end]//'#'/♯}//$'\n'/↵}»"
+    local desc="[$start,$end] «${BUFFER[$start,$end]}»"
+    tap_escape $desc; desc=$REPLY
     if
       [[ $start != $exp_start ]] ||
       [[ $end != $exp_end ]] ||
@@ -152,9 +172,13 @@ run_test_internal() {
   done
 
   if (( $#expected_region_highlight == $#region_highlight )); then
-    print -r -- "ok $i - cardinality check"
+    print -r -- "ok $i - cardinality check" "${expected_mismatch:+"# TODO ${(qqq)expected_mismatch}"}"
   else
-    print -r -- "not ok $i - have $#expected_region_highlight expectations and $#region_highlight region_highlight entries"
+    local details
+    details+="have $#expected_region_highlight expectations and $#region_highlight region_highlight entries: "
+    details+="«$(typeset_p expected_region_highlight)» «$(typeset_p region_highlight)»"
+    tap_escape $details; details=$REPLY
+    print -r -- "not ok $i - $details" "${expected_mismatch:+"# TODO ${(qqq)expected_mismatch}"}"
   fi
 }
 
@@ -191,9 +215,11 @@ run_test() {
 # Process each test data file in test data directory.
 integer something_failed=0
 ZSH_HIGHLIGHT_STYLES=()
-for data_file in ${0:h:h}/highlighters/$1/test-data/*.zsh; do
-  run_test "$data_file" | tee >($results_filter | ${0:A:h}/tap-colorizer.zsh) | grep -v '^not ok.*# TODO' | grep -Eq '^not ok|^ok.*# TODO' && (( something_failed=1 ))
+local data_file
+for data_file in $root/highlighters/$1/test-data/*.zsh; do
+  run_test "$data_file" | tee >($results_filter | $root/tests/tap-colorizer.zsh) | grep -v '^not ok.*# TODO' | grep -Eq '^not ok|^ok.*# TODO' && (( something_failed=1 ))
   (( $pipestatus[1] )) && exit 2
 done
 
 exit $something_failed
+}

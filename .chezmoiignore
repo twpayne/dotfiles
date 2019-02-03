@@ -1,6 +1,9 @@
 README.md
 Makefile
 *.deb
+{{- if ne .email "twpayne@gmail.com" }}
+.pypirc
+{{- end }}
 {{- if ne .chezmoi.os "darwin" }}
 .hammerspoon
 {{- end }}

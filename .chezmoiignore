@@ -1,6 +1,7 @@
 README.md
 Makefile
 *.deb
+*.tar.gz
 {{- if ne .email "twpayne@gmail.com" }}
 .gitcookies
 .pypirc

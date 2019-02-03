@@ -60,6 +60,7 @@ if has('gui_running')
   colorscheme molokai
 endif
 
+{{ if eq .chezmoi.os "darwin" -}}
 if has('gui_macvim')
   set guifont=Menlo:h12
   set laststatus=2
@@ -69,6 +70,7 @@ if has('gui_macvim')
   :nmap <silent> <leader>d <Plug>DashSearch
 endif
 
+{{ end -}}
 filetype on
 filetype indent on
 filetype plugin on

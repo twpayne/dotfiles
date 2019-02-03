@@ -2,6 +2,7 @@ README.md
 Makefile
 *.deb
 {{- if ne .email "twpayne@gmail.com" }}
+.gitcookies
 .pypirc
 {{- end }}
 {{- if ne .chezmoi.os "darwin" }}

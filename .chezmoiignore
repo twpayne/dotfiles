@@ -8,5 +8,6 @@ Makefile
 .pypirc
 {{- end }}
 {{- if ne .chezmoi.os "darwin" }}
+.config/karabiner
 .hammerspoon
 {{- end }}

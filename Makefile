@@ -74,6 +74,11 @@ ubuntu-install-packages:
 		vim-gnome \
 		zsh
 
+ubuntu-install-zoom:
+	wget -q https://zoom.us/client/latest/zoom_amd64.deb
+	sudo dpkg -i zoom_amd64.deb || true
+	sudo apt-get -f -y install
+
 update-third-party: \
 	update-plug.vim \
 	update-oh-my-zsh \

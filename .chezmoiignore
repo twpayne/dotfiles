@@ -10,4 +10,5 @@ Makefile
 {{- if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .hammerspoon
+Library
 {{- end }}

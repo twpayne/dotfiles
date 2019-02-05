@@ -5,6 +5,10 @@ update:
 	vim -c PlugUpdate -c qa
 	vim -c GoInstallBinaries -c qa
 
+darwin-configure-vscode:
+	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+	defaults delete -g ApplePressAndHoldEnabled || true
+
 ubuntu-configure-cli: ubuntu-install-packages
 	chsh -s /usr/bin/zsh
 

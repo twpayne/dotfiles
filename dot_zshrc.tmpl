@@ -51,12 +51,21 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(mercurial {{ if eq .chezmoi.os "darwin" }}osx {{ end }}per-directory-history vi-mode zsh-syntax-highlighting)
+plugins=(
+  gpg-agent
+  per-directory-history
+  ssh-agent
+  vi-mode
+  zsh-syntax-highlighting
+)
+
+zstyle :omz:plugins:ssh-agen agent-forwarding on
 
 source $ZSH/oh-my-zsh.sh
-PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 
 # User configuration
+
+PROMPT="%{$fg[white]%}%n@%{$fg[green]%}%m%{$reset_color%} ${PROMPT}"
 
 setopt histignorespace
 setopt rm_star_silent
@@ -64,39 +73,30 @@ setopt rm_star_silent
 alias g=git
 alias gnp="git --no-pager"
 
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export GOPATH=$HOME
 export GO111MODULE=on
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+[ -x /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
 
 {{ if eq .chezmoi.os "darwin" -}}
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
 
 {{ end -}}
-[ -f $HOME/.cargo/env ] && source $HOME/.cargo/env
-
 # https://bazel.build/versions/master/docs/install.html
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-
-[ -x /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
 
 {{ if eq .chezmoi.os "darwin" -}}
 # gcloud
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
-export GPG_TTY=$(tty)
-if [ -z "$(pgrep gpg-agent)" ]; then
-  eval $(gpg-agent --daemon)
-fi
-
 {{ end -}}
 # zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-ssh-add -A -q &> /dev/null
-
 # direnv
-which direnv > /dev/null && eval "$(direnv hook zsh)"
+which direnv >/dev/null && eval "$(direnv hook zsh)"

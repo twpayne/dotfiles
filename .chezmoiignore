@@ -2,6 +2,7 @@ README.md
 Makefile
 *.deb
 *.tar.gz
+.vscode
 {{- if ne .email "twpayne@gmail.com" }}
 .gitcookies
 .pypirc

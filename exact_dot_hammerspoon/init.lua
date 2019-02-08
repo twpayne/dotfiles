@@ -138,6 +138,7 @@ local bindings = {
     d = launchOrFocus('Dash'),
     e = launchOrFocus('MacVim'),
     f = launchOrFocus('Finder'),
+    i = launchOrFocus('Visual Studio Code'),
     k = launchOrFocus('keePassX'),
     p = launchOrFocus('Preview'),
     s = launchOrFocus('Spotify'),

@@ -71,6 +71,7 @@ ubuntu-install-packages:
 		git-lfs \
 		jq \
 		unattended-upgrades \
+		units \
 		vim-gnome \
 		zsh
 

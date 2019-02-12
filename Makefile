@@ -5,6 +5,18 @@ update:
 	vim -c PlugUpdate -c qa
 	vim -c GoInstallBinaries -c qa
 
+code-install-extensions:
+	code --install-extension DavidAnson.vscode-markdownlint
+	code --install-extension DevonDCarew.bazel-code
+	code --install-extension ms-vscode.Go
+	code --install-extension PeterJausovec.vscode-docker
+	code --install-extension redhat.vscode-yaml
+	code --install-extension stkb.rewrap
+	code --install-extension vscodevim.vim
+	if [ $$(uname) = "Darwin" ] ; then \
+		code --install-extension deerawan.vscode-dash ; \
+	fi
+
 darwin-configure-vscode:
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 	defaults delete -g ApplePressAndHoldEnabled || true

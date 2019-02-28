@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export KUBECONFIG=$1
+export CLIENT_SECRET={{ (index (lastpass "kubelogin Client Secret") 0).password }}
+
+docker run -it --rm -v $KUBECONFIG:$KUBECONFIG -e KUBECONFIG=$KUBECONFIG -e CLIENT_SECRET=$CLIENT_SECRET -p 8000:8000 airmapreg.azurecr.io/kubelogin:0.1.1

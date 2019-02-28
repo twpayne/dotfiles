@@ -9,6 +9,7 @@ Makefile
 {{- end }}
 {{- if ne .email "tom@airmap.com" }}
 .docker/config.json
+bin/kubelogin
 {{- end }}
 {{- if ne .chezmoi.os "darwin" }}
 .config/karabiner

@@ -1,0 +1,11 @@
+{
+	"auths": {
+		"airmapreg.azurecr.io": {
+			"auth": "{{ (index (lastpass "airmapreg.azurecr.io") 0).username }}",
+			"identitytoken": "{{ (index (lastpass "airmapreg.azurecr.io") 0).password }}"
+		}
+	},
+	"HttpHeaders": {
+		"User-Agent": "Docker-Client/18.09.2 (linux)"
+	}
+}

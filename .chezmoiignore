@@ -7,6 +7,9 @@ Makefile
 .gitcookies
 .pypirc
 {{- end }}
+{{- if ne .email "tom@airmap.com" }}
+.docker/config.json
+{{- end }}
 {{- if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .hammerspoon

@@ -14,5 +14,4 @@ bin/kubelogin
 {{- if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .hammerspoon
-Library
 {{- end }}

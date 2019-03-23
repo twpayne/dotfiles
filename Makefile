@@ -12,7 +12,6 @@ code-install-extensions:
 	code --install-extension PeterJausovec.vscode-docker
 	code --install-extension redhat.vscode-yaml
 	code --install-extension stkb.rewrap
-	code --install-extension vscodevim.vim
 	if [ $$(uname) = "Darwin" ] ; then \
 		code --install-extension deerawan.vscode-dash ; \
 	fi

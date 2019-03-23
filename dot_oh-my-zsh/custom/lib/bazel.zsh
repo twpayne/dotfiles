@@ -40,7 +40,7 @@ local curcontext="$curcontext" state line
 
 : ${BAZEL_COMPLETION_PACKAGE_PATH:=%workspace%}
 : ${BAZEL:=bazel}
-b() { ${BAZEL} --noblock_for_lock "$@"; }
+b() { ${BAZEL} --noblock_for_lock "$@" 2>/dev/null; }
 
 # Default cache lifetime is 1 week
 zstyle -s ":completion:${curcontext}:" cache-lifetime lifetime
@@ -186,7 +186,7 @@ _get_build_packages() {
   fi
   paths=(${^package_roots}/${pfx}*(/))
   for p in ${paths[*]}; do
-    if [[ -f ${p}/BUILD ]]; then
+    if [[ -f ${p}/BUILD || -f ${p}/BUILD.bazel ]]; then
       final_paths+=(${p##*/}:)
     fi
     final_paths+=(${p##*/}/)
@@ -207,7 +207,7 @@ _bazel_complete_target() {
   if [[ "${(e)PREFIX}" != *:* ]]; then
     # There is no : in the prefix, completion can be either
     # a package or a target, if the cwd is a package itself.
-    if [[ -f $PWD/BUILD ]]; then
+    if [[ -f $PWD/BUILD || -f $PWD/BUILD.bazel ]]; then
       targets=($(_get_build_targets ""))
       _description build_target expl "BUILD target"
       compadd "${expl[@]}" -a targets

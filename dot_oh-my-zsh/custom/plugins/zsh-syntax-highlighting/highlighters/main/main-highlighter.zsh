@@ -173,6 +173,10 @@ _zsh_highlight_main__type() {
       REPLY=builtin
     elif (( $+commands[(e)$1] )); then
       REPLY=command
+    # None of the special hashes had a match, so fall back to 'type -w', for
+    # forward compatibility with future versions of zsh that may add new command
+    # types.
+    #
     # zsh 5.2 and older have a bug whereby running 'type -w ./sudo' implicitly
     # runs 'hash ./sudo=/usr/local/bin/./sudo' (assuming /usr/local/bin/sudo
     # exists and is in $PATH).  Avoid triggering the bug, at the expense of
@@ -180,11 +184,15 @@ _zsh_highlight_main__type() {
     #
     # The first disjunct mimics the isrelative() C call from the zsh bug.
     elif {  [[ $1 != */* ]] || is-at-least 5.3 } &&
-         ! builtin type -w -- $1 >/dev/null 2>&1; then
+         # Add a subshell to avoid a zsh upstream bug; see issue #606.
+         # ### Remove the subshell when we stop supporting zsh 5.7.1 (I assume 5.8 will have the bugfix).
+         ! (builtin type -w -- $1) >/dev/null 2>&1; then
       REPLY=none
     fi
   fi
   if ! (( $+REPLY )); then
+    # zsh/parameter not available or had no matches.
+    #
     # Note that 'type -w' will run 'rehash' implicitly.
     #
     # We 'unalias' in a subshell, so the parent shell is not affected.

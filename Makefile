@@ -9,6 +9,7 @@ code-install-extensions:
 	code --install-extension DavidAnson.vscode-markdownlint
 	code --install-extension DevonDCarew.bazel-code
 	code --install-extension alefragnani.project-manager
+	code --install-extension eamodio.gitlens
 	code --install-extension ms-vscode.Go
 	code --install-extension PeterJausovec.vscode-docker
 	code --install-extension redhat.vscode-yaml

@@ -1,0 +1,6 @@
+{{- $email := promptString "email" -}}
+gpgRecipient = "4554C3ADAFA32DCE2495EC11B9D7658F7F70326F"
+[data]
+  email = "{{ $email }}"
+  name = "Tom Payne"
+  sshKey = "{{ $email }} SSH key"

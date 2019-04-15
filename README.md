@@ -2,17 +2,9 @@
 
 Tom Payne's dotfiles, managed with [`chezmoi`](https://github.com/twpayne/chezmoi).
 
-This repo should be checked out in the directory `~/.config/share/chezmoi`, for
-example:
+Install them with:
 
-    git clone https://github.com/twpayne/dotfiles.git ~/.config/share/chezmoi
-
-You'll also need to create a configuation file `./config/chezmoi/chezmoi.yaml`
-containing:
-
-    [data]
-        name = "<your-name>"
-        email = "<your-email>"
+    chezmoi init https://github.com/twpayne/dotfiles.git
 
 Secrets are stored in [LastPass](https://lastpass.com) and you'll need the
 [LastPass CLI](https://github.com/lastpass/lastpass-cli) installed. Login to

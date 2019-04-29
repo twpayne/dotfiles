@@ -110,7 +110,7 @@ git-delete-merged-branches() {
 		xargs git branch -d
 }
 
-github-pull-and-cd() {
+github-clone-and-cd() {
 	mkdir -p ~/src/github.com/$(dirname $1) && \
 		git clone https://github.com/$1.git ~/src/github.com/$1 && \
 		cd ~/src/github.com/$1

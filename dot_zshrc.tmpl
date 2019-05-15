@@ -97,6 +97,10 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 
 {{ end -}}
+{{ if eq .email "tom@airmap.com" -}}
+export AIRMAP_API_KEY="{{ (index (lastpass "api.airmap.com") 0).password }}"
+
+{{ end -}}
 # zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 

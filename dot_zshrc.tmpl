@@ -113,7 +113,7 @@ which direnv >/dev/null && eval "$(direnv hook zsh)"
 git-delete-merged-branches() {
 	git branch --merged | \
 		grep -v master | \
-		xargs git branch -d
+		xargs --no-run-if-empty git branch -d
 }
 
 github-clone-and-cd() {

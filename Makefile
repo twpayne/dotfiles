@@ -22,6 +22,11 @@ darwin-configure-vscode:
 	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 	defaults delete -g ApplePressAndHoldEnabled || true
 
+debian-install-go:
+	sudo add-apt-repository -y ppa:gophers/archive
+	sudo apt-get update
+	sudo apt-get install -y golang-go
+
 ubuntu-configure-cli: ubuntu-install-packages
 	chsh -s /usr/bin/zsh
 
@@ -83,6 +88,7 @@ ubuntu-install-packages:
 		direnv \
 		git-lfs \
 		jq \
+		software-properties-common \
 		unattended-upgrades \
 		units \
 		vim-gnome \

@@ -74,6 +74,7 @@ setopt rm_star_silent
 alias g=git
 alias gnp="git --no-pager"
 
+export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
 export EDITOR=vim
 export GOPATH=$HOME
 export GO111MODULE=on

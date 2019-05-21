@@ -1,5 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+{{- if and (eq .chezmoi.os "linux") (eq (index .chezmoi "osRelease" "id") "debian") }}
+export PATH=$PATH:/snap/bin
+{{- end }}
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh

@@ -5,23 +5,6 @@ update:
 	vim -c PlugUpdate -c qa
 	vim -c GoInstallBinaries -c qa
 
-code-install-extensions:
-	code --install-extension DavidAnson.vscode-markdownlint
-	code --install-extension DevonDCarew.bazel-code
-	code --install-extension alefragnani.project-manager
-	code --install-extension eamodio.gitlens
-	code --install-extension ms-vscode.Go
-	code --install-extension PeterJausovec.vscode-docker
-	code --install-extension redhat.vscode-yaml
-	code --install-extension stkb.rewrap
-	if [ $$(uname) = "Darwin" ] ; then \
-		code --install-extension deerawan.vscode-dash ; \
-	fi
-
-darwin-configure-vscode:
-	defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-	defaults delete -g ApplePressAndHoldEnabled || true
-
 debian-install-go:
 	sudo add-apt-repository -y ppa:gophers/archive
 	sudo apt-get update
@@ -50,13 +33,6 @@ ubuntu-install-bazelbuild-buildtools:
 	for tool in buildifier buildozer unused_deps ; do \
 		wget -q -O ${HOME}/bin/$${tool} https://github.com/bazelbuild/buildtools/releases/download/${BAZELBUILD_BUILDTOOLS_VERSION}/$${tool} && chmod 755 ${HOME}/bin/$${tool} ; \
 	done
-
-ubuntu-install-code:
-	wget -q -O code_amd64.deb https://go.microsoft.com/fwlink/?LinkID=760868 
-	sudo dpkg -i code_amd64.deb || true
-	sudo apt-get -f -y install
-	sudo sh -c "echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf"
-	sudo sysctl -p
 
 ubuntu-install-google-chrome:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -

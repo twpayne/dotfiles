@@ -13,7 +13,7 @@ Makefile
 bin/airmap-openvpn
 bin/kubelogin
 etc/airmap-openvpn-client.ovpn
-etc/kubeconfig.*.json
+etc/*.yaml
 install-airmap-openvpn-packages.sh
 {{- end }}
 {{- if ne .chezmoi.os "darwin" }}

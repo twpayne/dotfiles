@@ -1,5 +1,6 @@
+#!/usr/bin/env zsh
 # -------------------------------------------------------------------------------------------------
-# Copyright (c) 2018 zsh-syntax-highlighting contributors
+# Copyright (c) 2019 zsh-syntax-highlighting contributors
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification, are permitted
@@ -27,14 +28,18 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-mkdir foo
-touch foo/bar
-BUFFER=": foo/bar $PWD/foo foo/b"
-ZSH_HIGHLIGHT_DIRS_BLACKLIST=($PWD/foo $PWD/bar)
+BUFFER='echo "$(echo)$(echo)'
 
 expected_region_highlight=(
-  '1 1 builtin' # :
-  '3 9 default' # foo/bar
-  "11 $(( 14 + $#PWD )) default" # $PWD/foo
-  "$(( 16 + $#PWD )) $(( 20 + $#PWD )) default" # foo/b
+  '1 4 builtin' # echo
+  '6 20 default' # "$(echo)$(echo)
+  '6 6 double-quoted-argument-unclosed' # "
+  '7 13 command-substitution-quoted' # $(echo)
+  '7 8 command-substitution-delimiter-quoted' # $(
+  '9 12 builtin' # echo
+  '13 13 command-substitution-delimiter-quoted' # )
+  '14 20 command-substitution-quoted' # $(echo)
+  '14 15 command-substitution-delimiter-quoted' # $(
+  '16 19 builtin' # echo
+  '20 20 command-substitution-delimiter-quoted' # )
 )

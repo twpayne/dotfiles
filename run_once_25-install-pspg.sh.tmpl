@@ -1,0 +1,9 @@
+#!/bin/sh
+
+{{ if eq .chezmoi.os "darwin" -}}
+brew install pspg
+{{ end -}}
+
+{{ if eq .chezmoi.os "linux" -}}
+sudo apt-get install -y pspg
+{{ end -}}

@@ -3,6 +3,7 @@ Makefile
 *.deb
 *.tar.gz
 .vscode
+settings.json
 {{- if ne .email "twpayne@gmail.com" }}
 .gitcookies
 .pypirc

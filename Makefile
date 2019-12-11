@@ -79,7 +79,8 @@ update-third-party: \
 	update-plug.vim \
 	update-oh-my-zsh \
 	update-aws_zsh_completer.sh \
-	update-zsh_syntax-highlighting
+	update-bazel-zsh-completion \
+	update-zsh-syntax-highlighting
 
 update-plug.vim:
 	curl -s -L https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > $$(chezmoi source-path ~/.vim/autoload/plug.vim)

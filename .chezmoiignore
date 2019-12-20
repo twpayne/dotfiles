@@ -21,6 +21,7 @@ install-airmap-openvpn-packages.sh
 {{- if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .hammerspoon
+run_once_configure-macos.sh
 {{- end }}
 {{- if ne .chezmoi.os "linux" }}
 .hushlogin

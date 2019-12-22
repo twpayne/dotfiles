@@ -1,7 +1,17 @@
 #!/bin/sh
 
-defaults write -g KeyRepeat -float 0.01
+defaults write -g AppleInterfaceStyle Dark
+defaults write -g AppleLanguages -array en-US
+defaults write -g AppleLocale en_US
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 2
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g NSLinguisticDataAssetsRequested -array en en_US
+defaults write -g NSUserDictionaryReplacementItems -bool false
+defaults write -g WebAutomaticSpellingCorrectionEnabled -bool false
 
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock orientation right

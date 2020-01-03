@@ -94,10 +94,6 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
 
 {{ end -}}
-# https://bazel.build/versions/master/docs/install.html
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
 {{ if eq .chezmoi.os "darwin" -}}
 # gcloud
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc

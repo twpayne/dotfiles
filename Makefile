@@ -20,20 +20,6 @@ ubuntu-configure-gnome:
 	gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 48
 	gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
 
-ubuntu-install-bazel:
-	sudo echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-	curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
-	sudo apt-get update
-	sudo apt-get install -y \
-		bazel \
-		openjdk-8-jdk
-
-BAZELBUILD_BUILDTOOLS_VERSION=0.20.0
-ubuntu-install-bazelbuild-buildtools:
-	for tool in buildifier buildozer unused_deps ; do \
-		wget -q -O ${HOME}/bin/$${tool} https://github.com/bazelbuild/buildtools/releases/download/${BAZELBUILD_BUILDTOOLS_VERSION}/$${tool} && chmod 755 ${HOME}/bin/$${tool} ; \
-	done
-
 ubuntu-install-google-chrome:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -79,7 +65,6 @@ update-third-party: \
 	update-plug.vim \
 	update-oh-my-zsh \
 	update-aws_zsh_completer.sh \
-	update-bazel-zsh-completion \
 	update-zsh-syntax-highlighting
 
 update-plug.vim:
@@ -92,10 +77,6 @@ update-oh-my-zsh:
 update-aws_zsh_completer.sh:
 	mkdir -p dot_oh-my-zsh/custom/lib
 	curl -s https://raw.githubusercontent.com/aws/aws-cli/develop/bin/aws_zsh_completer.sh > $$(chezmoi source-path ~/.oh-my-zsh/custom/lib)/aws_zsh_completer.sh
-
-update-bazel-zsh-completion:
-	mkdir -p dot_oh-my-zsh/custom/lib
-	curl -s -L https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel > dot_oh-my-zsh/custom/lib/bazel.zsh
 
 update-zsh-syntax-highlighting:
 	mkdir -p dot_oh-my-zsh/custom/plugins

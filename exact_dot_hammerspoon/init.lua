@@ -135,8 +135,6 @@ local bindings = {
 
   [{'alt', 'cmd', 'ctrl', 'shift'}] = {
     c = launchOrFocus('Google Chrome'),
-    d = launchOrFocus('Dash'),
-    e = launchOrFocus('MacVim'),
     f = launchOrFocus('Finder'),
     i = launchOrFocus('Visual Studio Code'),
     p = launchOrFocus('Preview'),
@@ -146,7 +144,6 @@ local bindings = {
     w = launchOrFocus('WhatsApp'),
     x = launchOrFocus('Xee³'),
     y = launchOrFocus('System Preferences'),
-    z = launchOrFocus('zoom.us'),
   },
 }
 

@@ -86,12 +86,12 @@ _zsh_highlight()
   # Before we 'emulate -L', save the user's options
   local -A zsyh_user_options
   if zmodload -e zsh/parameter; then
-    zsyh_user_options=("${(@kv)options}")
+    zsyh_user_options=("${(kv)options[@]}")
   else
     local canonical_options onoff option raw_options
     raw_options=(${(f)"$(emulate -R zsh; set -o)"})
     canonical_options=(${${${(M)raw_options:#*off}%% *}#no} ${${(M)raw_options:#*on}%% *})
-    for option in $canonical_options; do
+    for option in "${canonical_options[@]}"; do
       [[ -o $option ]]
       # This variable cannot be eliminated c.f. workers/42101.
       onoff=${${=:-off on}[2-$?]}
@@ -161,12 +161,12 @@ _zsh_highlight()
       (( REGION_ACTIVE )) || return
       integer min max
       if (( MARK > CURSOR )) ; then
-	min=$CURSOR max=$MARK
+        min=$CURSOR max=$MARK
       else
-	min=$MARK max=$CURSOR
+        min=$MARK max=$CURSOR
       fi
       if (( REGION_ACTIVE == 1 )); then
-	[[ $KEYMAP = vicmd ]] && (( max++ ))
+        [[ $KEYMAP = vicmd ]] && (( max++ ))
       elif (( REGION_ACTIVE == 2 )); then
         local needle=$'\n'
         # CURSOR and MARK are 0 indexed between letters like region_highlight

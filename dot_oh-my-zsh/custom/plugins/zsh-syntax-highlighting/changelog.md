@@ -1,3 +1,154 @@
+# Changes in HEAD
+
+- Redirection operators (e.g., `<` and `>`) are now highlighted by default
+  [#646]
+
+- Propertly terminate `noglob` scope in try/always blocks
+  [#577]
+
+- Don't error out when `KSH_ARRAYS` is set in the calling scope
+  [#622, #689]
+
+- Literal semicolons in array assignments (`foo=( bar ; baz )`) are now
+  highlighted as errors.
+  [3ca93f864fb6]
+
+- Command separators in array assignments (`foo=( bar | baz )`) are now
+  highlighted as errors.
+  [#651, 81267ca3130c]
+
+- Support parameter elision in command position (e.g., `$foo ls` where `$foo` is unset or empty)
+  [#667]
+
+- Don't consider the filename in `sudo -e /path/to/file` to be a command position
+  [#678]
+
+- Don't look up absolute directory names in $cdpath
+  [2cc2583f8f12, part of #669]
+
+- Fix `exec 2>&1;` being highlighted as an error.
+  [#676]
+
+- Fix `: $(<*)` being highlighted as globbing.
+  [#582]
+
+- Fix `cat < *` being highlighting as globbing when the `MULTIOS` option is unset.
+  [#583]
+
+- Fix `echo >&2` highlighting the `2` as a filename if a file by that name happened to exist
+  [#694, part of #645]
+
+- Fix `echo >&-` highlighting the `-` as a filename if a file by that name happened to exist
+  [part of #645]
+
+- Fix `echo >&p` highlighting the `p` as a filename if a file by that name happened to exist
+  [part of #645]
+
+- Fix `: $((42))` being highlighted as a subshell.
+  [part of #607]
+
+- Regress highlighting of `: $((ls); (ls))`: is a subshell, but will now be
+  incorrectly highlighted as an arithmetic expansion.
+  [#704]
+
+- Fix wrong highlighting of unquoted parameter expansions under zsh 5.2 and older
+  [e165f18c758e]
+
+- Highlight global aliases
+  [#700]
+
+- Highlight `: =nosuchcommand' as an error (when the `EQUALS` option hasn't been unset).
+  [#430]
+
+- Highlight reserved word after assignments as errors (e.g., `foo=bar (ls;)`)
+  [#461]
+
+- Correctly highlight `[[ foo && bar || baz ]]`.
+
+- Highlight non-executable files in command position correctly (e.g., `% /etc/passwd`)
+  [#202, #669]
+
+- Highlight directories in command position correctly, including `AUTO_CD` support
+  [#669]
+
+- Recognize `env` as a precommand (e.g., `env FOO=bar ls`)
+
+# Changes in version 0.7.1
+
+- Remove out-of-date information from the 0.7.0 changelog.
+
+# Changes in version 0.7.0
+
+This is a stable bugfix and feature release.  Major new features and changes include:
+
+- Add `ZSH_HIGHLIGHT_DIRS_BLACKLIST` to disable "path" and "path prefix"
+  highlighting for specific directories
+  [#379]
+
+- Add the "regexp" highlighter, modelled after the pattern highlighter
+  [4e6f60063f1c]
+
+- When a word uses globbing, only the globbing metacharacters will be highlighted as globbing:
+  in `: foo*bar`, only the `*` will be blue.
+  [e48af357532c]
+
+- Highlight pasted quotes (e.g., `: foo"bar"`)
+  [dc1b2f6fa4bb]
+
+- Highlight command substitutions (`` : `ls` ``, `: $(ls)`)
+  [c0e64fe13178 and parents, e86f75a840e7, et al]
+
+- Highlight process substitutions (`: >(nl)`, `: <(pwd)`, `: =(git diff)`)
+  [c0e64fe13178 and parents, e86f75a840e7, et al]
+
+- Highlight command substitutions inside double quotes (``: "`foo`"``)
+  [f16e858f0c83]
+
+- Highlight many precommands (e.g., `nice`, `stdbuf`, `eatmydata`;
+  see `$precommand_options` in the source)
+
+- Highlight numeric globs (e.g., `echo /lib<->`)
+
+- Assorted improvements to aliases highlighting
+  (e.g.,
+   `alias sudo_u='sudo -u'; sudo_u jrandom ls`,
+   `alias x=y y=z z=nosuchcommand; x`,
+   `alias ls='ls -l'; \ls`)
+  [f3410c5862fc, 57386f30aec8, #544, and many others]
+
+- Highlight some more syntax errors
+  [dea05e44e671, 298ef6a2fa30]
+
+- New styles: named file descriptors, `RC_QUOTES`, and unclosed quotes (e.g., `echo "foo<CURSOR>`)
+  [38c794a978cd, 25ae1c01216c, 967335dfc5fd]
+
+- The 'brackets' highlighting no longer treats quotes specially.
+  [ecdda36ef56f]
+
+
+Selected bugfixes include:
+
+- Highlight `sudo` correctly when it's not installed
+  [26a82113b08b]
+
+- Handle some non-default options being set in zshrc
+  [b07ada1255b7, a2a899b41b8, 972ad197c13d, b3f66fc8748f]
+
+- Fix off-by-one highlighting in vi "visual" mode (vicmd keymap)
+  [be3882aeb054]
+
+- The 'yank-pop' widget is not wrapped
+  [#183]
+
+
+Known issues include:
+
+- A multiline alias that uses a simple command terminator (such as `;`, `|`, `&&`)
+  before a newline will incorrectly be highlighted as an error.  See issue #677
+  for examples and workarounds.
+  [#677]
+
+
 # Changes in version 0.6.0
 
 This is a stable release, featuring bugfixes and minor improvements.

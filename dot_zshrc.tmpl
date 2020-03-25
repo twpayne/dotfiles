@@ -121,21 +121,6 @@ which direnv >/dev/null && eval "$(direnv hook zsh)"
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
-{{ if (eq .chezmoi.os "linux") -}}
-git-delete-merged-branches() {
-	git branch --merged | \
-		grep -v master | \
-		xargs --no-run-if-empty git branch -d
-}
-
-{{ else if (eq .chezmoi.os "darwin") -}}
-git-delete-merged-branches() {
-	git branch --merged | \
-		grep -v master | \
-		xargs git branch -d
-}
-
-{{ end -}}
 github-clone-and-cd() {
 	mkdir -p ~/src/github.com/$(dirname $1) && \
 		git clone https://github.com/$1.git ~/src/github.com/$1 && \

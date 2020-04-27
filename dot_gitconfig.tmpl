@@ -62,6 +62,9 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+{{ if eq .chezmoi.os "darwin" -}}
+	pager = "delta --dark"
+{{ end -}}
 	whitespace = trailing-space,space-before-tab
 [diff]
 	renames = copies

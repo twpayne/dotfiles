@@ -43,7 +43,8 @@
 	riom = rebase --interactive origin/master
 	rpo = remote prune origin
 	s = status -sb
-	ss = commit --message "snapshot" --no-gpg-sign
+	ss = commit --message snapshot --no-gpg-sign
+	sb = commit --message broken-snapshot --no-gpg-sign
 	su = submodule update
 	wd = diff --patience --word-diff
 	# https://golang.org/doc/contribute.html

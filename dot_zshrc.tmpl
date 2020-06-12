@@ -6,14 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
-{{- if (eq .chezmoi.os "linux") }}
-export PATH=$PATH:$HOME/.local/bin
-{{- if (eq (index .chezmoi "osRelease" "id") "debian") }}
-export PATH=$PATH:/snap/bin
-{{- end }}
-{{- end }}
-[ -d $HOME/.cargo/bin ] && export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$HOME/bin:$PATH
+[ -d /snap/bin ] && export PATH=/snap/bin:$PATH
+[ -d $HOME/.cargo/bin ] && export PATH=$HOME/.cargo/bin:$PATH
+[ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh

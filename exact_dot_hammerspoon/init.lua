@@ -142,7 +142,6 @@ local bindings = {
     t = launchOrFocus('iTerm'),
     v = launchOrFocus('VLC'),
     w = launchOrFocus('WhatsApp'),
-    x = launchOrFocus('Xee³'),
     y = launchOrFocus('System Preferences'),
   },
 }

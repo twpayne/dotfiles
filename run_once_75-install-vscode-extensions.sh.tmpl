@@ -6,12 +6,13 @@ which code > /dev/null || exit 0
 # Remove previsously-installed extensions.
 code --uninstall-extension DavidAnson.vscode-markdownlint
 code --uninstall-extension DevonDCarew.bazel-code
+code --uninstall-extension ms-vscode.Go
 
 # Install desired extensions.
 code --install-extension alefragnani.project-manager
 code --install-extension eamodio.gitlens
+code --install-extension golang.Go
 code --install-extension ms-python.python
-code --install-extension ms-vscode.Go
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-vscode.vscode-typescript-tslint-plugin
 code --install-extension redhat.vscode-yaml
@@ -19,6 +20,3 @@ code --install-extension stkb.rewrap
 code --install-extension tyriar.sort-lines
 code --install-extension yzhang.markdown-all-in-one
 code --install-extension zxh404.vscode-proto3 
-{{ if eq .chezmoi.os "darwin" -}}
-code --install-extension deerawan.vscode-dash
-{{ end -}}

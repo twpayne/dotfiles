@@ -10,5 +10,8 @@
     "markdown.extension.toc.levels": "2..3",
     "terminal.integrated.rendererType": "dom",
     "editor.cursorSurroundingLines": 5,
-    "markdown.extension.toc.githubCompatibility": true
+    "markdown.extension.toc.githubCompatibility": true,
+    "projectManager.git.baseFolders": [
+        "/Users/twp/src"
+    ]
 }

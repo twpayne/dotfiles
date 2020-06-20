@@ -114,9 +114,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # direnv
 which direnv >/dev/null && eval "$(direnv hook zsh)"
 
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 github-clone-and-cd() {
 	mkdir -p ~/src/github.com/$(dirname $1) && \
 		git clone https://github.com/$1.git ~/src/github.com/$1 && \

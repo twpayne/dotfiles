@@ -115,9 +115,14 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 which direnv >/dev/null && eval "$(direnv hook zsh)"
 
 github-clone-and-cd() {
-	mkdir -p ~/src/github.com/$(dirname $1) && \
-		git clone https://github.com/$1.git ~/src/github.com/$1 && \
-		cd ~/src/github.com/$1
+	dir=~/src/github.com/$1
+	if [ -d $dir ] ; then
+		cd $dir
+	else
+		mkdir -p ~/src/github.com/$(dirname $1) && \
+			git clone https://github.com/$1.git $dir && \
+			cd $dir
+	fi
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

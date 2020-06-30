@@ -1,5 +1,0 @@
-#!/bin/sh
-
-sudo openvpn \
-	--auth-user-pass $HOME/.airmap-openvpn-credentials \
-	--config $HOME/etc/airmap-openvpn-client.ovpn

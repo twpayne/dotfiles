@@ -8,16 +8,6 @@ settings.json
 .gitcookies
 .pypirc
 {{- end }}
-{{- if ne .email "tom@airmap.com" }}
-.airmap-openvpn-credentials
-.docker/config.json
-bin/airmap-openvpn
-bin/kubelogin
-etc/airmap-openvpn-client.ovpn
-etc/db.sh
-etc/*.yaml
-install-airmap-openvpn-packages.sh
-{{- end }}
 {{- if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .hammerspoon

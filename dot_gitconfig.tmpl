@@ -1,9 +1,6 @@
 [user]
 	name = {{ .name }}
 	email = twpayne@gmail.com
-{{- if eq .email "tom@airmap.com" }}
-	signingkey = "6EBF9E59539462BB"
-{{- end }}
 [advice]
 	pushNonFastForward = false
 	statusHints = false
@@ -56,10 +53,6 @@
 	sync = codereview sync
 [color]
 	ui = auto
-{{- if eq .email "tom@airmap.com" }}
-[commit]
-	gpgsign = true
-{{- end }}
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
@@ -92,8 +85,6 @@
 	fsckobjects = true
 [trim]
 	bases = master,gh-pages
-[url "git@github.com:airmap/"]
-	insteadOf = https://github.com/airmap/
 [url "git@github.com:twpayne/"]
 	insteadOf = https://github.com/twpayne/
 

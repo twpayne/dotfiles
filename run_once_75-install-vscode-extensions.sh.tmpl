@@ -3,11 +3,6 @@
 # Exit if VS Code is not installed.
 which code > /dev/null || exit 0
 
-# Remove previsously-installed extensions.
-code --uninstall-extension DavidAnson.vscode-markdownlint
-code --uninstall-extension DevonDCarew.bazel-code
-code --uninstall-extension ms-vscode.Go
-
 # Install desired extensions.
 code --install-extension alefragnani.project-manager
 code --install-extension eamodio.gitlens

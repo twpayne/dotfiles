@@ -1,5 +1,11 @@
 # Changes in HEAD
 
+- Document `$ZSH_HIGHLIGHT_MAXLENGTH`.
+  [#698]
+
+- Optimize highlighting unquoted words (words that are not in single quotes, double quotes, backticks, or dollar-single-quotes)
+  [#730]
+
 - Redirection operators (e.g., `<` and `>`) are now highlighted by default
   [#646]
 
@@ -44,13 +50,6 @@
 - Fix `echo >&p` highlighting the `p` as a filename if a file by that name happened to exist
   [part of #645]
 
-- Fix `: $((42))` being highlighted as a subshell.
-  [part of #607]
-
-- Regress highlighting of `: $((ls); (ls))`: is a subshell, but will now be
-  incorrectly highlighted as an arithmetic expansion.
-  [#704]
-
 - Fix wrong highlighting of unquoted parameter expansions under zsh 5.2 and older
   [e165f18c758e]
 
@@ -73,9 +72,27 @@
 
 - Recognize `env` as a precommand (e.g., `env FOO=bar ls`)
 
+- Recognize `strace` as a precommand
+
+- Fix an error message on stderr before every prompt when the `WARN_NESTED_VAR` zsh option is set:
+  `_zsh_highlight_main__precmd_hook:1: array parameter _zsh_highlight_main__command_type_cache set in enclosing scope in function _zsh_highlight_main__precmd_hook`
+  [#727, #731, #732, #733]
+
+- Fix highlighting of alias whose definitions use a simple command terminator
+  (such as `;`, `|`, `&&`) before a newline
+  [#677; had regressed in 0.7.0]
+
+- Highlight arithmetic expansions (e.g., `$(( 42 ))`)
+  [#607 #649 #704]
+
+- Highlight the parentheses of array assignments as reserved words (`foo=( bar )`).
+  The `assign` style remains supported and has precedence.
+  [#585]
+
 # Changes in version 0.7.1
 
 - Remove out-of-date information from the 0.7.0 changelog.
+
 
 # Changes in version 0.7.0
 
@@ -147,6 +164,7 @@ Known issues include:
   before a newline will incorrectly be highlighted as an error.  See issue #677
   for examples and workarounds.
   [#677]
+  [UPDATE: Fixed in 0.8.0]
 
 
 # Changes in version 0.6.0

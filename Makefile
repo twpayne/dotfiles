@@ -3,7 +3,6 @@ none:
 update-third-party: \
 	update-plug.vim \
 	update-oh-my-zsh \
-	update-aws_zsh_completer.sh \
 	update-zsh-syntax-highlighting
 
 update-plug.vim:
@@ -12,10 +11,6 @@ update-plug.vim:
 update-oh-my-zsh:
 	curl -s -L -o oh-my-zsh-master.tar.gz https://github.com/robbyrussell/oh-my-zsh/archive/master.tar.gz
 	chezmoi import --strip-components 1 --destination ${HOME}/.oh-my-zsh oh-my-zsh-master.tar.gz
-
-update-aws_zsh_completer.sh:
-	mkdir -p dot_oh-my-zsh/custom/lib
-	curl -s https://raw.githubusercontent.com/aws/aws-cli/develop/bin/aws_zsh_completer.sh > $$(chezmoi source-path ~/.oh-my-zsh/custom/lib)/aws_zsh_completer.sh
 
 update-zsh-syntax-highlighting:
 	mkdir -p dot_oh-my-zsh/custom/plugins

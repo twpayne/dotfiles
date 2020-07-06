@@ -1,0 +1,5 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+chsh -s /usr/bin/zsh
+{{ end -}}

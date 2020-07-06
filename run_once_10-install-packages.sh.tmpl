@@ -1,0 +1,8 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+
+sudo apt install -y \
+	curl \
+	ripgrep \
+	zsh
+{{ end -}}

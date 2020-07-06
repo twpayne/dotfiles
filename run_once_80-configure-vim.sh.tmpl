@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+
+vim -c PlugUpdate -c qa
+vim -c GoInstallBinaries -c qa
+{{ end -}}

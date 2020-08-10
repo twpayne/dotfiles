@@ -4,6 +4,6 @@
 brew install pspg
 {{ end -}}
 
-{{ if eq .chezmoi.os "linux" -}}
+{{ if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
 sudo apt-get install -y pspg
 {{ end -}}

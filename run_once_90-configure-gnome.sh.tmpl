@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "linux" -}}
+{{ if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
 #!/bin/sh
 
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false

@@ -6,7 +6,7 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults delete -g ApplePressAndHoldEnabled || true
 {{ end -}}
 
-{{ if eq .chezmoi.os "linux" -}}
+{{ if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
 sudo snap install code --classic
 sudo sh -c "echo fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf"
 sudo sysctl -p

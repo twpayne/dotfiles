@@ -1,5 +1,13 @@
+{{ if env "CODESPACES" -}}
+[data]
+  codespaces = true
+  email = "twpayne@gmail.com"
+  name = "Tom Payne"
+{{ else -}}
 {{- $email := promptString "email" -}}
 [data]
-  email = "{{ $email }}"
+  codespaces = false
+  email = "{{ template "email" }}"
   name = "Tom Payne"
-  sshKey = "{{ $email }} SSH key"
+  sshKey = "{{ template "email" }} SSH key"
+{{ end -}}

@@ -1,5 +1,6 @@
 README.md
 Makefile
+install.sh
 *.deb
 *.tar.gz
 .vscode
@@ -16,4 +17,9 @@ Library
 {{- end }}
 {{- if ne .chezmoi.os "linux" }}
 .hushlogin
+{{- end }}
+{{- if (env "CODESPACES") }}
+.gitcookies
+.pypirc
+.ssh
 {{- end }}

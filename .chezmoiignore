@@ -22,4 +22,6 @@ Library
 .gitcookies
 .pypirc
 .ssh
+{{- else }}
+.bash_aliases
 {{- end }}

@@ -1,13 +1,11 @@
-{{ if env "CODESPACES" -}}
+{{- $codespaces := env "CODESPACES" | not | not -}}
 [data]
-  codespaces = true
+  name = "Tom Payne"
+  codespaces = {{ $codespaces }}
+{{- if $codespaces }}
   email = "twpayne@gmail.com"
-  name = "Tom Payne"
-{{ else -}}
-{{- $email := promptString "email" -}}
-[data]
-  codespaces = false
-  email = "{{ template "email" }}"
-  name = "Tom Payne"
-  sshKey = "{{ template "email" }} SSH key"
-{{ end -}}
+{{- else }}
+  {{- $email := promptString "email" }}
+  email = "{{ $email}}"
+  sshKey = "{{ $email }} SSH key"
+{{- end }}

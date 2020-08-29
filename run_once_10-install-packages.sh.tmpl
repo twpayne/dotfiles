@@ -1,16 +1,23 @@
-{{ if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+{{ if (eq .chezmoi.os "linux") -}}
 #!/bin/sh
 
+{{ if .codespaces }}
+sudo apt install -y \
+	ripgrep \
+	vim
+{{ else }}
+sudo add-apt-repository -y ppa:longsleep/golang-backports
+sudo apt update
 sudo apt install -y \
 	curl \
 	direnv \
 	git-lfs \
+	golang-go \
 	jq \
 	ripgrep \
+	units \
 	vim \
 	vim-gtk \
-	units \
 	zsh
-
-sudo snap install go --classic
-{{ end -}}
+{{ end }}
+{{ end }}

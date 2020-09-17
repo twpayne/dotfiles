@@ -84,7 +84,7 @@ setopt rm_star_silent
 alias g=git
 alias gnp="git --no-pager"
 
-{{ if (not .codespaces) -}}
+{{ if (not .container) -}}
 export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
 {{ end -}}
 export EDITOR=vim

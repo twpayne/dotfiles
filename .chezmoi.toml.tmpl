@@ -1,11 +1,8 @@
 {{- $codespaces := env "CODESPACES" | not | not -}}
+{{- $remoteContainers := env "REMOTE_CONTAINERS_IPC" | not | not -}}
+{{- $container := or $codespaces $remoteContainers -}}
 [data]
-  name = "Tom Payne"
-  codespaces = {{ $codespaces }}
-{{- if $codespaces }}
+  container = {{ $container }}
   email = "twpayne@gmail.com"
-{{- else }}
-  {{- $email := promptString "email" }}
-  email = "{{ $email}}"
-  sshKey = "{{ $email }} SSH key"
-{{- end }}
+  name = "Tom Payne"
+  sshKey = "twpayne@gmail.com SSH key"

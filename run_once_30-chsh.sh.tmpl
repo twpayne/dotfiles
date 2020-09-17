@@ -1,4 +1,4 @@
-{{ if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+{{ if (and (eq .chezmoi.os "linux") (not .container)) -}}
 #!/bin/bash
 
 chsh -s /usr/bin/zsh

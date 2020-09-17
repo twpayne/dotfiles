@@ -1,7 +1,7 @@
 {{ if (eq .chezmoi.os "linux") -}}
 #!/bin/sh
 
-{{ if .codespaces }}
+{{ if .container }}
 sudo apt install -y \
 	ripgrep \
 	vim

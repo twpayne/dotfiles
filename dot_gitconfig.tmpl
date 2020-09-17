@@ -83,7 +83,7 @@
 	fsckobjects = true
 [trim]
 	bases = master,gh-pages
-{{- if (not .codespaces) }}
+{{- if (not .container) }}
 [url "git@github.com:twpayne/"]
 	insteadOf = https://github.com/twpayne/
 {{- end }}

@@ -13,5 +13,6 @@
     "markdown.extension.toc.githubCompatibility": true,
     "projectManager.git.baseFolders": [
         "/Users/twp/src"
-    ]
+    ],
+    "dotfiles.repository": "https://github.com/twpayne/dotfiles.git"
 }

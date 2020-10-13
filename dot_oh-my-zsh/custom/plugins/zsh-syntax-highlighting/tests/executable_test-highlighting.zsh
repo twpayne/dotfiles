@@ -31,6 +31,9 @@
 
 setopt NO_UNSET WARN_CREATE_GLOBAL
 
+# Required for add-zle-hook-widget.
+zmodload zsh/zle
+
 local -r root=${0:h:h}
 local -a anon_argv; anon_argv=("$@")
 
@@ -190,7 +193,7 @@ run_test_internal() {
     if
       [[ $start != $exp_start ]] ||
       [[ $end != $exp_end ]] ||
-      [[ $highlight_zone[3] != $expected_highlight_zone[3] ]]
+      [[ ${highlight_zone[3]%,} != ${expected_highlight_zone[3]} ]] # remove the comma that's before the memo field
     then
       print -r -- "not ok $i - $desc - expected ($exp_start $exp_end ${(qqq)expected_highlight_zone[3]}), observed ($start $end ${(qqq)highlight_zone[3]}). $todo"
       if [[ -z $todo ]]; then (( ++print_expected_and_actual )); fi

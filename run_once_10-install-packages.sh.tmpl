@@ -1,5 +1,5 @@
 {{- if (eq .chezmoi.os "linux") -}}
-#!/bin/sh
+#!/bin/bash
 
 set -evo pipefail
 
@@ -23,7 +23,7 @@ sudo apt install -y \
 	zsh
 {{ end }}
 {{- else if (eq .chezmoi.os "darwin") -}}
-#!/bin/sh
+#!/bin/bash
 
 set -evo pipefail
 

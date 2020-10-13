@@ -1,5 +1,5 @@
 {{ if (and (eq .chezmoi.os "linux") (not .container) (not (eq .chezmoi.hostname "revo"))) -}}
-#!/bin/sh
+#!/bin/bash
 
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position RIGHT

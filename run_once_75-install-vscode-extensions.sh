@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Exit if VS Code is not installed.
 which code > /dev/null || exit 0

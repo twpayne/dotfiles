@@ -94,7 +94,9 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
+{{ if (ne .email "tom@isovalent.com") }}
 [ -x /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
+{{ end }}
 
 {{ if (and (eq .chezmoi.os "darwin") (eq .email "twpayne@gmail.com")) -}}
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}

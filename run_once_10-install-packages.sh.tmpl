@@ -1,6 +1,8 @@
 {{- if (eq .chezmoi.os "linux") -}}
 #!/bin/sh
 
+set -evo pipefail
+
 {{ if .container }}
 sudo apt install -y \
 	ripgrep \
@@ -20,4 +22,34 @@ sudo apt install -y \
 	vim-gtk \
 	zsh
 {{ end }}
-{{ end }}
+{{- else if (eq .chezmoi.os "darwin") -}}
+#!/bin/sh
+
+set -evo pipefail
+
+brew install \
+	dockutil \
+	git-lfs \
+	go \
+	gnu-units \
+	gnupg \
+	jq \
+	kubernetes-cli \
+	minikube \
+	ripgrep \
+	xz \
+	youtube-dl
+
+brew cask install \
+{{- if (eq .email "tom@isovalent.com") }}
+	1password \
+	1password-cli \
+{{- end }}
+	docker \
+	google-chrome \
+	google-cloud-sdk \
+	hammerspoon \
+	iterm2 \
+	karabiner-elements \
+	macvim
+{{- end -}}

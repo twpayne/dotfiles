@@ -12,8 +12,6 @@ settings.json
 {{- if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .hammerspoon
-run_once_configure-macos.sh
-Library
 {{- end }}
 {{- if ne .chezmoi.os "linux" }}
 .hushlogin

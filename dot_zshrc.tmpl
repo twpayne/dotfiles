@@ -84,7 +84,7 @@ setopt rm_star_silent
 alias g=git
 alias gnp="git --no-pager"
 
-{{ if (not .container) -}}
+{{ if (and (not .container) (eq .email "twpayne@gmail.com")) -}}
 export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
 {{ end -}}
 export EDITOR=vim
@@ -96,7 +96,7 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 [ -x /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if (and (eq .chezmoi.os "darwin") (eq .email "twpayne@gmail.com")) -}}
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
 
 {{ end -}}

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if (eq .chezmoi.os "darwin") -}}
 brew cask install visual-studio-code
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults delete -g ApplePressAndHoldEnabled || true

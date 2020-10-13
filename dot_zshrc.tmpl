@@ -100,7 +100,7 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
 
 {{ end -}}
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if (eq .chezmoi.os "darwin") -}}
 # gcloud
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc

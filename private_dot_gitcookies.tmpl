@@ -1,4 +1,4 @@
-{{ if eq .email "twpayne@gmail.com" -}}
+{{ if (eq .email "twpayne@gmail.com") -}}
 go.googlesource.com	FALSE	/	TRUE	2147483647	o	git-twpayne.gmail.com={{ (index (lastpass "googlesource.com gitcookie") 0).password }}
 go-review.googlesource.com	FALSE	/	TRUE	2147483647	o	git-twpayne.gmail.com={{ (index (lastpass "googlesource.com gitcookie") 0).password }}
 {{ end -}}

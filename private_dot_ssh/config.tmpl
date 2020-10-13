@@ -1,6 +1,6 @@
 HashKnownHosts no
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if (eq .chezmoi.os "darwin") -}}
 Host *
 UseKeychain yes
 

@@ -56,7 +56,7 @@ if has('gui_running')
   colorscheme molokai
 endif
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if (eq .chezmoi.os "darwin") -}}
 if has('gui_macvim')
   set guifont=Menlo:h12
   set laststatus=2

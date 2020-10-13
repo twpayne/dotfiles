@@ -18,7 +18,7 @@ Library
 {{- if ne .chezmoi.os "linux" }}
 .hushlogin
 {{- end }}
-{{- if (env "CODESPACES") }}
+{{- if .container }}
 .gitcookies
 .pypirc
 .ssh

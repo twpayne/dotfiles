@@ -1,4 +1,4 @@
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzB4umkFIrh4/pN/AdwGrFD+GcgHkrfGPQhX8kj5JVBkE4dBjXet2EYpiz5IKYXd5wJ8h5GxVtpTY7DoREBLz5Lq+d9bUMRikGXUtGu5rdXaz4vRoBuc7KIo78WiLkkeDg83qPAbaPAJkOnw8j5WQqSlxkd6fZxCwX8YE4g73AlnFNI13nNLRRBXSE299AzFdrblzWD1fA8PuCc1v+FhwXo2jDJ6wR48rK3ydmr+b50sANONSCkekuyyqIPZSveqtdu+PyhXbxxDeSMFj93HpIGRhlKJW5cPa4jxfXcrv5Q66MCfH/Sij2Hw8pNJg7IclsayTuJZJhHxG0YiI9Zzul twpayne@gmail.com
-{{ if eq .chezmoi.hostname "revo" -}}
+{{ if (eq .chezmoi.hostname "revo") -}}
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ/xdZT+m+UFNvYJiIlrLhZIuy5rJJojEhpXbc79tLBo JuiceSSH
 {{ end -}}

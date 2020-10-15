@@ -83,6 +83,7 @@ setopt rm_star_silent
 
 alias g=git
 alias gnp="git --no-pager"
+alias k=kubectl
 
 {{ if (and (not .container) (eq .email "twpayne@gmail.com")) -}}
 export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"

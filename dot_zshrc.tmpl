@@ -97,6 +97,8 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export AWS_ACCESS_KEY_ID={{ (onepasswordDetailsFields "AWS Access Key").username.value }}
 export AWS_SECRET_ACCESS_KEY={{ (onepasswordDetailsFields "AWS Access Key").password.value }}
 export AWS_DEFAULT_REGION=eu-west-1
+export VM_CPUS=6
+export VM_MEMORY=32768
 {{ else if (eq .email "twpayne@gmail.com") -}}
 export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
 {{ if (eq .chezmoi.os "darwin") -}}

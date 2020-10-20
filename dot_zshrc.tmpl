@@ -92,7 +92,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-{{ if (eq .chezmoi.hostname "Toms-Isovalent-MacBookPro" "thinkpad") -}}
+{{ if (eq .chezmoi.hostname "Toms-Isovalent-MacBook-Pro" "thinkpad") -}}
 export AWS_ACCESS_KEY_ID={{ (onepasswordDetailsFields "AWS Access Key").username.value }}
 export AWS_SECRET_ACCESS_KEY={{ (onepasswordDetailsFields "AWS Access Key").password.value }}
 export AWS_DEFAULT_REGION=eu-west-1

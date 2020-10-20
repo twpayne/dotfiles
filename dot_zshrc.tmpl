@@ -92,19 +92,26 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-{{ if (not .container) -}}
-{{ if (eq .email "tom@isovalent.com") -}}
+{{ if (eq .chezmoi.hostname "Toms-Isovalent-MacBookPro" "thinkpad") -}}
 export AWS_ACCESS_KEY_ID={{ (onepasswordDetailsFields "AWS Access Key").username.value }}
 export AWS_SECRET_ACCESS_KEY={{ (onepasswordDetailsFields "AWS Access Key").password.value }}
 export AWS_DEFAULT_REGION=eu-west-1
+{{ end -}}
+
+{{ if (eq .chezmoi.hostname "Toms-Isovalent-MacBook-Pro") -}}
 export VM_CPUS=6
 export VM_MEMORY=32768
-{{ else if (eq .email "twpayne@gmail.com") -}}
+{{ else if (eq .chezmoi.hostname "thinkpad") -}}
+export VM_CPUS=4
+export VM_MEMORY=8192
+{{ end -}}
+
+{{ if (eq .email "twpayne@gmail.com") -}}
 export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
-{{ if (eq .chezmoi.os "darwin") -}}
+{{ end -}}
+
+{{ if (eq .chezmoi.hostname "Toms-MacBook-Pro") -}}
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
-{{ end -}}
-{{ end -}}
 {{ end -}}
 
 {{ if (ne .email "tom@isovalent.com") -}}

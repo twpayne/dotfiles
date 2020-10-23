@@ -6,7 +6,6 @@ install.sh
 .vscode
 settings.json
 {{- if ne .email "twpayne@gmail.com" }}
-.gitcookies
 .pypirc
 {{- end }}
 {{- if ne .chezmoi.os "darwin" }}

@@ -1,4 +1,9 @@
+{{ define "gitcookie" -}}
 {{ if (eq .email "twpayne@gmail.com") -}}
-go.googlesource.com	FALSE	/	TRUE	2147483647	o	git-twpayne.gmail.com={{ (index (lastpass "googlesource.com gitcookie") 0).password }}
-go-review.googlesource.com	FALSE	/	TRUE	2147483647	o	git-twpayne.gmail.com={{ (index (lastpass "googlesource.com gitcookie") 0).password }}
+{{ (index (lastpass "googlesource.com gitcookie") 0).password -}}
+{{ else if (eq .email "tom@isovalent.com") -}}
+{{ (onepassword "googlesource.com gitcookie").details.password -}}
 {{ end -}}
+{{ end -}}
+go.googlesource.com	FALSE	/	TRUE	2147483647	o	git-twpayne.gmail.com={{ template "gitcookie" . }}
+go-review.googlesource.com	FALSE	/	TRUE	2147483647	o	git-twpayne.gmail.com={{ template "gitcookie" . }}

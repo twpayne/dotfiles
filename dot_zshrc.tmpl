@@ -122,6 +122,7 @@ export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Tok
 
 {{ if (eq .chezmoi.os "darwin") -}}
 # gcloud
+export CLOUDSDK_PYTHON=python3.8
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 

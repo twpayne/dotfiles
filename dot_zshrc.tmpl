@@ -99,6 +99,7 @@ export AWS_DEFAULT_REGION=eu-west-1
 {{ end -}}
 
 {{ if (eq .email "tom@isovalent.com") -}}
+export GITHUB_TOKEN={{ (onepassword "Cilium backports GitHub token" "hlnmluqkhsy4qcululpgt6uzvu").details.password }}
 export VM_CPUS=6
 export VM_MEMORY=32768
 {{ else if (eq .chezmoi.hostname "thinkpad") -}}

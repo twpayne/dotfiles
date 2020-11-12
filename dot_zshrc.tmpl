@@ -140,16 +140,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 {{ end -}}
-github-clone-and-cd() {
-	dir=~/src/github.com/$1
-	if [ -d $dir ] ; then
-		cd $dir
-	else
-		mkdir -p ~/src/github.com/$(dirname $1) && \
-			git clone https://github.com/$1.git $dir && \
-			cd $dir
-	fi
-}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

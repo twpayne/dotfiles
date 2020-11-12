@@ -1,6 +1,6 @@
 [user]
-	name = {{ .name }}
-	email = {{ .email }}
+	name = Tom Payne
+	email = twpayne@gmail.com
 [advice]
 	pushNonFastForward = false
 	statusHints = false
@@ -19,8 +19,6 @@
 	cob = checkout -b
 	com = checkout master
 	cp = cherry-pick
-	csf = commit -s --fixup
-	csm = commit -s --message
 	d = diff --patience
 	dc = diff --cached
 	dom = diff origin/master
@@ -85,6 +83,10 @@
 	fsckobjects = true
 [trim]
 	bases = master,gh-pages
+[includeIf "gitdir:**/cilium/*/"]
+	path = ~/.gitconfig-isovalent.com
+[includeIf "gitdir:**/isovalent/*/"]
+	path = ~/.gitconfig-isovalent.com
 {{- if (not .container) }}
 [url "git@github.com:cilium/"]
 	insteadOf = https://github.com/cilium/

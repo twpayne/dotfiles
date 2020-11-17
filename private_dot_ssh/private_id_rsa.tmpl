@@ -1,5 +1,5 @@
 {{- if (eq .email "tom@isovalent.com") -}}
 {{- onepasswordDocument "tom@isovalent.com SSH private key" "hlnmluqkhsy4qcululpgt6uzvu" -}}
-{{- else if (index . "sshkey") -}}
-{{- (index (lastpass .sshkey) 0).note.privateKey -}}
+{{- else -}}
+{{- (index (lastpass "twpayne@gmail.com SSH key") 0).note.privateKey -}}
 {{- end -}}

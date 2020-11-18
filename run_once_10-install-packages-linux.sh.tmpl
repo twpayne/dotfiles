@@ -32,8 +32,10 @@ classic_snaps+=(
 
 {{ if .personal }}
 snaps+=(
-	goreleaser
 	hugo
+)
+classic_snaps+=(
+	goreleaser
 )
 {{ end }}
 

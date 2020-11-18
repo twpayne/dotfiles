@@ -12,7 +12,7 @@ packages=(
 snaps=()
 classic_snaps=()
 
-{{ if (not .temporary) }}
+{{ if (not .transient) }}
 repositories+=(
 	ppa:longsleep/golang-backports
 )
@@ -49,7 +49,7 @@ for snap in ${snaps[@]}; do
 	sudo snap install $snap
 done
 
-for classic_snap in ${classic_snaps[@]); do
+for classic_snap in ${classic_snaps[@]}; do
 	sudo snap install $classic_snap --classic
 done
 

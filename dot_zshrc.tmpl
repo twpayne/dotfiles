@@ -92,54 +92,54 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-{{ if (or (eq .email "tom@isovalent.com") (eq .chezmoi.hostname "thinkpad")) -}}
+{{- if .personal -}}
+
+export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
+{{- if (eq .chezmoi.os "darwin") }}
+export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
+{{- end }}
+{{- end }}
+
+{{- if .isovalent }}
+
 export AWS_ACCESS_KEY_ID={{ (onepasswordDetailsFields "AWS Access Key" "hlnmluqkhsy4qcululpgt6uzvu").username.value }}
 export AWS_SECRET_ACCESS_KEY={{ (onepasswordDetailsFields "AWS Access Key" "hlnmluqkhsy4qcululpgt6uzvu").password.value }}
 export AWS_DEFAULT_REGION=eu-west-1
-{{ end -}}
-
-{{ if (eq .email "tom@isovalent.com") -}}
 export GITHUB_TOKEN={{ (onepassword "Cilium backports GitHub token" "hlnmluqkhsy4qcululpgt6uzvu").details.password }}
+{{- if (eq .chezmoi.hostname "toms-mbp-16") }}
 export VM_CPUS=6
 export VM_MEMORY=32768
-{{ else if (eq .chezmoi.hostname "thinkpad") -}}
+{{- else if (eq .chezmoi.hostname "thinkpad") }}
 export VM_CPUS=4
 export VM_MEMORY=8192
-{{ end -}}
+{{- end }}
+{{- end }}
 
-{{ if (eq .email "twpayne@gmail.com") -}}
-export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
-{{ if (eq .chezmoi.os "darwin") -}}
-export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
-{{ end -}}
-{{ end -}}
+{{- if .personal }}
 
-{{ if (eq .chezmoi.hostname "Toms-MacBook-Pro") -}}
-{{ end -}}
-
-{{ if (ne .email "tom@isovalent.com") -}}
 [ -x /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
-{{ end -}}
+{{- end }}
 
-{{ if (eq .chezmoi.os "darwin") -}}
+{{- if (eq .chezmoi.os "darwin") }}
+
 # gcloud
 export CLOUDSDK_PYTHON=python3.8
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+{{- end }}
 
-{{ end -}}
 # zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # direnv
 which direnv >/dev/null && eval "$(direnv hook zsh)"
 
-{{ if (eq .email "tom@isovalent.com") -}}
+{{- if .isovalent }}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-{{ end -}}
+{{- end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

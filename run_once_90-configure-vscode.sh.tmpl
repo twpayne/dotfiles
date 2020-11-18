@@ -1,0 +1,40 @@
+{{- if (not .headless) -}}
+#!/bin/bash
+
+extensions=(
+	alefragnani.project-manager
+	eamodio.gitlens
+	EditorConfig.EditorConfig
+	golang.go
+	ms-azuretools.vscode-docker
+	ms-python.python
+	ms-vscode-remote.remote-containers
+	ms-vscode-remote.remote-ssh
+	ms-vscode-remote.remote-ssh-edit
+	ms-vscode-remote.vscode-remote-extensionpack
+	ms-vscode.cpptools
+	ms-vscode.vscode-typescript-tslint-plugin
+	redhat.vscode-yaml
+	stkb.rewrap
+	Tyriar.sort-lines
+	yzhang.markdown-all-in-one
+	zxh404.vscode-proto3
+)
+
+for extension in ${extensions[@]}; do
+	code --force --install-extension $extension
+done
+
+{{ if (eq .chezmoi.os "darwin") }}
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults delete -g ApplePressAndHoldEnabled || true
+{{ end }}
+
+{{ if (eq .chezmoi.os "linux") }}
+if ! grep -qF fs.inotify.max_user_watches=524288 /etc/sysctl.conf; then
+	echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+	sudo sysctl -p
+fi
+{{ end }}
+
+{{ end }}

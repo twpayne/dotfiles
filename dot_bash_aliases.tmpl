@@ -1,0 +1,4 @@
+{{- if (not (eq .chezmoi.os "darwin")) -}}
+alias g=git
+alias g=git --no-pager
+{{ end -}}

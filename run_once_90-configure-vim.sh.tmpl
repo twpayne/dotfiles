@@ -1,4 +1,4 @@
-{{ if (and (eq .chezmoi.os "linux") (not .container)) -}}
+{{ if (not .transient) -}}
 #!/bin/bash
 
 vim -c PlugUpdate -c qa

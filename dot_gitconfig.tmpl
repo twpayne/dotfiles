@@ -89,7 +89,7 @@
 	path = ~/.gitconfig-isovalent.com
 [includeIf "gitdir:**/isovalent/*/"]
 	path = ~/.gitconfig-isovalent.com
-{{- if (not .container) }}
+{{- if (not .headless) }}
 [url "git@github.com:cilium/"]
 	insteadOf = https://github.com/cilium/
 [url "git@github.com:isovalent/"]

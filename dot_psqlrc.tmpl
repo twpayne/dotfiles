@@ -1,3 +1,4 @@
+{{- if .personal -}}
 \timing on
 \set HISTSIZE 65536
 
@@ -6,3 +7,4 @@
 \set x '\\setenv PAGER less'
 \set xx '\\setenv PAGER \'pspg -bX --no-mouse\''
 :xx
+{{ end -}}

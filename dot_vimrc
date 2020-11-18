@@ -56,16 +56,14 @@ if has('gui_running')
   colorscheme molokai
 endif
 
-{{ if (eq .chezmoi.os "darwin") -}}
 if has('gui_macvim')
-  set guifont=Menlo:h12
+  set guifont=MesloLGS-NF-Regular:h12
   set laststatus=2
   set showtabline=2
   set noshowmode
   set visualbell
 endif
 
-{{ end -}}
 filetype on
 filetype indent on
 filetype plugin on

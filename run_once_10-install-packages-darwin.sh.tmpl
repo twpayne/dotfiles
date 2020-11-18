@@ -1,0 +1,56 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+set -evo pipefail
+
+formulae=(
+	curl
+	dockutil
+	git-lfs
+	gnu-units
+	gnupg
+	go
+	grdl/tap/git-get
+	hugo
+	jq
+	pkg-config
+	ripgrep
+	tmux
+	xz
+	youtube-dl
+)
+casks=(
+	docker
+	google-chrome
+	google-cloud-sdk
+	hammerspoon
+	iterm2
+	karabiner-elements
+	macvim
+	visual-studio-code
+)
+
+{{ if .personal }}
+formaule+=(
+	bitwarden-cli
+	pspg
+)
+{{ end }}
+
+{{ if .isovalent }}
+formulae+=(
+	azure-cli
+	eksctl
+	helm
+	kubernetes-cli
+	minikube
+	packer
+)
+casks+=(
+	1password-cli
+)
+{{ end }}
+
+brew install ${formulae[@]}
+brew cask install ${casks[@]}
+{{ end }}

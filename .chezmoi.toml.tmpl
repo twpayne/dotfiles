@@ -1,6 +1,21 @@
-{{- $codespaces := env "CODESPACES" | not | not -}}
-{{- $remoteContainers := env "REMOTE_CONTAINERS_IPC" | not | not -}}
-{{- $container := or $codespaces $remoteContainers -}}
+{{- $headless := false -}}
+{{- $transient := false -}}
+{{- $isovalent := false -}}
+{{- $personal := false -}}
+
+{{- if (or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC")) -}}
+{{- $headless = true -}}
+{{- $transient = true -}}
+{{- end -}}
+
+{{- if (not $transient) -}}
+{{- $headless = (eq .chezmoi.hostname "revo" "raspberrypi4") -}}
+{{- $isovalent = promptString "isovalent (true/false)" -}}
+{{- $personal = promptString "personal (true/false)" -}}
+{{- end -}}
+
 [data]
-  container = {{ $container }}
-  email = "twpayne@gmail.com"
+  headless = {{ $headless }}
+  transient = {{ $transient }}
+  isovalent = {{ $isovalent }}
+  personal = {{ $personal }}

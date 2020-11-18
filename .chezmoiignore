@@ -3,22 +3,10 @@ Makefile
 install.sh
 *.deb
 *.tar.gz
-.vscode
-settings.json
-{{- if ne .email "twpayne@gmail.com" }}
-.pypirc
-{{- end }}
-{{- if ne .chezmoi.os "darwin" }}
+{{ if (ne .chezmoi.os "darwin") }}
 .config/karabiner
 .hammerspoon
-{{- end }}
-{{- if ne .chezmoi.os "linux" }}
+{{ end }}
+{{ if (ne .chezmoi.os "linux") }}
 .hushlogin
-{{- end }}
-{{- if .container }}
-.gitcookies
-.pypirc
-.ssh
-{{- else }}
-.bash_aliases
-{{- end }}
+{{ end }}

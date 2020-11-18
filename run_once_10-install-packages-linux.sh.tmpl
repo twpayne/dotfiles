@@ -1,0 +1,56 @@
+{{- if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+set -evo pipefail
+
+repositories=()
+packages=(
+	curl
+	ripgrep
+	vim
+)
+snaps=()
+classic_snaps=()
+
+{{ if (not .temporary) }}
+repositories+=(
+	ppa:longsleep/golang-backports
+)
+packages+=(
+	direnv
+	git-lfs
+	golang-go
+	jq
+	units
+	vim-gtk
+	zsh
+)
+classic_snaps+=(
+	code
+)
+{{ end }}
+
+{{ if .personal }}
+snaps+=(
+	goreleaser
+	hugo
+)
+{{ end }}
+
+for repository in ${repositories[@]}; do
+	sudo add-apt-repository -y $repository
+done
+
+sudo apt update
+
+sudo apt install -y ${packages[@]}
+
+for snap in ${snaps[@]}; do
+	sudo snap install $snap
+done
+
+for classic_snap in ${classic_snaps[@]); do
+	sudo snap install $classic_snap --classic
+done
+
+{{ end }}

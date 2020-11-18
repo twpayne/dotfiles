@@ -1,9 +1,0 @@
-#!/bin/bash
-
-{{ if (eq .chezmoi.os "darwin") -}}
-brew install pspg
-{{ end -}}
-
-{{ if (and (eq .chezmoi.os "linux") (not .container)) -}}
-sudo apt-get install -y pspg
-{{ end -}}

@@ -61,4 +61,15 @@ Host atlantis-vagrant
   IdentitiesOnly yes
   LogLevel FATAL
   ForwardAgent yes
+
+Host focal
+  HostName 127.0.0.1
+  User twp
+  Port 2223
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentitiesOnly yes
+  LogLevel FATAL
+  ForwardAgent yes
 {{- end }}

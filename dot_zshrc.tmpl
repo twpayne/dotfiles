@@ -92,7 +92,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-{{- if .personal -}}
+{{- if .personal }}
 
 export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
 {{- if (eq .chezmoi.os "darwin") }}

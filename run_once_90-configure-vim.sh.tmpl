@@ -1,6 +1,8 @@
 {{ if (not .transient) -}}
 #!/bin/bash
 
+export GOBIN=$HOME/bin
+
 vim -c PlugUpdate -c qa
 vim -c GoInstallBinaries -c qa
 {{ end -}}

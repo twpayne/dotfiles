@@ -1,7 +1,7 @@
 {{- if (eq .chezmoi.os "linux") -}}
 #!/bin/bash
 
-set -evo pipefail
+set -eufo pipefail
 
 repositories=()
 packages=(

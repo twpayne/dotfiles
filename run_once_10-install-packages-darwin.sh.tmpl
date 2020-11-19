@@ -1,7 +1,7 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
-set -evo pipefail
+set -eufo pipefail
 
 formulae=(
 	curl

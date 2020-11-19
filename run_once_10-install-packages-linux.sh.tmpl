@@ -6,11 +6,20 @@ set -eufo pipefail
 repositories=()
 packages=(
 	curl
-	ripgrep
 	vim
 )
 snaps=()
 classic_snaps=()
+
+{{ if (eq .chezmoi.osRelease.versionCodename "bionic") }}
+classic_snaps+=(
+	ripgrep
+)
+{{ else }}
+packages+=(
+	ripgrep
+)
+{{ end }}
 
 {{ if (not .transient) }}
 repositories+=(

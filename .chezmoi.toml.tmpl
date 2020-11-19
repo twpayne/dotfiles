@@ -13,7 +13,7 @@
 {{- $headless = (eq .chezmoi.hostname "revo" "raspberrypi4") -}}
 {{- $isovalent = promptString "isovalent (true/false)" -}}
 {{- $personal = promptString "personal (true/false)" -}}
-{{- if $isovalent -}}
+{{- if (eq $isovalent "true") -}}
 {{- $kubernetes = true -}}
 {{- else -}}
 {{- $kubernetes = promptString "kubernetes (true/false)" -}}

@@ -9,14 +9,25 @@
 {{- $transient = true -}}
 {{- end -}}
 
-{{- if (not $transient) -}}
-{{- $headless = (eq .chezmoi.hostname "revo" "raspberrypi4") -}}
-{{- $isovalent = promptString "isovalent (true/false)" -}}
-{{- $personal = promptString "personal (true/false)" -}}
-{{- if (eq $isovalent "true") -}}
+{{- if (not .transient) -}}
+{{- if (eq .chezmoi.hostname "raspberrypi4") -}}
+{{- $headless = true -}}
+{{- $personal = true -}}
+{{- else if (eq .chezmoi.hostname "revo") -}}
+{{- $headless = true -}}
+{{- $personal = true -}}
+{{- else if (eq .chezmoi.hostname "thinkpad") -}}
+{{- $isovalent = true -}}
+{{- $kubernetes = true -}}
+{{- $personal = true -}}
+{{- else if (eq .chezmoi.hostname "toms-mbp") -}}
+{{- $personal = true -}}
+{{- else if (eq .chezmoi.hostname "toms-mbp-16") -}}
+{{- $isovalent = true -}}
 {{- $kubernetes = true -}}
 {{- else -}}
-{{- $kubernetes = promptString "kubernetes (true/false)" -}}
+{{- $headless = (eq (promptString "headless (yn)") "y") -}}
+{{- $kubernetes = (eq (promptString "kubernetes (yn)") "y") -}}
 {{- end -}}
 {{- end -}}
 

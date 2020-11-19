@@ -1,0 +1,46 @@
+{{- if (and (eq .chezmoi.os "linux") .kubernetes) -}}
+#!/bin/bash
+
+set -efuo pipefail
+
+# install azure-cli, google-cloud-sdk, helm, kubectl, and minikube
+# https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt
+# https://cloud.google.com/sdk/docs/install
+# https://kubernetes.io/docs/tasks/tools/install-kubectl/
+# https://helm.sh/docs/intro/install/
+
+# install prerequisite packages
+sudo apt-get install --yes \
+	apt-transport-https \
+	ca-certificates \
+	curl \
+	gnupg \
+	gnupg2 \
+	lsb-release
+
+# add keys
+curl -s https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - # google-cloud-sdk and kubectl
+curl -sL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+# add sources
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+
+# install packages
+sudo apt-get update
+sudo apt-get install --yes \
+	azure-cli \
+	google-cloud-sdk \
+	kubectl \
+	helm \
+	minikube
+
+# install eksctl
+# https://eksctl.io/introduction/#installation
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl completion zsh | sudo tee /usr/local/share/zsh/site-functions/_eksctl > /dev/null
+{{ end }}

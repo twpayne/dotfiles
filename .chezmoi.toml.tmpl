@@ -1,6 +1,7 @@
 {{- $headless := false -}}
 {{- $transient := false -}}
 {{- $isovalent := false -}}
+{{- $kubernetes := false -}}
 {{- $personal := false -}}
 
 {{- if (or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC")) -}}
@@ -12,10 +13,16 @@
 {{- $headless = (eq .chezmoi.hostname "revo" "raspberrypi4") -}}
 {{- $isovalent = promptString "isovalent (true/false)" -}}
 {{- $personal = promptString "personal (true/false)" -}}
+{{- if $isovalent -}}
+{{- $kubernetes = true -}}
+{{- else -}}
+{{- $kubernetes = promptString "kubernetes (true/false)" -}}
+{{- end -}}
 {{- end -}}
 
 [data]
   headless = {{ $headless }}
   transient = {{ $transient }}
   isovalent = {{ $isovalent }}
+  kubernetes = {{ $kubernetes }}
   personal = {{ $personal }}

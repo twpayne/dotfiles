@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="b770e6a3e58f5c2238363fe63839fc808c160456"
+version="04f75a10a5037ad66f8a5dd0e8f404db4302a6e3"
 destdir="${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
 
 rm -rf ${destdir}

@@ -3,7 +3,7 @@
 
 set -efuo pipefail
 
-# install azure-cli, google-cloud-sdk, helm, kubectl, and minikube
+# install azure-cli, google-cloud-sdk, helm, and kubectl
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt
 # https://cloud.google.com/sdk/docs/install
 # https://kubernetes.io/docs/tasks/tools/install-kubectl/
@@ -35,8 +35,7 @@ sudo apt-get install --yes \
 	azure-cli \
 	google-cloud-sdk \
 	kubectl \
-	helm \
-	minikube
+	helm
 
 # install eksctl
 # https://eksctl.io/introduction/#installation

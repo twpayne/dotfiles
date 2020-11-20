@@ -106,10 +106,10 @@ export AWS_ACCESS_KEY_ID={{ (onepasswordDetailsFields "AWS Access Key" "hlnmluqk
 export AWS_SECRET_ACCESS_KEY={{ (onepasswordDetailsFields "AWS Access Key" "hlnmluqkhsy4qcululpgt6uzvu").password.value }}
 export AWS_DEFAULT_REGION=eu-west-1
 export GITHUB_TOKEN={{ (onepassword "Cilium backports GitHub token" "hlnmluqkhsy4qcululpgt6uzvu").details.password }}
-{{- if (eq .chezmoi.hostname "toms-mbp-16") }}
+{{- if (eq .hostname "toms-mbp-16") }}
 export VM_CPUS=6
 export VM_MEMORY=32768
-{{- else if (eq .chezmoi.hostname "thinkpad") }}
+{{- else if (eq .hostname "thinkpad") }}
 export VM_CPUS=4
 export VM_MEMORY=8192
 {{- end }}

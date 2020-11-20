@@ -9,20 +9,29 @@
 {{- $transient = true -}}
 {{- end -}}
 
+{{/* work around unreliable hostname on darwin */}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if (eq .chezmoi.os "darwin") -}}
+{{- $serialNumberSHA256Sum := index ioreg "IORegistryEntryChildren" 0 "IOPlatformSerialNumber" | sha256sum -}}
+{{- if (eq $serialNumberSHA256Sum "4aad1de0b04870891b321da4fcc8327f6644e1f8353e1105d2b33f908b5d1387") -}}
+{{- $hostname = "toms-mbp-16" -}}
+{{- end -}}
+{{- end -}}
+
 {{- if (not .transient) -}}
-{{- if (eq .chezmoi.hostname "raspberrypi4") -}}
+{{- if (eq $hostname "raspberrypi4") -}}
 {{- $headless = true -}}
 {{- $personal = true -}}
-{{- else if (eq .chezmoi.hostname "revo") -}}
+{{- else if (eq $hostname "revo") -}}
 {{- $headless = true -}}
 {{- $personal = true -}}
-{{- else if (eq .chezmoi.hostname "thinkpad") -}}
+{{- else if (eq $hostname "thinkpad") -}}
 {{- $isovalent = true -}}
 {{- $kubernetes = true -}}
 {{- $personal = true -}}
-{{- else if (eq .chezmoi.hostname "toms-mbp") -}}
+{{- else if (eq $hostname "toms-mbp") -}}
 {{- $personal = true -}}
-{{- else if (eq .chezmoi.hostname "toms-mbp-16") -}}
+{{- else if (eq $hostname "toms-mbp-16") -}}
 {{- $isovalent = true -}}
 {{- $kubernetes = true -}}
 {{- else -}}
@@ -34,6 +43,7 @@
 
 [data]
   headless = {{ $headless }}
+  hostname = "{{ $hostname }}"
   transient = {{ $transient }}
   isovalent = {{ $isovalent }}
   kubernetes = {{ $kubernetes }}

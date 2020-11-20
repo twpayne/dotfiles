@@ -37,9 +37,9 @@
 {{- $isovalent = true -}}
 {{- $kubernetes = true -}}
 {{- else -}}
-{{- $headless = (eq (promptString "headless (yn)") "y") -}}
-{{- $transient = (eq (promptString "transient (yn)") "y") -}}
-{{- $kubernetes = (eq (promptString "kubernetes (yn)") "y") -}}
+{{- $headless = promptBool "headless" -}}
+{{- $transient = promptBool "transient" -}}
+{{- $kubernetes = promptBool "kubernetes" -}}
 {{- end -}}
 {{- end -}}
 

@@ -22,13 +22,21 @@ packages+=(
 {{ end }}
 
 {{ if (not .transient) }}
+{{ if (eq .chezmoi.osRelease.ubuntuCodename "groovy") }}
+class_snaps+=(
+	go
+)
+{{ else }}
 repositories+=(
 	ppa:longsleep/golang-backports
 )
 packages+=(
+	golang-go
+)
+{{ end }}
+packages+=(
 	direnv
 	git-lfs
-	golang-go
 	jq
 	units
 	vim-gtk

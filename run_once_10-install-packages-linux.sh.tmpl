@@ -72,4 +72,10 @@ for classic_snap in ${classic_snaps[@]}; do
 	sudo snap install $classic_snap --classic
 done
 
+{{ if (and (not .headless) (not .transient)) }}
+trap "rm -rf google-chrome-stable_current_amd64.deb" EXIT
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+{{ end }}
+
 {{ end }}

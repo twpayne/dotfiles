@@ -20,7 +20,11 @@
 {{- end -}}
 {{- end -}}
 
-{{- if (not .transient) -}}
+{{- if (eq .chezmoi.os "windows") -}}
+{{- $transient = true -}}
+{{- end -}}
+
+{{- if (not $transient) -}}
 {{- if (eq $hostname "raspberrypi4") -}}
 {{- $headless = true -}}
 {{- $personal = true -}}
@@ -41,6 +45,11 @@
 {{- end -}}
 {{- end -}}
 
+{{ if (eq .chezmoi.os "windows") -}}
+[cd]
+  command = "powershell"
+  args = ["-nologo"]
+{{ end -}}
 [data]
   headless = {{ $headless }}
   hostname = "{{ $hostname }}"

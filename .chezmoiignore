@@ -3,10 +3,32 @@ Makefile
 install.sh
 *.deb
 *.tar.gz
+
 {{ if (ne .chezmoi.os "darwin") }}
 .config/karabiner
 .hammerspoon
 {{ end }}
+
 {{ if (ne .chezmoi.os "linux") }}
 .hushlogin
+{{ end }}
+
+{{ if (eq .chezmoi.os "windows") }}
+.bash_aliases
+.config
+.gitconfig-isovalent.com
+.gitcookies
+.inputrc
+.oh-my-zsh
+.p10k.zsh
+.psqlrc
+.pypirc
+.ripgreprc
+.ssh/authorized_keys
+.ssh/id_rsa
+.ssh/id_rsa.pub
+.tmux.conf
+.vim
+.vimrc
+.zshrc
 {{ end }}

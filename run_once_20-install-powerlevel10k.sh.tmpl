@@ -1,3 +1,4 @@
+{{ if (eq .chezmoi.os "darwin" "linux") -}}
 #!/bin/bash
 
 version="v1.14.3"
@@ -6,3 +7,4 @@ destdir="${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
 rm -rf ${destdir}
 mkdir -p ${destdir}
 curl -s -L https://github.com/romkatv/powerlevel10k/archive/${version}.tar.gz | tar -C ${destdir} --strip-components=1 -xzf -
+{{ end -}}

@@ -1,7 +1,21 @@
 {{ if (and (eq .chezmoi.os "linux") (not .transient) (not .headless)) -}}
 #!/bin/bash
 
+fonts=(
+	"MesloLGS NF Regular.ttf"
+	"MesloLGS NF Bold.ttf"
+	"MesloLGS NF Italic.ttf"
+	"MesloLGS NF Bold Italic.ttf"
+)
+mkdir -p "${HOME}/.local/share/fonts"
+for font in "${fonts[@]}"; do
+	curl -o "${HOME}/.local/share/fonts/${font}" -s "https://github.com/romkatv/powerlevel10k-media/raw/master/${font}"
+done
+fc-cache
+
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
 
 gsettings set org.gnome.shell favorite-apps "[ \
 	'google-chrome.desktop', \

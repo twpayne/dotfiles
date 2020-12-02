@@ -43,25 +43,7 @@ Host twpayne.asuscomm.com
   ForwardAgent yes
   User twp
 
-Host thinkpad.twpayne.asuscomm.com
-  HostName 212.51.139.253
-  Port 2222
-  ForwardAgent yes
-  User twp
-
 {{- if (eq .hostname "toms-mbp-16") }}
-
-Host atlantis-vagrant
-  HostName 127.0.0.1
-  User vagrant
-  Port 2200
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentityFile /Users/tompayne/src/github.com/isovalent/atlantis/.vagrant/machines/default/virtualbox/private_key
-  IdentitiesOnly yes
-  LogLevel FATAL
-  ForwardAgent yes
 
 Host focal
   HostName 127.0.0.1

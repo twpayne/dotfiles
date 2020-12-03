@@ -11,7 +11,7 @@ packages=(
 snaps=()
 classic_snaps=()
 
-{{ if (eq .chezmoi.osRelease.versionCodename "bionic") }}
+{{ if (and (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.versionCodename "bionic")) }}
 classic_snaps+=(
 	ripgrep
 )
@@ -22,11 +22,11 @@ packages+=(
 {{ end }}
 
 {{ if (not .transient) }}
-{{ if (eq .chezmoi.osRelease.ubuntuCodename "groovy") }}
+{{ if (and (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.versionCodename "groovy")) }}
 class_snaps+=(
 	go
 )
-{{ else }}
+{{ else if (not (eq .chezmoi.osRelease.id "raspbian")) }}
 repositories+=(
 	ppa:longsleep/golang-backports
 )
@@ -64,6 +64,7 @@ sudo apt update
 
 sudo apt install -y ${packages[@]}
 
+{{ if (eq .chezmoi.osRelease.id "ubuntu") }}
 for snap in ${snaps[@]}; do
 	sudo snap install $snap
 done
@@ -71,8 +72,9 @@ done
 for classic_snap in ${classic_snaps[@]}; do
 	sudo snap install $classic_snap --classic
 done
+{{ end }}
 
-{{ if (and (not .headless) (not .transient)) }}
+{{ if (and (eq .chezmoi.arch "amd64") (not .headless) (not .transient)) }}
 trap "rm -rf google-chrome-stable_current_amd64.deb" EXIT
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb

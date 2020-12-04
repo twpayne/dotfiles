@@ -13,7 +13,9 @@ install.sh
 .hushlogin
 {{ end }}
 
-{{ if (eq .chezmoi.os "windows") }}
+{{ if (ne .chezmoi.os "windows") }}
+Documents
+{{ else }}
 .bash_aliases
 .config
 .gitconfig-isovalent.com

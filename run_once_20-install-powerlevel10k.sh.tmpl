@@ -1,6 +1,8 @@
 {{ if (eq .chezmoi.os "darwin" "linux") -}}
 #!/bin/bash
 
+set -eufo pipefail
+
 version="v1.14.3"
 destdir="${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
 

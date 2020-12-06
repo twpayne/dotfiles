@@ -1,6 +1,8 @@
 {{ if (and (eq .chezmoi.os "darwin" "linux") (not .headless)) -}}
 #!/bin/bash
 
+set -eufo pipefail
+
 extensions=(
 	alefragnani.project-manager
 	eamodio.gitlens

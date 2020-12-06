@@ -1,6 +1,8 @@
 {{ if (and (eq .chezmoi.os "darwin" "linux") (not .transient)) -}}
 #!/bin/bash
 
+set -eufo pipefail
+
 export GOBIN=$HOME/bin
 
 vim -c PlugUpdate -c qa

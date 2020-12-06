@@ -1,6 +1,8 @@
 {{ if (and (eq .chezmoi.os "linux") (not .transient) (not .headless)) -}}
 #!/bin/bash
 
+set -eufo pipefail
+
 fonts=(
 	"MesloLGS NF Regular.ttf"
 	"MesloLGS NF Bold.ttf"

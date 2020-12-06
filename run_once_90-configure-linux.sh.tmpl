@@ -1,5 +1,7 @@
 {{- if (and (eq .chezmoi.os "linux") (not .transient)) -}}
 #!/bin/bash
 
+set -eufo pipefail
+
 chsh -s /usr/bin/zsh
 {{ end -}}

@@ -43,6 +43,20 @@ Host twpayne.asuscomm.com
   ForwardAgent yes
   User twp
 
+{{- if (eq .hostname "toms-mbp") }}
+
+Host groovy
+  HostName 127.0.0.1
+  User twp
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentitiesOnly yes
+  LogLevel FATAL
+  ForwardAgent yes
+{{- end }}
+
 {{- if (eq .hostname "toms-mbp-16") }}
 
 Host focal

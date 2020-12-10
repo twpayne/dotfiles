@@ -7,38 +7,38 @@
 {{- "" -}}
 
 {{/* detect GitHub codespaces and VSCode remote containers */}}
-{{- if (or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC")) -}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") -}}
 {{- $headless = true -}}
 {{- $transient = true -}}
 {{- end -}}
 
 {{/* work around unreliable hostname on darwin */}}
 {{- $hostname := .chezmoi.hostname -}}
-{{- if (eq .chezmoi.os "darwin") -}}
+{{- if eq .chezmoi.os "darwin" -}}
 {{- $serialNumberSHA256Sum := index ioreg "IORegistryEntryChildren" 0 "IOPlatformSerialNumber" | sha256sum -}}
-{{- if (eq $serialNumberSHA256Sum "2728f5c7d4781c6824d9cf69a001d000530d1315c8b9ca3eca966c4431ff616c") -}}
+{{- if eq $serialNumberSHA256Sum "2728f5c7d4781c6824d9cf69a001d000530d1315c8b9ca3eca966c4431ff616c" -}}
 {{- $hostname = "toms-mbp" -}}
-{{- else if (eq $serialNumberSHA256Sum "4aad1de0b04870891b321da4fcc8327f6644e1f8353e1105d2b33f908b5d1387") -}}
+{{- else if eq $serialNumberSHA256Sum "4aad1de0b04870891b321da4fcc8327f6644e1f8353e1105d2b33f908b5d1387" -}}
 {{- $hostname = "toms-mbp-16" -}}
 {{- end -}}
 {{- end -}}
 
-{{- if (eq .chezmoi.os "windows") -}}
+{{- if eq .chezmoi.os "windows" -}}
 {{- $transient = true -}}
 {{- end -}}
 
-{{- if (not $transient) -}}
-{{- if (eq $hostname "raspberrypi4") -}}
+{{- if not $transient -}}
+{{- if eq $hostname "raspberrypi4" -}}
 {{- $headless = true -}}
 {{- $personal = true -}}
-{{- else if (eq $hostname "revo") -}}
+{{- else if eq $hostname "revo" -}}
 {{- $headless = true -}}
 {{- $personal = true -}}
-{{- else if (eq $hostname "thinkpad") -}}
+{{- else if eq $hostname "thinkpad" -}}
 {{- $personal = true -}}
-{{- else if (eq $hostname "toms-mbp") -}}
+{{- else if eq $hostname "toms-mbp" -}}
 {{- $personal = true -}}
-{{- else if (eq $hostname "toms-mbp-16") -}}
+{{- else if eq $hostname "toms-mbp-16" -}}
 {{- $isovalent = true -}}
 {{- $kubernetes = true -}}
 {{- else -}}
@@ -48,14 +48,14 @@
 {{- end -}}
 {{- end -}}
 
-{{ if (eq .chezmoi.os "windows") -}}
+{{- if eq .chezmoi.os "windows" -}}
 [cd]
   command = "powershell"
   args = ["-nologo"]
 {{ end -}}
 [data]
   headless = {{ $headless }}
-  hostname = "{{ $hostname }}"
+  hostname = {{ $hostname | quote }}
   transient = {{ $transient }}
   isovalent = {{ $isovalent }}
   kubernetes = {{ $kubernetes }}

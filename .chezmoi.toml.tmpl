@@ -1,9 +1,12 @@
-{{- $headless := false -}}
-{{- $transient := false -}}
-{{- $isovalent := false -}}
-{{- $kubernetes := false -}}
-{{- $personal := false -}}
+{{/* boolean feature tags */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $isovalent := false -}}{{/* true if this machine should have Isovalent secrets from 1Password */}}
+{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
+{{- "" -}}
 
+{{/* detect GitHub codespaces and VSCode remote containers */}}
 {{- if (or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC")) -}}
 {{- $headless = true -}}
 {{- $transient = true -}}

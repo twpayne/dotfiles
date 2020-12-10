@@ -23,8 +23,6 @@ Documents
 .inputrc
 .oh-my-zsh
 .p10k.zsh
-.psqlrc
-.pypirc
 .ripgreprc
 .ssh/authorized_keys
 .ssh/id_rsa
@@ -33,4 +31,9 @@ Documents
 .vim
 .vimrc
 .zshrc
+{{ end }}
+
+{{ if not .personal }}
+.pypirc
+.psqlrc
 {{ end }}

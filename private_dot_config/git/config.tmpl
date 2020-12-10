@@ -53,7 +53,7 @@
 	ui = auto
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
 	whitespace = trailing-space,space-before-tab
 [diff]
 	renames = copies
@@ -87,9 +87,9 @@
 	bases = master,gh-pages
 {{- if (not (eq .chezmoi.os "windows")) }}
 [includeIf "gitdir:**/cilium/*/"]
-	path = ~/.gitconfig-isovalent.com
+	path = ~/.config/git/isovalent.com
 [includeIf "gitdir:**/isovalent/*/"]
-	path = ~/.gitconfig-isovalent.com
+	path = ~/.config/git/isovalent.com
 {{- end }}
 {{- if (not .transient) }}
 [url "git@github.com:cilium/"]

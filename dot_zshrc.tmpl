@@ -95,9 +95,9 @@ export RIPGREP_CONFIG_PATH=~/.ripgreprc
 {{- if .personal }}
 
 export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
-{{- if (eq .chezmoi.os "darwin") }}
+{{-   if eq .chezmoi.os "darwin" }}
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
-{{- end }}
+{{-   end }}
 {{- end }}
 
 {{- if .isovalent }}

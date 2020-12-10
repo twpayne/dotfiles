@@ -1,6 +1,6 @@
 HashKnownHosts no
 
-{{- if (eq .chezmoi.os "darwin") }}
+{{- if eq .chezmoi.os "darwin" }}
 
 Host *
   AddKeysToAgent yes
@@ -47,7 +47,7 @@ Host twpayne.asuscomm.com
   ForwardAgent yes
   User twp
 
-{{- if (eq .hostname "toms-mbp") }}
+{{- if eq .hostname "toms-mbp" }}
 
 Host groovy
   HostName 127.0.0.1
@@ -61,7 +61,7 @@ Host groovy
   ForwardAgent yes
 {{- end }}
 
-{{- if (eq .hostname "toms-mbp-16") }}
+{{- if eq .hostname "toms-mbp-16" }}
 
 Host focal
   HostName 127.0.0.1

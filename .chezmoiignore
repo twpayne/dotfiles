@@ -4,16 +4,16 @@ install.sh
 *.deb
 *.tar.gz
 
-{{ if (ne .chezmoi.os "darwin") }}
+{{ if ne .chezmoi.os "darwin" }}
 .config/karabiner
 .hammerspoon
 {{ end }}
 
-{{ if (ne .chezmoi.os "linux") }}
+{{ if ne .chezmoi.os "linux" }}
 .hushlogin
 {{ end }}
 
-{{ if (ne .chezmoi.os "windows") }}
+{{ if ne .chezmoi.os "windows" }}
 Documents
 {{ else }}
 .bash_aliases

@@ -85,13 +85,13 @@
 	fsckobjects = true
 [trim]
 	bases = master,gh-pages
-{{- if (not (eq .chezmoi.os "windows")) }}
+{{- if not (eq .chezmoi.os "windows") }}
 [includeIf "gitdir:**/cilium/*/"]
 	path = ~/.config/git/isovalent.com
 [includeIf "gitdir:**/isovalent/*/"]
 	path = ~/.config/git/isovalent.com
 {{- end }}
-{{- if (not .transient) }}
+{{- if not .transient }}
 [url "git@github.com:cilium/"]
 	insteadOf = https://github.com/cilium/
 [url "git@github.com:isovalent/"]

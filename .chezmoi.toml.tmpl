@@ -53,6 +53,7 @@
   command = "powershell"
   args = ["-nologo"]
 {{ end -}}
+remove = true
 [data]
   headless = {{ $headless }}
   hostname = {{ $hostname | quote }}

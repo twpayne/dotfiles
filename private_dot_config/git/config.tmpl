@@ -67,8 +67,10 @@
 	required = true
 [gitget]
 	root = ~/src
+{{ if or .isovalent .personal -}}
 [http]
-	cookiefile = ~/.gitcookies
+	cookiefile = ~/.config/git/cookies
+{{ end -}}
 [pager]
 	branch = false
 	grep = false

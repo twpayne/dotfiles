@@ -17,13 +17,9 @@ install.sh
 Documents
 {{ else }}
 .bash_aliases
-.config
-.gitconfig-isovalent.com
-.gitcookies
 .inputrc
 .oh-my-zsh
 .p10k.zsh
-.ripgreprc
 .ssh/authorized_keys
 .ssh/id_rsa
 .ssh/id_rsa.pub

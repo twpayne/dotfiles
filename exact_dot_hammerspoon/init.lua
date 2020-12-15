@@ -143,6 +143,7 @@ local bindings = {
     v = launchOrFocus('VLC'),
     w = launchOrFocus('WhatsApp'),
     y = launchOrFocus('System Preferences'),
+    z = launchOrFocus('zoom.us'),
   },
 }
 

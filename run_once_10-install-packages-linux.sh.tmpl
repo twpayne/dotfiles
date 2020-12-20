@@ -23,7 +23,7 @@ packages+=(
 
 {{ if (not .transient) }}
 {{ if (and (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.versionCodename "groovy")) }}
-class_snaps+=(
+classic_snaps+=(
 	go
 )
 {{ else if (not (eq .chezmoi.osRelease.id "raspbian")) }}

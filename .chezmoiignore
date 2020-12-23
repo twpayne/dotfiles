@@ -5,7 +5,6 @@ install.sh
 *.tar.gz
 
 {{ if ne .chezmoi.os "darwin" }}
-.config/alacritty
 .config/karabiner
 .hammerspoon
 {{ end }}

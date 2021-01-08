@@ -53,4 +53,16 @@ sudo apt-get install --yes \
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl completion zsh | sudo tee /usr/local/share/zsh/site-functions/_eksctl > /dev/null
+
+# install minikube
+# https://minikube.sigs.k8s.io/docs/start/
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# install microk8s
+# https://microk8s.io/
+{{ if eq .chezmoi.osRelease.id "ubuntu" }}
+sudo snap install --classic microk8s
+{{ end }}
+
 {{ end }}

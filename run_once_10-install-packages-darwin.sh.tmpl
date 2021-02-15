@@ -5,29 +5,27 @@ set -eufo pipefail
 
 formulae=(
 	curl
+	docker
 	dockutil
 	git-lfs
 	gnu-units
 	gnupg
 	go
+	google-chrome
+	google-cloud-sdk
 	grdl/tap/git-get
+	hammerspoon
 	hugo
+	iterm2
 	jq
+	karabiner-elements
+	macvim
 	pkg-config
 	ripgrep
 	tmux
+	visual-studio-code
 	xz
 	youtube-dl
-)
-casks=(
-	docker
-	google-chrome
-	google-cloud-sdk
-	hammerspoon
-	iterm2
-	karabiner-elements
-	macvim
-	visual-studio-code
 )
 
 {{ if .personal }}
@@ -39,6 +37,7 @@ formulae+=(
 
 {{ if .isovalent }}
 formulae+=(
+	1password-cli
 	azure-cli
 	eksctl
 	helm
@@ -46,11 +45,7 @@ formulae+=(
 	minikube
 	packer
 )
-casks+=(
-	1password-cli
-)
 {{ end }}
 
 brew install ${formulae[@]}
-brew cask install ${casks[@]}
 {{ end }}

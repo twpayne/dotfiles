@@ -104,7 +104,6 @@ export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Tok
 
 export AWS_ACCESS_KEY_ID={{ (onepasswordDetailsFields "AWS Access Key" "hlnmluqkhsy4qcululpgt6uzvu").username.value }}
 export AWS_SECRET_ACCESS_KEY={{ (onepasswordDetailsFields "AWS Access Key" "hlnmluqkhsy4qcululpgt6uzvu").password.value }}
-export AWS_DEFAULT_REGION=eu-west-1
 export GITHUB_TOKEN={{ (onepassword "Cilium backports GitHub token" "hlnmluqkhsy4qcululpgt6uzvu").details.password }}
 {{-   if eq .hostname "toms-mbp-16" }}
 export VM_CPUS=6

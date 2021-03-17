@@ -90,6 +90,8 @@
 {{- if not (eq .chezmoi.os "windows") }}
 [includeIf "gitdir:**/cilium/*/"]
 	path = ~/.config/git/isovalent.com
+[includeIf "gitdir:**/covalentio/*/"]
+	path = ~/.config/git/isovalent.com
 [includeIf "gitdir:**/isovalent/*/"]
 	path = ~/.config/git/isovalent.com
 {{- end }}

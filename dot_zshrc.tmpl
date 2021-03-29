@@ -119,7 +119,9 @@ export VM_MEMORY=32768
 {{- if (eq .chezmoi.os "darwin") }}
 
 # gcloud
+{{ if lookPath "python3.8" -}}
 export CLOUDSDK_PYTHON=python3.8
+{{ end -}}
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 {{- end }}

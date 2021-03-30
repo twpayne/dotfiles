@@ -95,12 +95,20 @@
 	path = ~/.config/git/isovalent.com
 [includeIf "gitdir:**/isovalent/*/"]
 	path = ~/.config/git/isovalent.com
+[includeIf "gitdir:**/networkpolicy/*/"]
+	path = ~/.config/git/isovalent.com
 {{- end }}
 {{- if not .transient }}
+[url "git@github.com:chezmoi/"]
+	insteadOf = https://github.com/chezmoi/
 [url "git@github.com:cilium/"]
 	insteadOf = https://github.com/cilium/
+[url "git@github.com:covalentio/"]
+	insteadOf = https://github.com/covalentio/
 [url "git@github.com:isovalent/"]
 	insteadOf = https://github.com/isovalent/
+[url "git@github.com:networkpolicy/"]
+	insteadOf = https://github.com/networkpolicy/
 [url "git@github.com:twpayne/"]
 	insteadOf = https://github.com/twpayne/
 {{- end -}}

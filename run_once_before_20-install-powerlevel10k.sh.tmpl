@@ -9,4 +9,15 @@ destdir="${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
 rm -rf ${destdir}
 mkdir -p ${destdir}
 curl -s -L https://github.com/romkatv/powerlevel10k/archive/${version}.tar.gz | tar -C ${destdir} --strip-components=1 -xzf -
+
+{{ if (eq .chezmoi.os "darwin") -}}
+(
+	cd $HOME/Library/Fonts &&
+	curl -sL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf > "MesloLGS NF Regular.ttf" &&
+	curl -sL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf > "MesloLGS NF Bold.ttf" &&
+	curl -sL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf > "MesloLGS NF Italic.ttf" &&
+	curl -sL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf > "MesloLGS NF Bold Italic.ttf"
+)
+{{ end -}}
+
 {{ end -}}

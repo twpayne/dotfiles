@@ -4,10 +4,21 @@ Tom Payne's dotfiles, managed with [`chezmoi`](https://github.com/twpayne/chezmo
 
 Install them with:
 
-    chezmoi init https://github.com/twpayne/dotfiles.git
+    chezmoi init twpayne
 
-Secrets are stored in [LastPass](https://lastpass.com) and you'll need the
-[LastPass CLI](https://github.com/lastpass/lastpass-cli) installed. Login to
-LastPass with:
+Personal secrets are stored in [LastPass](https://lastpass.com) and you'll need
+the [LastPass CLI](https://github.com/lastpass/lastpass-cli) installed. Login
+to LastPass with:
 
-    lpass login <your-email>
+    lpass login <email>
+
+Work secrets are stored in [1Password](https://1password.com/), and you'll need
+the [1Password
+CLI](https://support.1password.com/command-line-getting-started/) installed.
+Login to 1Password for the first time with:
+
+    eval $(op signin <subdomain>.1password.com <email>) 
+
+Then, to login afterwards, run:
+
+    eval $(op signin)

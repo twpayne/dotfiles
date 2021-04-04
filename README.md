@@ -17,7 +17,7 @@ the [1Password
 CLI](https://support.1password.com/command-line-getting-started/) installed.
 Login to 1Password for the first time with:
 
-    eval $(op signin <subdomain>.1password.com <email>) 
+    eval $(op signin <subdomain>.1password.com <email>)
 
 Then, to login afterwards, run:
 

@@ -5,7 +5,7 @@
 	cf = commit -s --fixup
 	cm = commit -s --message
 	ss = commit -s --message snapshot --no-gpg-sign
-[url "https://twpayne:{{ (onepassword "Cilium Enterprise GitHub Access Token" "hlnmluqkhsy4qcululpgt6uzvu").details.password }}@github.com/isovalent/"]
+[url "https://twpayne:{{ (onepassword "Cilium Enterprise GitHub Access Token" .vault).details.password }}@github.com/isovalent/"]
 	insteadOf = https://github.com/isovalent/
 
 # vim: set filetype=gitconfig:

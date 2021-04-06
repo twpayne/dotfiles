@@ -10,7 +10,7 @@ Host *
 Host github.com
   User git
 
-Host macbookpro
+Host toms-mbp
   HostName 192.168.1.2
   ForwardAgent yes
   User twp
@@ -33,10 +33,10 @@ Host raspberrypi4
   HostName 192.168.1.6
   User pi
 
-Host isovalent
+Host toms-mbp-16
   HostName 192.168.1.7
   ForwardAgent yes
-  User tompayne
+  User twp
 
 Host reMarkable
   HostName 192.168.1.8
@@ -73,4 +73,9 @@ Host focal
   IdentitiesOnly yes
   LogLevel FATAL
   ForwardAgent yes
+{{- end }}
+
+{{- if .isovalent }}
+
+{{    onepasswordDocument "tom@isovalent.com SSH config" .vault -}}
 {{- end }}

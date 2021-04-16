@@ -56,6 +56,20 @@ classic_snaps+=(
 )
 {{ end }}
 
+{{ if .isovalent }}
+packages+=(
+	build-essential
+	clang
+	docker
+	libelf-dev
+	llvm
+	protobuf-compiler
+	python3-pip
+	vagrant
+	virtualbox
+)
+{{ end }}
+
 for repository in ${repositories[@]}; do
 	sudo add-apt-repository -y $repository
 done
@@ -78,6 +92,11 @@ done
 trap "rm -rf google-chrome-stable_current_amd64.deb" EXIT
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
+{{ end }}
+
+{{ if .isovalent }}
+go install github.com/onsi/ginkgo/ginkgo@latest
+sudo usermod $USER --append --group docker
 {{ end }}
 
 {{ end }}

@@ -54,6 +54,11 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl completion zsh | sudo tee /usr/local/share/zsh/site-functions/_eksctl > /dev/null
 
+# install kops
+# https://kops.sigs.k8s.io/getting_started/install/
+curl -Lo ${HOME}/bin/kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x ${HOME}/bin/kops
+
 # install minikube
 # https://minikube.sigs.k8s.io/docs/start/
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64

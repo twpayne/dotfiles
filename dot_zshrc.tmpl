@@ -102,8 +102,6 @@ export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Tok
 
 {{- if .isovalent }}
 
-export AWS_ACCESS_KEY_ID={{ (onepasswordDetailsFields "AWS Access Key" .vault).username.value }}
-export AWS_SECRET_ACCESS_KEY={{ (onepasswordDetailsFields "AWS Access Key" .vault).password.value }}
 export GITHUB_TOKEN={{ (onepassword "Isovalent GitHub token" .vault).details.password }}
 {{-   if eq .hostname "toms-mbp-16" }}
 export VM_CPUS=6

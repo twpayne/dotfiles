@@ -51,5 +51,11 @@ formulae+=(
 )
 {{ end }}
 
-brew install ${formulae[@]}
+for formula in ${formulae[@]}; do
+	if brew ls --versions "${formula}" >/dev/null; then
+		HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "${formula}"
+	else
+		HOMEBREW_NO_AUTO_UPDATE=1 brew install "${formula}"
+	fi
+done
 {{ end }}

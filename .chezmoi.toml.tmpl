@@ -44,10 +44,14 @@
 {{-   else if eq $hostname "toms-mbp-16" -}}
 {{-     $isovalent = true -}}
 {{-     $kubernetes = true -}}
-{{-   else -}}
+{{-   else if stdinIsATTY -}}
 {{-     $headless = promptBool "headless" -}}
 {{-     $transient = promptBool "transient" -}}
 {{-     $kubernetes = promptBool "kubernetes" -}}
+{{-   else -}}
+{{-     $headless = true -}}
+{{-     $transient = true -}}
+{{-     $kubernetes = false -}}
 {{-   end -}}
 {{- end -}}
 

@@ -3,61 +3,90 @@
 
 set -eufo pipefail
 
-formulae=(
-	curl
-	docker
-	dockutil
-	git-lfs
-	gnu-units
-	gnupg
-	go
-	google-chrome
-	google-cloud-sdk
-	grdl/tap/git-get
-	hammerspoon
-	hugo
-	iterm2
-	jq
-	karabiner-elements
-	macvim
-	pkg-config
-	ripgrep
-	tmux
-	visual-studio-code
-	xz
-	youtube-dl
-)
+{{ $brews := list
+     "bat"
+	 "curl"
+	 "exa"
+	 "ffmpeg"
+	 "gh"
+	 "git"
+	 "git-lfs"
+	 "gnu-units"
+	 "gnupg"
+	 "go"
+	 "golangci-lint"
+	 "goreleaser"
+	 "graphviz"
+	 "hugo"
+	 "jq"
+	 "node"
+	 "openjdk"
+	 "ripgrep"
+	 "shellcheck"
+	 "tmux"
+	 "wget"
+	 "xz"
+	 "youtube-dl" -}}
+{{ $casks := list
+	 "docker"
+	 "google-chrome"
+	 "google-earth-pro"
+	 "hammerspoon"
+	 "iterm2"
+	 "karabiner-elements"
+	 "macvim"
+	 "spotify"
+	 "vagrant"
+     "virtualbox"
+	 "visual-studio-code"
+	 "vlc" -}}
 
-{{ if .personal }}
-formulae+=(
-	bitwarden-cli
-	pspg
-)
-{{ end }}
+{{ if .personal -}}
+{{   $brews = concat $brews (list
+       "bitwarden-cli"
+	   "gopass"
+       "lastpass-cli"
+	   "pass"
+	   "postgis"
+	   "postgresql"
+	   "pspg"
+	   "vault"
+	   ) -}}
+{{ $casks = concat $casks (list
+       "1password-cli"
+       "balenaetcher"
+	   "google-cloud-sdk"
+	   "keepassxc"
+	   "signal"
+	   "telegram"
+	   "transmission"
+	   "viber"
+	   "whatsapp") -}}
+{{ end -}}
 
-{{ if .isovalent }}
-formulae+=(
-	1password-cli
-	aws-iam-authenticator
-	awscli
-	azure-cli
-	eksctl
-	helm
-	kops
-	kubernetes-cli
-	minikube
-	packer
-	vagrant
-	virtualbox
-	zoom
-)
-{{ end }}
+{{ if .isovalent -}}
+{{   $brews = concat $brews (list
+	   "aws-iam-authenticator"
+	   "awscli"
+	   "azure-cli"
+	   "eksctl"
+	   "helm"
+	   "kops"
+	   "kubernetes-cli"
+	   "minikube"
+	   "packer"
+	   "vagrant"
+	   "zoom") -}}
+{{ $casks = concat $casks (list
+       "1password-cli") -}}
+{{ end -}}
 
-for formula in ${formulae[@]}; do
-	if brew ls --versions "${formula}" >/dev/null; then
-		HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "${formula}"
-	else
-		HOMEBREW_NO_AUTO_UPDATE=1 brew install "${formula}"
-	fi
-done
-{{ end }}
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+{{ end -}}

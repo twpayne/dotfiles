@@ -5,80 +5,78 @@ set -eufo pipefail
 
 {{ $brews := list
      "bat"
-	 "curl"
-	 "exa"
-	 "ffmpeg"
-	 "gh"
-	 "git"
-	 "git-lfs"
-	 "gnu-units"
-	 "gnupg"
-	 "go"
-	 "golangci-lint"
-	 "goreleaser"
-	 "graphviz"
-	 "hugo"
-	 "jq"
-	 "node"
-	 "openjdk"
-	 "ripgrep"
-	 "shellcheck"
-	 "tmux"
-	 "wget"
-	 "xz"
-	 "youtube-dl" -}}
+     "curl"
+     "exa"
+     "ffmpeg"
+     "gh"
+     "git"
+     "git-lfs"
+     "gnu-units"
+     "gnupg"
+     "go"
+     "golangci-lint"
+     "goreleaser"
+     "graphviz"
+     "hugo"
+     "jq"
+     "node"
+     "openjdk"
+     "ripgrep"
+     "shellcheck"
+     "tmux"
+     "wget"
+     "xz"
+     "youtube-dl" -}}
 {{ $casks := list
-	 "docker"
-	 "google-chrome"
-	 "google-earth-pro"
-	 "hammerspoon"
-	 "iterm2"
-	 "karabiner-elements"
-	 "macvim"
-	 "spotify"
-	 "vagrant"
+     "docker"
+     "google-chrome"
+     "google-earth-pro"
+     "hammerspoon"
+     "iterm2"
+     "karabiner-elements"
+     "macvim"
+     "spotify"
+     "vagrant"
      "virtualbox"
-	 "visual-studio-code"
-	 "vlc" -}}
+     "visual-studio-code"
+     "vlc" -}}
 
 {{ if .personal -}}
 {{   $brews = concat $brews (list
        "bitwarden-cli"
-	   "gopass"
+       "gopass"
        "lastpass-cli"
-	   "pass"
-	   "postgis"
-	   "postgresql"
-	   "pspg"
-	   "vault"
-	   ) -}}
+       "pass"
+       "postgis"
+       "postgresql"
+       "pspg"
+       "vault") -}}
 {{ $casks = concat $casks (list
        "1password-cli"
        "balenaetcher"
-	   "google-cloud-sdk"
-	   "keepassxc"
-	   "signal"
-	   "telegram"
-	   "transmission"
-	   "viber"
-	   "whatsapp") -}}
+       "google-cloud-sdk"
+       "keepassxc"
+       "signal"
+       "telegram"
+       "transmission"
+       "viber"
+       "whatsapp") -}}
 {{ end -}}
 
 {{ if .isovalent -}}
 {{   $brews = concat $brews (list
-	   "aws-iam-authenticator"
-	   "awscli"
-	   "azure-cli"
-	   "eksctl"
-	   "helm"
-	   "kops"
-	   "kubernetes-cli"
-	   "minikube"
-	   "packer"
-	   "vagrant"
-	   "zoom") -}}
+       "aws-iam-authenticator"
+       "awscli"
+       "azure-cli"
+       "eksctl"
+       "helm"
+       "kops"
+       "kubernetes-cli"
+       "minikube"
+       "packer") -}}
 {{ $casks = concat $casks (list
-       "1password-cli") -}}
+       "1password-cli"
+       "zoom") -}}
 {{ end -}}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF

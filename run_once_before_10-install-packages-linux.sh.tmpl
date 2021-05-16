@@ -1,4 +1,5 @@
-{{- if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
 #!/bin/bash
 
 set -eufo pipefail
@@ -99,4 +100,5 @@ go install github.com/onsi/ginkgo/ginkgo@latest
 sudo usermod $USER --append --group docker
 {{ end }}
 
-{{ end }}
+{{ end -}}
+{{ end -}}

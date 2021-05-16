@@ -1,4 +1,4 @@
-{{ if (eq .chezmoi.os "darwin" "linux") -}}
+{{ define "install-powerlevel10k" -}}
 #!/bin/bash
 
 set -eufo pipefail
@@ -10,7 +10,9 @@ rm -rf ${destdir}
 mkdir -p ${destdir}
 curl -s -L https://github.com/romkatv/powerlevel10k/archive/${version}.tar.gz | tar -C ${destdir} --strip-components=1 -xzf -
 
+{{ end -}}
 {{ if (eq .chezmoi.os "darwin") -}}
+{{   template "install-powerlevel10k" . -}}
 (
 	cd $HOME/Library/Fonts &&
 	curl -sL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf > "MesloLGS NF Regular.ttf" &&
@@ -18,6 +20,8 @@ curl -s -L https://github.com/romkatv/powerlevel10k/archive/${version}.tar.gz | 
 	curl -sL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf > "MesloLGS NF Italic.ttf" &&
 	curl -sL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf > "MesloLGS NF Bold Italic.ttf"
 )
-{{ end -}}
-
+{{ else if (eq .chezmoi.os "linux") -}}
+{{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
+{{     template "install-powerlevel10k" . -}}
+{{   end -}}
 {{ end -}}

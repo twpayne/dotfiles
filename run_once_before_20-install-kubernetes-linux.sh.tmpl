@@ -78,5 +78,9 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
 rm -f minikube-linux-amd64
 
+{{     if .isovalent }}
+sudo usermod $USER --append --group docker
+{{     end }}
+
 {{   end -}}
 {{ end -}}

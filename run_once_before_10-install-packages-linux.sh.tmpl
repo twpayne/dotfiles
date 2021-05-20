@@ -61,7 +61,6 @@ classic_snaps+=(
 packages+=(
 	build-essential
 	clang
-	docker
 	libelf-dev
 	llvm
 	protobuf-compiler
@@ -97,7 +96,6 @@ sudo apt install ./google-chrome-stable_current_amd64.deb
 
 {{ if .isovalent }}
 go install github.com/onsi/ginkgo/ginkgo@latest
-sudo usermod $USER --append --group docker
 {{ end }}
 
 {{ end -}}

@@ -16,7 +16,9 @@
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $serialNumberSHA256Sum := index ioreg "IORegistryEntryChildren" 0 "IOPlatformSerialNumber" | sha256sum -}}
-{{-   if eq $serialNumberSHA256Sum "2728f5c7d4781c6824d9cf69a001d000530d1315c8b9ca3eca966c4431ff616c" -}}
+{{-   if eq $serialNumberSHA256Sum "0b4854803d23940ca945d6e7a600e13b4fdf7b72e50e93165877ddc95615011f" -}}
+{{-     $hostname = "toms-mba" -}}
+{{-   else if eq $serialNumberSHA256Sum "2728f5c7d4781c6824d9cf69a001d000530d1315c8b9ca3eca966c4431ff616c" -}}
 {{-     $hostname = "toms-mbp" -}}
 {{-   else if eq $serialNumberSHA256Sum "4aad1de0b04870891b321da4fcc8327f6644e1f8353e1105d2b33f908b5d1387" -}}
 {{-     $hostname = "toms-mbp-16" -}}
@@ -39,7 +41,7 @@
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "toms-mbp" -}}
+{{-   else if eq $hostname "toms-mba" "toms-mbp" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mbp-16" -}}
 {{-     $isovalent = true -}}

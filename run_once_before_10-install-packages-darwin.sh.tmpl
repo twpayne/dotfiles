@@ -6,6 +6,7 @@ set -eufo pipefail
 {{ $brews := list
      "bat"
      "curl"
+     "dockutil"
      "exa"
      "ffmpeg"
      "gh"
@@ -22,7 +23,6 @@ set -eufo pipefail
      "node"
      "openjdk"
      "ripgrep"
-     "shellcheck"
      "tmux"
      "wget"
      "xz"
@@ -37,9 +37,15 @@ set -eufo pipefail
      "macvim"
      "spotify"
      "vagrant"
-     "virtualbox"
      "visual-studio-code"
      "vlc" -}}
+
+{{ if eq .chezmoi.arch "amd64" -}}
+{{   $brews = concat $brews (list
+       "shellcheck") -}}
+{{ $casks = concat $casks (list
+       "virtualbox") -}}
+{{ end -}}
 
 {{ if .personal -}}
 {{   $brews = concat $brews (list

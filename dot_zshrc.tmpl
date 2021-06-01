@@ -20,7 +20,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -52,7 +52,7 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -95,7 +95,6 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
 {{- if .personal }}
 
-export DARKSKY_KEY="{{ (index (lastpass "Dark Sky Key") 0).password }}"
 {{-   if eq .chezmoi.os "darwin" }}
 export HOMEBREW_GITHUB_API_TOKEN={{ (index (lastpass "Github Homebrew Access Token") 0).password }}
 {{-   end }}
@@ -110,17 +109,10 @@ export VM_MEMORY=32768
 {{-   end }}
 {{- end }}
 
-{{- if .personal }}
-
-[ -x /usr/libexec/java_home ] && export JAVA_HOME=$(/usr/libexec/java_home)
-{{- end }}
-
 {{- if (eq .chezmoi.os "darwin") }}
 
 # gcloud
-{{ if lookPath "python3.8" -}}
-export CLOUDSDK_PYTHON=python3.8
-{{ end -}}
+export CLOUDSDK_PYTHON=python3
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 {{- end }}

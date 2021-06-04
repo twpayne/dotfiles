@@ -29,7 +29,6 @@ done
 
 {{ if (eq .chezmoi.os "darwin") }}
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-defaults delete -g ApplePressAndHoldEnabled || true
 {{ end }}
 
 {{ if (eq .chezmoi.os "linux") }}

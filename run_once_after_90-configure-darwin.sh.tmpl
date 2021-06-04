@@ -27,6 +27,8 @@ defaults write com.apple.dock launchanim -bool false
 defaults write com.apple.dock orientation right
 defaults write com.apple.dock show-recents -bool false
 
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 for dockItemLabel in \

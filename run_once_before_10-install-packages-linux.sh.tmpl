@@ -22,6 +22,15 @@ packages+=(
 )
 {{ end }}
 
+{{ if (not .headless) }}
+packages+=(
+	vim-gtk
+)
+classic_snaps+=(
+	code
+)
+{{ end }}
+
 {{ if (not .transient) }}
 {{ if (and (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.versionCodename "groovy")) }}
 classic_snaps+=(
@@ -40,11 +49,7 @@ packages+=(
 	git-lfs
 	jq
 	units
-	vim-gtk
 	zsh
-)
-classic_snaps+=(
-	code
 )
 {{ end }}
 

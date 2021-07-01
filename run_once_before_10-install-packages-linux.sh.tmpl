@@ -32,18 +32,20 @@ classic_snaps+=(
 {{ end }}
 
 {{ if (not .transient) }}
-{{ if (and (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.versionCodename "groovy")) }}
+{{  if (not (eq .chezmoi.hostname "runtime1")) }}
+{{   if (and (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.versionCodename "groovy")) }}
 classic_snaps+=(
 	go
 )
-{{ else if (not (eq .chezmoi.osRelease.id "raspbian")) }}
+{{    else if (not (eq .chezmoi.osRelease.id "raspbian")) }}
 repositories+=(
 	ppa:longsleep/golang-backports
 )
 packages+=(
 	golang-go
 )
-{{ end }}
+{{   end }}
+{{  end }}
 packages+=(
 	direnv
 	git-lfs
@@ -53,7 +55,7 @@ packages+=(
 )
 {{ end }}
 
-{{ if .personal }}
+{{  if .personal }}
 snaps+=(
 	hugo
 )

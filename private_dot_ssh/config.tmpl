@@ -10,11 +10,6 @@ Host *
 Host github.com
   User git
 
-Host toms-mbp
-  HostName 192.168.1.2
-  ForwardAgent yes
-  User twp
-
 Host revo
   HostName 192.168.1.3
   ForwardAgent yes
@@ -39,11 +34,6 @@ Host raspberrypi4
   HostName 192.168.1.6
   User pi
 
-Host toms-mbp-16
-  HostName 192.168.1.7
-  ForwardAgent yes
-  User twp
-
 Host reMarkable
   HostName 192.168.1.8
   User root
@@ -52,31 +42,6 @@ Host twpayne.asuscomm.com
   HostName 212.51.139.253
   ForwardAgent yes
   User twp
-
-{{- if eq .hostname "toms-mbp" }}
-
-Host groovy
-  HostName 127.0.0.1
-  User twp
-  Port 2222
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentitiesOnly yes
-  LogLevel FATAL
-  ForwardAgent yes
-
-Host hirsute
-  HostName 127.0.0.1
-  User twp
-  Port 2223
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentitiesOnly yes
-  LogLevel FATAL
-  ForwardAgent yes
-{{- end }}
 
 {{- if eq .hostname "toms-mbp-16" }}
 

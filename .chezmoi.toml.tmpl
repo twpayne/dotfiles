@@ -59,11 +59,6 @@
 {{-   end -}}
 {{- end -}}
 
-{{- if eq .chezmoi.os "windows" -}}
-[cd]
-  command = "powershell"
-  args = ["-nologo"]
-{{ end -}}
 remove = true
 [data]
   headless = {{ $headless }}

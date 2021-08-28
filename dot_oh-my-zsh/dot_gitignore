@@ -1,8 +1,0 @@
-# custom files
-custom/
-
-# temp files directories
-cache/
-log/
-*.swp
-.DS_Store

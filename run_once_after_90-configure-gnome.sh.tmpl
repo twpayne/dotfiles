@@ -3,16 +3,6 @@
 
 set -eufo pipefail
 
-fonts=(
-	"MesloLGS NF Regular.ttf"
-	"MesloLGS NF Bold.ttf"
-	"MesloLGS NF Italic.ttf"
-	"MesloLGS NF Bold Italic.ttf"
-)
-mkdir -p "${HOME}/.local/share/fonts"
-for font in "${fonts[@]}"; do
-	curl -o "${HOME}/.local/share/fonts/${font}" -s "https://github.com/romkatv/powerlevel10k-media/raw/master/${font}"
-done
 fc-cache
 
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false

@@ -101,7 +101,7 @@
 [includeIf "gitdir:**/networkpolicy/*/"]
 	path = ~/.config/git/isovalent.com
 {{- end }}
-{{- if not .transient }}
+{{- if not .ephemeral }}
 [url "git@github.com:chezmoi/"]
 	insteadOf = https://github.com/chezmoi/
 [url "git@github.com:cilium/"]

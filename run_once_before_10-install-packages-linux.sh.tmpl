@@ -31,7 +31,7 @@ classic_snaps+=(
 )
 {{ end }}
 
-{{ if (not .transient) }}
+{{ if (not .ephemeral) }}
 {{  if (not (eq .chezmoi.hostname "runtime1")) }}
 {{   if (and (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.versionCodename "groovy")) }}
 classic_snaps+=(
@@ -95,7 +95,7 @@ for classic_snap in ${classic_snaps[@]}; do
 done
 {{ end }}
 
-{{ if (and (eq .chezmoi.arch "amd64") (not .headless) (not .transient)) }}
+{{ if (and (eq .chezmoi.arch "amd64") (not .headless) (not .ephemeral)) }}
 trap "rm -rf google-chrome-stable_current_amd64.deb" EXIT
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb

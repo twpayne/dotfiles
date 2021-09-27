@@ -1,4 +1,4 @@
-{{- if and (not (eq .chezmoi.os "darwin")) .transient -}}
+{{- if and (not (eq .chezmoi.os "darwin")) .ephemeral -}}
 alias g=git
 alias g="git --no-pager"
 {{ end -}}

@@ -16,7 +16,7 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.15.0.tar.gz"
     exact = true
     stripComponents = 1
-{{- if and (not .transient) (not .headless) }}
+{{- if and (not .ephemeral) (not .headless) }}
 {{-   $fontDir := "" }}
 {{-   if eq .chezmoi.os "darwin" }}
 {{-     $fontDir = "Library/Fonts" }}

@@ -1,4 +1,4 @@
-{{ if (and (eq .chezmoi.os "linux") (not .transient) (not .headless)) -}}
+{{ if (and (eq .chezmoi.os "linux") (not .ephemeral) (not .headless)) -}}
 #!/bin/bash
 
 set -eufo pipefail

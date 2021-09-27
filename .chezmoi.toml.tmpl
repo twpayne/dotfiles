@@ -1,6 +1,6 @@
 {{/* boolean feature tags */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
-{{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{- $isovalent := false -}}{{/* true if this machine should have Isovalent secrets from 1Password */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
@@ -9,7 +9,7 @@
 {{/* detect GitHub codespaces and VSCode remote containers */}}
 {{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") -}}
 {{-   $headless = true -}}
-{{-   $transient = true -}}
+{{-   $ephemeral = true -}}
 {{- end -}}
 
 {{/* work around unreliable hostname on darwin */}}
@@ -26,10 +26,10 @@
 {{- end -}}
 
 {{- if eq .chezmoi.os "windows" -}}
-{{-   $transient = true -}}
+{{-   $ephemeral = true -}}
 {{- end -}}
 
-{{- if not $transient -}}
+{{- if not $ephemeral -}}
 {{-   if eq $hostname "focal" "runtime1" -}}
 {{-     $headless = true -}}
 {{-     $isovalent = true -}}
@@ -50,11 +50,11 @@
 {{-     $kubernetes = true -}}
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBool "headless" -}}
-{{-     $transient = promptBool "transient" -}}
+{{-     $ephemeral = promptBool "ephemeral" -}}
 {{-     $kubernetes = promptBool "kubernetes" -}}
 {{-   else -}}
 {{-     $headless = true -}}
-{{-     $transient = true -}}
+{{-     $ephemeral = true -}}
 {{-     $kubernetes = false -}}
 {{-   end -}}
 {{- end -}}
@@ -62,7 +62,7 @@
 [data]
   headless = {{ $headless }}
   hostname = {{ $hostname | quote }}
-  transient = {{ $transient }}
+  ephemeral = {{ $ephemeral }}
   isovalent = {{ $isovalent }}
   kubernetes = {{ $kubernetes }}
   personal = {{ $personal }}

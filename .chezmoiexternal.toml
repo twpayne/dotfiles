@@ -1,16 +1,19 @@
 [".vim/autoload/plug.vim"]
     type = "file"
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    refreshPeriod = "168h"
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
     exact = true
     stripComponents = 1
+    refreshPeriod = "168h"
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
     type = "archive"
     url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
     exact = true
     stripComponents = 1
+    refreshPeriod = "168h"
 [".oh-my-zsh/custom/themes/powerlevel10k"]
     type = "archive"
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.15.0.tar.gz"
@@ -26,13 +29,17 @@
 ["{{ $fontDir }}/MesloLGS NF Regular.ttf"]
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Regular.ttf"
+    refreshPeriod = "168h"
 ["{{ $fontDir }}/MesloLGS NF Bold.ttf"]
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Bold.ttf"
+    refreshPeriod = "168h"
 ["{{ $fontDir }}/MesloLGS NF Italic.ttf"]
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Italic.ttf"
+    refreshPeriod = "168h"
 ["{{ $fontDir }}/MesloLGS NF Bold Italic.ttf"]
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS NF Bold Italic.ttf"
+    refreshPeriod = "168h"
 {{- end }}

@@ -50,9 +50,21 @@
 {{-     $isovalent = true -}}
 {{-     $kubernetes = true -}}
 {{-   else if stdinIsATTY -}}
-{{-     $headless = promptBool "headless" -}}
-{{-     $ephemeral = promptBool "ephemeral" -}}
-{{-     $kubernetes = promptBool "kubernetes" -}}
+{{-     if hasKey . "headless" -}}
+{{-       $headless = .headless -}}
+{{-     else -}}
+{{-       $headless = promptBool "headless" -}}
+{{-     end -}}
+{{-     if hasKey . "ephemeral" -}}
+{{-       $ephemeral = .ephemeral -}}
+{{-     else -}}
+{{-       $ephemeral = promptBool "ephemeral" -}}
+{{-     end -}}
+{{-     if hasKey . "kubernetes" -}}
+{{-       $kubernetes = .kubernetes -}}
+{{-     else -}}
+{{-       $kubernetes = promptBool "kubernetes" -}}
+{{-     end -}}
 {{-   else -}}
 {{-     $headless = true -}}
 {{-     $ephemeral = true -}}

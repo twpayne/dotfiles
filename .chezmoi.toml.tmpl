@@ -39,10 +39,11 @@
 {{-     $personal = true -}}
 {{-   else if eq $hostname "elitedesk" -}}
 {{-     $headless = true -}}
+{{-     $isovalent = true -}}
+{{-     $kubernetes = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
-{{-     $isovalent = true -}}
 {{-   else if eq $hostname "toms-mba" "toms-mbp" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mbp-16" -}}
@@ -55,7 +56,6 @@
 {{-   else -}}
 {{-     $headless = true -}}
 {{-     $ephemeral = true -}}
-{{-     $kubernetes = false -}}
 {{-   end -}}
 {{- end -}}
 

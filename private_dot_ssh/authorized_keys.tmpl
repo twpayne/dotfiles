@@ -1,6 +1,3 @@
-{{ range (gitHubKeys "twpayne") }}
-{{- .Key }}
-{{ end }}
-{{- if eq .hostname "elitedesk" -}}
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ/xdZT+m+UFNvYJiIlrLhZIuy5rJJojEhpXbc79tLBo JuiceSSH
+{{ range (gitHubKeys "twpayne") -}}
+{{ .Key }}
 {{ end -}}

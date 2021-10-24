@@ -15,13 +15,15 @@
 {{/* work around unreliable hostname on darwin */}}
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   $serialNumberSHA256Sum := index ioreg "IORegistryEntryChildren" 0 "IOPlatformSerialNumber" | sha256sum -}}
-{{-   if eq $serialNumberSHA256Sum "0b4854803d23940ca945d6e7a600e13b4fdf7b72e50e93165877ddc95615011f" -}}
+{{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
+{{-   if eq $computerName "Tom’s MacBook Air" -}}
 {{-     $hostname = "toms-mba" -}}
-{{-   else if eq $serialNumberSHA256Sum "2728f5c7d4781c6824d9cf69a001d000530d1315c8b9ca3eca966c4431ff616c" -}}
+{{-   else if eq $computerName "Tom’s MacBook Pro" -}}
 {{-     $hostname = "toms-mbp" -}}
-{{-   else if eq $serialNumberSHA256Sum "4aad1de0b04870891b321da4fcc8327f6644e1f8353e1105d2b33f908b5d1387" -}}
+{{-   else if eq $computerName "Tom’s MacBook Pro 16" -}}
 {{-     $hostname = "toms-mbp-16" -}}
+{{-   else -}}
+{{-     $hostname = $computerName -}}
 {{-   end -}}
 {{- end -}}
 

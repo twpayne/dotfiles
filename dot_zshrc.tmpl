@@ -86,6 +86,9 @@ alias ks="kubectl --namespace=kube-system"
 export EDITOR=vim
 export GOPATH=$HOME
 export GO111MODULE=on
+{{- if eq .chezmoi.os "darwin" }}
+export HOMEBREW_NO_AUTO_UPDATE=1
+{{- end }}
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config

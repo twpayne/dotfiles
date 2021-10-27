@@ -20,7 +20,7 @@
 	cob = checkout -b
 	com = checkout master
 	cp = cherry-pick
-	d = diff --patience
+	d = diff
 	dc = diff --cached
 	dom = diff origin/master
 	fo = fetch origin
@@ -57,6 +57,7 @@
 	excludesfile = ~/.config/git/ignore
 	whitespace = trailing-space,space-before-tab
 [diff]
+	algorithm = histogram
 	renamelimit = 8192
 	renames = copies
 [fetch]

@@ -135,12 +135,11 @@ local bindings = {
 
   [{'alt', 'cmd', 'ctrl', 'shift'}] = {
     c = launchOrFocus('Google Chrome'),
-    f = launchOrFocus('Finder'),
+    e = launchOrFocus('Telegram'),
     i = launchOrFocus('Visual Studio Code'),
-    p = launchOrFocus('Preview'),
     s = launchOrFocus('Slack'),
     t = launchOrFocus('iTerm'),
-    v = launchOrFocus('VLC'),
+    v = launchOrFocus('Viber'),
     w = launchOrFocus('WhatsApp'),
     y = launchOrFocus('System Preferences'),
     z = launchOrFocus('zoom.us'),

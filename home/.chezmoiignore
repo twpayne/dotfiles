@@ -1,7 +1,3 @@
-README.md
-Makefile
-install.sh
-*.deb
 .oh-my-zsh/cache/**
 .oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc
 

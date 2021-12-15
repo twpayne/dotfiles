@@ -1,7 +1,9 @@
 {{ if eq .chezmoi.os "darwin" -}}
 {{   if stat "/opt/homebrew/bin/brew" -}}
+fpath+=("$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions")
 eval "$(/opt/homebrew/bin/brew shellenv)"
 {{   else if stat "/usr/local/bin/brew" -}}
+fpath+=("$(/usr/local/bin/brew --prefix)/share/zsh/site-functions")
 eval "$(/usr/local/bin/brew shellenv)"
 {{   end -}}
 {{ end -}}

@@ -6,8 +6,8 @@
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
 {{- "" -}}
 
-{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, and Vagrant boxes */}}
-{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "vagrant" "vscode") -}}
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
 {{-   $headless = true -}}
 {{-   $ephemeral = true -}}
 {{- end -}}

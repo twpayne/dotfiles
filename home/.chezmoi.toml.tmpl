@@ -30,7 +30,7 @@
 {{- end -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "focal" "runtime1" -}}
+{{-   if eq $hostname "runtime1" -}}
 {{-     $headless = true -}}
 {{-     $isovalent = true -}}
 {{-     $kubernetes = true -}}

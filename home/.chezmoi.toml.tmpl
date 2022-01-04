@@ -18,8 +18,6 @@
 {{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
 {{-   if eq $computerName "Tom’s MacBook Air" -}}
 {{-     $hostname = "toms-mba" -}}
-{{-   else if eq $computerName "Tom’s MacBook Pro" -}}
-{{-     $hostname = "toms-mbp" -}}
 {{-   else if eq $computerName "Tom’s MacBook Pro 16" -}}
 {{-     $hostname = "toms-mbp-16" -}}
 {{-   else -}}
@@ -46,7 +44,7 @@
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "toms-mba" "toms-mbp" -}}
+{{-   else if eq $hostname "toms-mba" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mbp-16" -}}
 {{-     $isovalent = true -}}

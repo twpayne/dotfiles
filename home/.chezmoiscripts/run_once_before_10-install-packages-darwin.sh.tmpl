@@ -43,7 +43,7 @@ set -eufo pipefail
 {{ if eq .chezmoi.arch "amd64" -}}
 {{   $brews = concat $brews (list
        "shellcheck") -}}
-{{ $casks = concat $casks (list
+{{   $casks = concat $casks (list
        "virtualbox") -}}
 {{ end -}}
 
@@ -57,7 +57,7 @@ set -eufo pipefail
        "postgresql"
        "pspg"
        "vault") -}}
-{{ $casks = concat $casks (list
+{{   $casks = concat $casks (list
        "1password-cli"
        "balenaetcher"
        "google-cloud-sdk"
@@ -80,7 +80,7 @@ set -eufo pipefail
        "kubernetes-cli"
        "minikube"
        "packer") -}}
-{{ $casks = concat $casks (list
+{{   $casks = concat $casks (list
        "1password-cli"
        "zoom") -}}
 {{ end -}}

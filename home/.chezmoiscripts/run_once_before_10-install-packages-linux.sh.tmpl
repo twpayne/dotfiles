@@ -49,12 +49,6 @@ set -eufo pipefail
 {{ $sudo }}snap install --classic {{ . }}
 {{ end }}
 
-{{ if and (eq .chezmoi.arch "amd64") (not .headless) (not .ephemeral) }}
-trap "rm -rf google-chrome-stable_current_amd64.deb" EXIT
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-{{ $sudo }}apt install -y ./google-chrome-stable_current_amd64.deb
-{{ end }}
-
 {{ if .isovalent }}
 go install github.com/onsi/ginkgo/ginkgo@latest
 {{ end }}

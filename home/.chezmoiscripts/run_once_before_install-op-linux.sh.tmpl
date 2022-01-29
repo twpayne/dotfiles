@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-OP_VERSION=1.8.0
+OP_VERSION=1.12.4
 ARCH={{ .chezmoi.arch }}
 FILENAME=op_linux_${ARCH}_v${OP_VERSION}.zip
 
@@ -17,6 +17,6 @@ trap cleanup EXIT
 cd ${tempdir}
 curl -LO https://cache.agilebits.com/dist/1P/op/pkg/v${OP_VERSION}/${FILENAME}
 unzip ${FILENAME} op
-mv op ${HOME}/bin
+mv op ${HOME}/.local/bin
 {{   end -}}
 {{ end -}}

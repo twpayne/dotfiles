@@ -1,6 +1,7 @@
 {{/* boolean feature tags */}}
-{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $isovalent := false -}}{{/* true if this machine should have Isovalent secrets from 1Password */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
@@ -8,8 +9,8 @@
 
 {{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
 {{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
-{{-   $headless = true -}}
 {{-   $ephemeral = true -}}
+{{-   $headless = true -}}
 {{- end -}}
 
 {{/* work around unreliable hostname on darwin */}}
@@ -34,11 +35,13 @@
 {{-     $headless = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "elitedesk" -}}
+{{-     $docker = true -}}
 {{-     $headless = true -}}
 {{-     $isovalent = true -}}
 {{-     $kubernetes = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
+{{-     $docker = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mba" -}}
 {{-     $personal = true -}}
@@ -56,21 +59,29 @@
 {{-     else -}}
 {{-       $ephemeral = promptBool "ephemeral" -}}
 {{-     end -}}
-{{-     if hasKey . "kubernetes" -}}
-{{-       $kubernetes = .kubernetes -}}
-{{-     else -}}
-{{-       $kubernetes = promptBool "kubernetes" -}}
+{{-     if not $ephemeral -}}
+{{-       if hasKey . "docker" -}}
+{{-         $docker = .docker -}}
+{{-       else -}}
+{{-         $docker = promptBool "docker" -}}
+{{-       end -}}
+{{-       if hasKey . "kubernetes" -}}
+{{-         $kubernetes = .kubernetes -}}
+{{-       else -}}
+{{-         $kubernetes = promptBool "kubernetes" -}}
+{{-       end -}}
 {{-     end -}}
 {{-   else -}}
-{{-     $headless = true -}}
 {{-     $ephemeral = true -}}
+{{-     $headless = true -}}
 {{-   end -}}
 {{- end -}}
 
 [data]
+  docker = {{ $docker }}
+  ephemeral = {{ $ephemeral }}
   headless = {{ $headless }}
   hostname = {{ $hostname | quote }}
-  ephemeral = {{ $ephemeral }}
   isovalent = {{ $isovalent }}
   kubernetes = {{ $kubernetes }}
   personal = {{ $personal }}

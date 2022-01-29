@@ -5,8 +5,7 @@
 
 set -efuo pipefail
 
-# install azure-cli, docker, and google-cloud-sdk
-# https://docs.docker.com/engine/install/ubuntu/
+# install azure-cli, and google-cloud-sdk
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt
 # https://cloud.google.com/sdk/docs/install
 
@@ -22,7 +21,6 @@ sudo apt-get install --yes \
 	software-properties-common
 
 # add keys
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - # google-cloud-sdk
 curl -sL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
@@ -30,18 +28,11 @@ curl -sL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
 
 # install packages
 sudo apt-get update
 sudo apt-get install --yes \
 	azure-cli \
-	containerd.io \
-	docker-ce \
-	docker-ce-cli \
 	google-cloud-sdk
 
 # install aws-cliv2
@@ -66,10 +57,6 @@ eksctl completion zsh | sudo tee /usr/local/share/zsh/site-functions/_eksctl > /
 # https://kops.sigs.k8s.io/getting_started/install/
 curl -Lo ${HOME}/bin/kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 chmod +x ${HOME}/bin/kops
-
-{{     if .isovalent }}
-sudo usermod $USER --append --group docker
-{{     end }}
 
 {{   end -}}
 {{ end -}}

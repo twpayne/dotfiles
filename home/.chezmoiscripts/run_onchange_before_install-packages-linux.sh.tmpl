@@ -49,9 +49,5 @@ set -eufo pipefail
 {{ $sudo }}snap install --classic {{ . }}
 {{ end }}
 
-{{ if .isovalent }}
-go install github.com/onsi/ginkgo/ginkgo@latest
-{{ end }}
-
 {{ end -}}
 {{ end -}}

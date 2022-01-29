@@ -5,8 +5,7 @@
 
 set -efuo pipefail
 
-# install azure-cli, and google-cloud-sdk
-# https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt
+# install google-cloud-sdk
 # https://cloud.google.com/sdk/docs/install
 
 # install prerequisite packages
@@ -22,17 +21,14 @@ sudo apt-get install --yes \
 
 # add keys
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - # google-cloud-sdk
-curl -sL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # add sources
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 
 # install packages
 sudo apt-get update
 sudo apt-get install --yes \
-	azure-cli \
 	google-cloud-sdk
 
 # install aws-cliv2

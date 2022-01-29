@@ -5,32 +5,6 @@
 
 set -efuo pipefail
 
-# install google-cloud-sdk
-# https://cloud.google.com/sdk/docs/install
-
-# install prerequisite packages
-sudo apt-get install --yes \
-	apt-transport-https \
-	ca-certificates \
-	curl \
-	gnupg \
-	gnupg2 \
-	gnupg-agent \
-	lsb-release \
-	software-properties-common
-
-# add keys
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - # google-cloud-sdk
-
-# add sources
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
-
-# install packages
-sudo apt-get update
-sudo apt-get install --yes \
-	google-cloud-sdk
-
 # install aws-cliv2
 # https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
 tmpdir=$(mktemp -d)

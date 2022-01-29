@@ -4,12 +4,10 @@
 
 set -efuo pipefail
 
-# install azure-cli, docker, google-cloud-sdk, helm, and kubectl
+# install azure-cli, docker, and google-cloud-sdk
 # https://docs.docker.com/engine/install/ubuntu/
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt
 # https://cloud.google.com/sdk/docs/install
-# https://kubernetes.io/docs/tasks/tools/install-kubectl/
-# https://helm.sh/docs/intro/install/
 
 # install prerequisite packages
 sudo apt-get install --yes \
@@ -23,15 +21,13 @@ sudo apt-get install --yes \
 	software-properties-common
 
 # add keys
-curl -s https://baltocdn.com/helm/signing.asc | sudo apt-key add -
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - # google-cloud-sdk and kubectl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - # google-cloud-sdk
 curl -sL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # add sources
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -45,9 +41,7 @@ sudo apt-get install --yes \
 	containerd.io \
 	docker-ce \
 	docker-ce-cli \
-	google-cloud-sdk \
-	helm \
-	kubectl
+	google-cloud-sdk
 
 # install aws-cliv2
 # https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
@@ -71,12 +65,6 @@ eksctl completion zsh | sudo tee /usr/local/share/zsh/site-functions/_eksctl > /
 # https://kops.sigs.k8s.io/getting_started/install/
 curl -Lo ${HOME}/bin/kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 chmod +x ${HOME}/bin/kops
-
-# install minikube
-# https://minikube.sigs.k8s.io/docs/start/
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
-rm -f minikube-linux-amd64
 
 {{     if .isovalent }}
 sudo usermod $USER --append --group docker

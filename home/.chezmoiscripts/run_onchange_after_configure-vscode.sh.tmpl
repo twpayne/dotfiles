@@ -1,42 +1,34 @@
-{{ if (and (eq .chezmoi.os "darwin" "linux") (not .headless)) -}}
+{{ if and (eq .chezmoi.os "darwin" "linux") (not .headless) -}}
+
+{{ $extensions := list
+     "asvetliakov.vscode-neovim"
+     "bungcip.better-toml"
+     "eamodio.gitlens"
+     "EditorConfig.EditorConfig"
+     "golang.go"
+     "jinliming2.vscode-go-template"
+     "ms-azuretools.vscode-docker"
+     "ms-python.python"
+     "ms-vscode-remote.remote-containers"
+     "ms-vscode-remote.remote-ssh"
+     "ms-vscode-remote.remote-ssh-edit"
+     "ms-vscode-remote.vscode-remote-extensionpack"
+     "ms-vscode.cpptools"
+     "ms-vscode.vscode-typescript-tslint-plugin"
+     "redhat.vscode-yaml"
+     "stkb.rewrap"
+     "streetsidesoftware.code-spell-checker"
+     "twpayne.vscode-testscript"
+     "Tyriar.sort-lines"
+     "yzhang.markdown-all-in-one"
+     "zxh404.vscode-proto3" -}}
+
 #!/bin/bash
 
 set -eufo pipefail
 
-extensions=(
-	eamodio.gitlens
-	EditorConfig.EditorConfig
-	golang.go
-	jinliming2.vscode-go-template
-	ms-azuretools.vscode-docker
-	ms-python.python
-	ms-vscode-remote.remote-containers
-	ms-vscode-remote.remote-ssh
-	ms-vscode-remote.remote-ssh-edit
-	ms-vscode-remote.vscode-remote-extensionpack
-	ms-vscode.cpptools
-	ms-vscode.vscode-typescript-tslint-plugin
-	redhat.vscode-yaml
-	streetsidesoftware.code-spell-checker
-	stkb.rewrap
-	Tyriar.sort-lines
-	yzhang.markdown-all-in-one
-	zxh404.vscode-proto3
-)
+{{ range $extensions -}}
+code --force --install-extension {{ . }}
+{{ end -}}
 
-for extension in ${extensions[@]}; do
-	code --force --install-extension $extension
-done
-
-{{ if (eq .chezmoi.os "darwin") }}
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-{{ end }}
-
-{{ if (eq .chezmoi.os "linux") }}
-if ! grep -qF fs.inotify.max_user_watches=524288 /etc/sysctl.conf; then
-	echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
-	sudo sysctl -p
-fi
-{{ end }}
-
-{{ end }}
+{{ end -}}

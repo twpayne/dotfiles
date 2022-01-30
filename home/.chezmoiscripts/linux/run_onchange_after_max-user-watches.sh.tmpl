@@ -1,0 +1,10 @@
+{{ if eq .chezmoi.hostname "elitedesk" -}}
+
+#!/bin/sh
+
+if ! grep -qF "fs.inotify.max_user_watches = 524288" /etc/sysctl.conf; then
+	echo fs.inotify.max_user_watches = 524288 | sudo tee -a /etc/sysctl.conf
+	sudo sysctl -p
+fi
+
+{{ end -}}

@@ -88,3 +88,7 @@
 {{- if $isovalent }}
     vault = "hlnmluqkhsy4qcululpgt6uzvu"
 {{- end }}
+{{- if eq $hostname "elitedesk" }}
+[onepassword]
+    command = "op2"
+{{- end }}

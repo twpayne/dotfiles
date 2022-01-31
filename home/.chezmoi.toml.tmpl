@@ -78,13 +78,13 @@
 {{- end -}}
 
 [data]
-  docker = {{ $docker }}
-  ephemeral = {{ $ephemeral }}
-  headless = {{ $headless }}
-  hostname = {{ $hostname | quote }}
-  isovalent = {{ $isovalent }}
-  kubernetes = {{ $kubernetes }}
-  personal = {{ $personal }}
+    docker = {{ $docker }}
+    ephemeral = {{ $ephemeral }}
+    headless = {{ $headless }}
+    hostname = {{ $hostname | quote }}
+    isovalent = {{ $isovalent }}
+    kubernetes = {{ $kubernetes }}
+    personal = {{ $personal }}
 {{- if $isovalent }}
-  vault = "hlnmluqkhsy4qcululpgt6uzvu"
+    vault = "hlnmluqkhsy4qcululpgt6uzvu"
 {{- end }}

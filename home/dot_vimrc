@@ -13,7 +13,7 @@ Plug 'keithluchtel/vim-monkey-c'
 Plug 'majutsushi/tagbar'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
-Plug 'tomasr/molokai'
+Plug 'phanviet/vim-monokai-pro'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -53,7 +53,7 @@ set wildmode=list:longest
 
 if has('gui_running')
   set background=dark
-  colorscheme molokai
+  colorscheme monokai_pro
 endif
 
 if has('gui_macvim')

@@ -1,5 +1,4 @@
-{{ if eq .chezmoi.os "linux" -}}
-{{ if eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
 
 {{ $packages := list
      "curl"
@@ -51,5 +50,4 @@ set -eufo pipefail
 {{ $sudo }}snap install --classic {{ . }}
 {{ end }}
 
-{{ end -}}
 {{ end -}}

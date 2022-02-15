@@ -1,6 +1,5 @@
 {{ if false -}}
-{{ if (and (eq .chezmoi.os "linux") .kubernetes) -}}
-{{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
+{{ if (and (eq .osid "linux-debian" "linux-ubuntu") .kubernetes) -}}
 #!/bin/bash
 
 set -efuo pipefail
@@ -28,6 +27,5 @@ eksctl completion zsh | sudo tee /usr/local/share/zsh/site-functions/_eksctl > /
 curl -Lo ${HOME}/bin/kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 chmod +x ${HOME}/bin/kops
 
-{{   end -}}
 {{ end -}}
 {{ end -}}

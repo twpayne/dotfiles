@@ -7,6 +7,11 @@
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
 {{- "" -}}
 
+{{- $osID := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
 {{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
 {{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
 {{-   $ephemeral = true -}}
@@ -85,6 +90,7 @@
     isovalent = {{ $isovalent }}
     kubernetes = {{ $kubernetes }}
     personal = {{ $personal }}
+    osid = {{ $osID | quote }}
 {{- if $isovalent }}
     vault = "hlnmluqkhsy4qcululpgt6uzvu"
 {{- end }}

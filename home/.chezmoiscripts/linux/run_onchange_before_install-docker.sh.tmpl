@@ -1,5 +1,4 @@
-{{ if and (eq .chezmoi.os "linux") .docker -}}
-{{   if eq .chezmoi.osRelease.id "ubuntu" -}}
+{{ if and (eq .osid "linux-ubuntu") .docker -}}
 
 #!/bin/sh
 
@@ -26,5 +25,4 @@ sudo apt-get install -y \
 
 sudo usermod $USER --append --group docker
 
-{{   end -}}
 {{ end -}}

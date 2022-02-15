@@ -1,5 +1,4 @@
-{{ if (and (eq .chezmoi.os "linux") .isovalent) -}}
-{{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
+{{ if (and (eq .osid "linux-debian" "linux-ubuntu") .isovalent) -}}
 #!/bin/bash
 
 set -euo pipefail
@@ -18,5 +17,4 @@ cd ${tempdir}
 curl -LO https://cache.agilebits.com/dist/1P/op/pkg/v${OP_VERSION}/${FILENAME}
 unzip ${FILENAME} op
 mv op ${HOME}/.local/bin
-{{   end -}}
 {{ end -}}

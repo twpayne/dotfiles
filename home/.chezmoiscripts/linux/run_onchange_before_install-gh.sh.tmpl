@@ -1,5 +1,4 @@
-{{ if and (eq .chezmoi.os "linux") (not .ephemeral) -}}
-{{   if eq .chezmoi.osRelease.id "ubuntu" -}}
+{{ if and (eq .osid "linux-ubuntu") (not .ephemeral) -}}
 
 #!/bin/sh
 
@@ -10,5 +9,4 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/gi
 sudo apt update
 sudo apt install gh
 
-{{   end -}}
 {{ end -}}

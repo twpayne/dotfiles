@@ -143,3 +143,10 @@ github-clone-cd() {
 	fi
 	cd $HOME/src/github.com/$1
 }
+
+github-clone-code() {
+	if [ ! -d $HOME/src/github.com/$1 ]; then
+		git clone https://github.com/$1.git src/github.com/$1
+	fi
+	code $HOME/src/github.com/$1
+}

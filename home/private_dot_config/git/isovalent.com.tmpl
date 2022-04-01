@@ -5,13 +5,7 @@
 	cf = commit -s --fixup
 	cm = commit -s --message
 	ss = commit -s --message snapshot --no-gpg-sign
-{{ $password := "" -}}
-{{ if eq .hostname "elitedesk" -}}
-{{   $password = (onepasswordDetailsFields "Cilium Enterprise GitHub Access Token" .vault).password.value -}}
-{{ else -}}
-{{   $password = (onepassword "Cilium Enterprise GitHub Access Token" .vault).details.password -}}
-{{ end -}}
-[url "https://twpayne:{{ $password }}@github.com/isovalent/"]
+[url "https://twpayne:{{ (onepasswordDetailsFields "Cilium Enterprise GitHub Access Token" .vault).password.value }}@github.com/isovalent/"]
 	insteadOf = https://github.com/isovalent/
 
 # vim: set filetype=gitconfig:

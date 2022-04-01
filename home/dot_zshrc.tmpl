@@ -102,24 +102,10 @@ export LPASS_PINENTRY=/opt/homebrew/bin/pinentry-mac
 
 {{- if .isovalent }}
 
-{{ $gitHubToken := "" -}}
-{{ if eq .hostname "elitedesk" -}}
-{{   $gitHubToken = (onepasswordDetailsFields "Isovalent GitHub token" .vault).password.value -}}
-{{ else -}}
-{{   $gitHubToken = (onepassword "Isovalent GitHub token" .vault).details.password -}}
-{{ end -}}
-export GITHUB_TOKEN={{ $gitHubToken }}
-{{ $homebrewGitHubToken := "" -}}
-{{ if eq .hostname "elitedesk" -}}
-{{   $homebrewGitHubToken = (onepasswordDetailsFields "Isovalent Homebrew GitHub API token" .vault).password.value -}}
-{{ else -}}
-{{   $homebrewGitHubToken = (onepassword "Isovalent Homebrew GitHub API token" .vault).details.password -}}
-{{ end -}}
-export HOMEBREW_GITHUB_API_TOKEN={{ $homebrewGitHubToken }}
-{{-   if eq .hostname "toms-mbp-16" }}
+export GITHUB_TOKEN={{ (onepasswordDetailsFields "Isovalent GitHub token" .vault).password.value }}
+export HOMEBREW_GITHUB_API_TOKEN={{ (onepasswordDetailsFields "Isovalent Homebrew GitHub API token" .vault).password.value }}
 export VM_CPUS=6
 export VM_MEMORY=32768
-{{-   end }}
 {{- end }}
 
 {{- if (eq .chezmoi.os "darwin") }}

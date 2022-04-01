@@ -104,8 +104,10 @@ export LPASS_PINENTRY=/opt/homebrew/bin/pinentry-mac
 
 export GITHUB_TOKEN={{ (onepasswordDetailsFields "Isovalent GitHub token" .vault).password.value }}
 export HOMEBREW_GITHUB_API_TOKEN={{ (onepasswordDetailsFields "Isovalent Homebrew GitHub API token" .vault).password.value }}
+{{-   if eq .hostname "toms-mbp-16" }}
 export VM_CPUS=6
 export VM_MEMORY=32768
+{{-   end }}
 {{- end }}
 
 {{- if (eq .chezmoi.os "darwin") }}

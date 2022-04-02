@@ -15,20 +15,26 @@
 Documents
 {{ else }}
 .bash_aliases
+.config/git/cookies
+.gnupg
+.gnupg/**
 .inputrc
 .oh-my-zsh
+.oh-my-zsh/**
 .p10k.zsh
-.ssh/authorized_keys
 .ssh/id_rsa
 .ssh/id_rsa.pub
 .tmux.conf
 .vim
+.vim/**
 .vimrc
+.zprofile
 .zshrc
 {{ end }}
 
 {{ if not .isovalent }}
 .aws
+.config/git/isovalent.com
 {{ end }}
 
 {{ if not .personal }}

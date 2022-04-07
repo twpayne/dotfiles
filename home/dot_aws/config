@@ -1,3 +1,16 @@
 [default]
-cli_pager=
-region=eu-west-3
+cli_pager =
+region = eu-west-3
+output = json
+[profile cilium-dev]
+role_arn = arn:aws:iam::926702434684:role/PowerUserAccessRole
+role_session_name = twpayne
+source_profile = default
+[profile cilium-demo]
+role_arn = arn:aws:iam::596544006425:role/PowerUserAccessRole
+role_session_name = twpayne
+source_profile = default
+[profile cilium-pr]
+role_arn = arn:aws:iam::478566851380:role/ViewOnlyAccessRole
+role_session_name = twpayne
+source_profile = default

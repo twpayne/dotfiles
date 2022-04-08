@@ -14,3 +14,6 @@ source_profile = default
 role_arn = arn:aws:iam::478566851380:role/ViewOnlyAccessRole
 role_session_name = twpayne
 source_profile = default
+[profile terraform]
+region = eu-west-1
+output = text

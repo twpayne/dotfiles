@@ -81,6 +81,12 @@ alias g=git
 alias gnp="git --no-pager"
 alias k=kubectl
 alias ks="kubectl --namespace=kube-system"
+{{- if lookPath "bat" }}
+alias cat=bat
+{{- end }}
+{{- if lookPath "exa" }}
+alias ls=exa
+{{- end }}
 
 export EDITOR=vim
 export GOPATH=$HOME

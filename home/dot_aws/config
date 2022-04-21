@@ -1,7 +1,6 @@
 [default]
 cli_pager =
 region = eu-west-3
-output = json
 [profile cilium-dev]
 role_arn = arn:aws:iam::926702434684:role/PowerUserAccessRole
 role_session_name = twpayne
@@ -16,4 +15,3 @@ role_session_name = twpayne
 source_profile = default
 [profile terraform]
 region = eu-west-1
-output = text

@@ -145,10 +145,11 @@ github-clone-cd() {
 		prefix=git@github.com:
 		shift
 	fi
-	if [ ! -d $HOME/src/github.com/$1 ]; then
-		git clone ${prefix}$1.git src/github.com/$1
+	local dir="${HOME}/src/github.com/$1"
+	if [ ! -d "${dir}" ]; then
+		git clone "${prefix}$1.git" "${dir}"
 	fi
-	cd $HOME/src/github.com/$1
+	cd "${dir}"
 }
 
 github-clone-code() {
@@ -157,9 +158,10 @@ github-clone-code() {
 		prefix=git@github.com:
 		shift
 	fi
-	if [ ! -d $HOME/src/github.com/$1 ]; then
-		git clone ${prefix}$1.git src/github.com/$1
+	local dir="${HOME}/src/github.com/$1"
+	if [ ! -d "${dir}" ]; then
+		git clone "${prefix}$1.git" "${dir}"
 	fi
-	code $HOME/src/github.com/$1
+	code "${dir}"
 }
 {{/* vim: set filetype=zsh: */}}

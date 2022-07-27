@@ -45,33 +45,17 @@
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $docker = true -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "toms-mba" -}}
+{{-   else if eq $hostname "xtoms-mba" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mbp-16" -}}
 {{-     $isovalent = true -}}
 {{-     $kubernetes = true -}}
 {{-   else if stdinIsATTY -}}
-{{-     if hasKey . "headless" -}}
-{{-       $headless = .headless -}}
-{{-     else -}}
-{{-       $headless = promptBool "headless" -}}
-{{-     end -}}
-{{-     if hasKey . "ephemeral" -}}
-{{-       $ephemeral = .ephemeral -}}
-{{-     else -}}
-{{-       $ephemeral = promptBool "ephemeral" -}}
-{{-     end -}}
+{{-     $headless = promptBoolOnce . "headless" "headless" -}}
+{{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
 {{-     if not $ephemeral -}}
-{{-       if hasKey . "docker" -}}
-{{-         $docker = .docker -}}
-{{-       else -}}
-{{-         $docker = promptBool "docker" -}}
-{{-       end -}}
-{{-       if hasKey . "kubernetes" -}}
-{{-         $kubernetes = .kubernetes -}}
-{{-       else -}}
-{{-         $kubernetes = promptBool "kubernetes" -}}
-{{-       end -}}
+{{-       $docker = promptBoolOnce . "docker" "docker" -}}
+{{-       $kubernetes = promptBoolOnce . "kubernetes" "kubernetes" -}}
 {{-     end -}}
 {{-   else -}}
 {{-     $ephemeral = true -}}

@@ -2,7 +2,6 @@
 {{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
-{{- $isovalent := false -}}{{/* true if this machine should have Isovalent secrets from 1Password */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
 {{- "" -}}
@@ -39,7 +38,6 @@
 {{-   if eq $hostname "elitedesk" -}}
 {{-     $docker = true -}}
 {{-     $headless = true -}}
-{{-     $isovalent = true -}}
 {{-     $kubernetes = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
@@ -47,9 +45,6 @@
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mba" -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "toms-mbp-16" -}}
-{{-     $isovalent = true -}}
-{{-     $kubernetes = true -}}
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBoolOnce . "headless" "headless" -}}
 {{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
@@ -68,12 +63,8 @@
     ephemeral = {{ $ephemeral }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
-    isovalent = {{ $isovalent }}
     kubernetes = {{ $kubernetes }}
     personal = {{ $personal }}
     osid = {{ $osID | quote }}
-{{- if $isovalent }}
-    vault = "hlnmluqkhsy4qcululpgt6uzvu"
-{{- end }}
 [diff]
     exclude = ["externals"]

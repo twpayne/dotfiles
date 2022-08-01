@@ -11,20 +11,6 @@
      "zsh" -}}
 {{ $classicSnaps := list -}}
 
-{{ if .isovalent -}}
-{{   $packages = concat $packages (list
-       "build-essential"
-       "clang"
-       "libelf-dev"
-       "llvm"
-       "protobuf-compiler"
-       "python3-pip"
-       "vagrant"
-       "virtualbox") -}}
-{{   $classicSnaps = concat $classicSnaps (list
-       "google-cloud-sdk") -}}
-{{ end -}}
-
 {{ if not .headless -}}
 {{   $packages = mustAppend $packages "vim-gtk" -}}
 {{   $classicSnaps = mustAppend $classicSnaps "code" -}}

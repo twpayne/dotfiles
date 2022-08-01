@@ -32,11 +32,6 @@ Documents
 .zshrc
 {{ end }}
 
-{{ if not .isovalent }}
-.aws
-.config/git/isovalent.com
-{{ end }}
-
 {{ if not .personal }}
 .pypirc
 .psqlrc

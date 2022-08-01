@@ -108,16 +108,6 @@ export LPASS_PINENTRY=/opt/homebrew/bin/pinentry-mac
 {{-   end }}
 {{- end }}
 
-{{- if .isovalent }}
-
-export GITHUB_TOKEN={{ (onepasswordDetailsFields "Isovalent GitHub token" .vault).password.value }}
-export HOMEBREW_GITHUB_API_TOKEN={{ (onepasswordDetailsFields "Isovalent Homebrew GitHub API token" .vault).password.value }}
-{{-   if eq .hostname "toms-mbp-16" }}
-export VM_CPUS=6
-export VM_MEMORY=32768
-{{-   end }}
-{{- end }}
-
 {{- if (eq .chezmoi.os "darwin") }}
 
 # gcloud
@@ -128,13 +118,6 @@ export CLOUDSDK_PYTHON=python3
 
 # direnv
 which direnv >/dev/null && eval "$(direnv hook zsh)"
-
-{{- if .isovalent }}
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-{{- end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

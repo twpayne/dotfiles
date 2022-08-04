@@ -108,14 +108,6 @@ export LPASS_PINENTRY=/opt/homebrew/bin/pinentry-mac
 {{-   end }}
 {{- end }}
 
-{{- if (eq .chezmoi.os "darwin") }}
-
-# gcloud
-export CLOUDSDK_PYTHON=python3
-[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-[ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ] && source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-{{- end }}
-
 # direnv
 which direnv >/dev/null && eval "$(direnv hook zsh)"
 

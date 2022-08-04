@@ -2,7 +2,6 @@
 {{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
-{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
 {{- "" -}}
 
@@ -38,7 +37,6 @@
 {{-   if eq $hostname "elitedesk" -}}
 {{-     $docker = true -}}
 {{-     $headless = true -}}
-{{-     $kubernetes = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $docker = true -}}
@@ -50,7 +48,6 @@
 {{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
 {{-     if not $ephemeral -}}
 {{-       $docker = promptBoolOnce . "docker" "docker" -}}
-{{-       $kubernetes = promptBoolOnce . "kubernetes" "kubernetes" -}}
 {{-     end -}}
 {{-   else -}}
 {{-     $ephemeral = true -}}
@@ -63,7 +60,6 @@
     ephemeral = {{ $ephemeral }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
-    kubernetes = {{ $kubernetes }}
     personal = {{ $personal }}
     osid = {{ $osID | quote }}
 [diff]

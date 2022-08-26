@@ -22,8 +22,6 @@
 {{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
 {{-   if eq $computerName "Tom’s MacBook Air" -}}
 {{-     $hostname = "toms-mba" -}}
-{{-   else if eq $computerName "Tom’s MacBook Pro 16" -}}
-{{-     $hostname = "toms-mbp-16" -}}
 {{-   else -}}
 {{-     $hostname = $computerName -}}
 {{-   end -}}
@@ -36,7 +34,6 @@
 {{- if not $ephemeral -}}
 {{-   if eq $hostname "elitedesk" -}}
 {{-     $docker = true -}}
-{{-     $headless = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $docker = true -}}

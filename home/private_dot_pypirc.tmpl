@@ -1,7 +1,0 @@
-[pypirc]
-servers =
-    pypi
-
-[server-login]
-username:{{ (index (lastpass "pypi.org") 0).username }}
-password:{{ (index (lastpass "pypi.org") 0).password }}

@@ -6,8 +6,8 @@ Install them with:
 
     chezmoi init twpayne
 
-Personal secrets are stored in [LastPass](https://lastpass.com) and you'll need
-the [LastPass CLI](https://github.com/lastpass/lastpass-cli) installed. Login
-to LastPass with:
+Personal secrets are stored in [1Password](https://1password.com) and you'll
+need the [1Password CLI](https://developer.1password.com/docs/cli/) installed.
+Login to 1Password with:
 
-    lpass login <email>
+    eval $(op signin)

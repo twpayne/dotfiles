@@ -1,4 +1,4 @@
-{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
 
 {{ $packages := list
      "curl"
@@ -31,8 +31,10 @@ set -eufo pipefail
 {{ $sudo }}apt-get update
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
 
-{{ range $classicSnaps }}
+{{ if lookPath "snap" }}
+{{   range $classicSnaps }}
 {{ $sudo }}snap install --classic {{ . }}
+{{   end }}
 {{ end }}
 
 {{ end -}}

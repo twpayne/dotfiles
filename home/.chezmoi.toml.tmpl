@@ -35,6 +35,9 @@
 {{-   if eq $hostname "elitedesk" -}}
 {{-     $docker = true -}}
 {{-     $personal = true -}}
+{{-   else if eq $hostname "raspberrypi4" -}}
+{{-     $headless = true -}}
+{{-     $personal = true -}}
 {{-   else if eq $hostname "jammy" -}}
 {{-     $docker = true -}}
 {{-     $personal = true -}}

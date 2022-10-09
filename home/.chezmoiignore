@@ -25,9 +25,6 @@ Documents
 .ssh/id_rsa
 .ssh/id_rsa.pub
 .tmux.conf
-.vim
-.vim/**
-.vimrc
 .zprofile
 .zshrc
 {{ end }}

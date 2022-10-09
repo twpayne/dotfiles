@@ -5,14 +5,13 @@
      "direnv"
      "git-lfs"
      "jq"
+     "neovim"
      "ripgrep"
      "units"
-     "vim"
      "zsh" -}}
 {{ $classicSnaps := list -}}
 
 {{ if not .headless -}}
-{{   $packages = mustAppend $packages "vim-gtk" -}}
 {{   $classicSnaps = mustAppend $classicSnaps "code" -}}
 {{ end -}}
 

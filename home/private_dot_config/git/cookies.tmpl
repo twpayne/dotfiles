@@ -1,5 +1,5 @@
 {{- if .personal -}}
-{{-   $gitcookie := onepasswordRead "op://Personal/googlesource.com gitcookie/credential" .onepassword_account | trim -}}
+{{-   $gitcookie := onepasswordRead "op://Personal/googlesource.com gitcookie/credential" .onepasswordAccount | trim -}}
 go.googlesource.com,FALSE,/,TRUE,2147483647,o,git-twpayne.gmail.com={{ $gitcookie }}
 go-review.googlesource.com,FALSE,/,TRUE,2147483647,o,git-twpayne.gmail.com={{ $gitcookie }}
 {{ end -}}

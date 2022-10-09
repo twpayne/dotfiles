@@ -103,7 +103,7 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 {{- if .personal }}
 
 {{-   if eq .chezmoi.os "darwin" }}
-export HOMEBREW_GITHUB_API_TOKEN={{ onepasswordRead "op://Personal/Homebrew GitHub API Token/credential" .onepassword_account | trim }}
+export HOMEBREW_GITHUB_API_TOKEN={{ onepasswordRead "op://Personal/Homebrew GitHub API Token/credential" .onepasswordAccount | trim }}
 {{-   end }}
 {{- end }}
 

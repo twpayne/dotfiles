@@ -60,8 +60,6 @@ setopt rm_star_silent
 
 alias g=git
 alias gnp="git --no-pager"
-alias k=kubectl
-alias ks="kubectl --namespace=kube-system"
 {{- if lookPath "bat" }}
 alias cat=bat
 {{- else if lookPath "batcat" }}

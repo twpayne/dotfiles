@@ -1,0 +1,8 @@
+{{ if ne .chezmoi.os "windows" -}}
+#!/bin/sh
+
+# {{ .chezmoi.version.commit }}
+
+mkdir -p {{ joinPath .chezmoi.homeDir ".oh-my-zsh" "completions" }}
+{{ index .chezmoi.args 0 }} completion zsh > {{ joinPath .chezmoi.homeDir ".oh-my-zsh" "completions" "_chezmoi" }}
+{{ end -}}

@@ -97,5 +97,11 @@
 	insteadOf = https://github.com/chezmoi/
 [url "git@github.com:twpayne/"]
 	insteadOf = https://github.com/twpayne/
-{{- end -}}
+{{- end }}
+{{- if lookPath "gh" }}
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+{{- end }}
 {{/* vim: set filetype=gitconfig: */}}

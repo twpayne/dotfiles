@@ -6,7 +6,7 @@
 {{- "" -}}
 
 {{- $osID := .chezmoi.os -}}
-{{- if hasKey .chezmoi.osRelease "id" -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
@@ -32,7 +32,7 @@
 {{- end -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "pop-os" -}}
+{{-   if eq $hostname "elitedesk" -}}
 {{-     $docker = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "raspberrypi4" -}}

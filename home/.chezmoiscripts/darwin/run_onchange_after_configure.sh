@@ -32,30 +32,4 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
-for dockItemLabel in \
-	Launchpad \
-	Safari \
-	Mail \
-	FaceTime \
-	Messages \
-	Maps \
-	Photos \
-	Contacts \
-	Calendar \
-	Reminders \
-	Notes \
-	Music \
-	Podcasts \
-	TV \
-	News \
-	Numbers \
-	Keynote \
-	Pages \
-	"App Store" \
-	"System Preferences" ; do
-	dockutil --find "$dockItemLabel" >/dev/null && dockutil --no-restart --remove "$dockItemLabel"
-done
-
-killall Dock
-
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null

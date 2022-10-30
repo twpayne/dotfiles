@@ -2,11 +2,13 @@
 .oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc
 
 {{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
 .config/karabiner
 .hammerspoon
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
+.chezmoiscripts/linux/**
 .hushlogin
 .local/share/fonts
 {{ end }}

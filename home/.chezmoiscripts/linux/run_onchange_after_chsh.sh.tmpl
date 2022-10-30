@@ -1,4 +1,4 @@
-{{- if (and (eq .chezmoi.os "linux") (not .ephemeral)) -}}
+{{- if (not .ephemeral) -}}
 #!/bin/bash
 
 set -eufo pipefail

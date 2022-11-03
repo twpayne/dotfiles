@@ -1,6 +1,7 @@
 {{/* boolean feature tags */}}
 {{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $flarm := false -}}{{/* true if this machine is used for FLARM */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
 {{- "" -}}
@@ -35,11 +36,11 @@
 {{-   if eq $hostname "elitedesk" -}}
 {{-     $docker = true -}}
 {{-     $personal = true -}}
+{{-   else if eq $hostname "legion" -}}
+{{-     $docker = true -}}
+{{-     $flarm = true -}}
 {{-   else if eq $hostname "raspberrypi4" -}}
 {{-     $headless = true -}}
-{{-     $personal = true -}}
-{{-   else if eq $hostname "jammy" -}}
-{{-     $docker = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mba" -}}
 {{-     $personal = true -}}
@@ -58,10 +59,9 @@
 [data]
     docker = {{ $docker }}
     ephemeral = {{ $ephemeral }}
+    flarm = {{ $flarm }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}
     onepasswordAccount = "VBDXOA4MPVHONK5IIJVKUQGLXM"
     osid = {{ $osID | quote }}
-[diff]
-    exclude = ["externals"]

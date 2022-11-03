@@ -92,7 +92,7 @@
 	fsckobjects = true
 [trim]
 	bases = master,gh-pages
-{{- if not .ephemeral }}
+{{- if .personal }}
 [url "git@github.com:chezmoi/"]
 	insteadOf = https://github.com/chezmoi/
 [url "git@github.com:twpayne/"]

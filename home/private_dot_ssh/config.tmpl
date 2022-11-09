@@ -7,6 +7,19 @@ Host *
   UseKeychain yes
 {{- end }}
 
+{{- if .flarm }}
+
+Host eddie
+  HostName 10.42.1.30
+  IdentityFile ~/.ssh/id_flarm_root
+  User root
+
+Host marvin
+  HostName 10.42.1.31
+  IdentityFile ~/.ssh/id_flarm_root
+  User root
+{{- end }}
+
 Host elitedesk
   ForwardAgent yes
   User twp

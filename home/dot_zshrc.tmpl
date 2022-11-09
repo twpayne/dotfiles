@@ -92,6 +92,17 @@ export HOMEBREW_GITHUB_API_TOKEN={{ onepasswordRead "op://Personal/Homebrew GitH
 {{-   end }}
 {{- end }}
 
+{{- if .flarm }}
+
+export OBSTACLE_ENV=${HOME}/src/obstacle/obstacle_toolchain
+export KEY_PATH="${HOME}/Development Secrets and Keys/current"
+export TOOLCHAIN_PATH=${HOME}/toolchain_bin
+
+alias obstacle=${OBSTACLE_ENV}/oenv/bin/obstacle
+alias osm_export=${OBSTACLE_ENV}/oenv/bin/osm_export
+alias dem=${OBSTACLE_ENV}/dem.sh
+{{- end }}
+
 # direnv
 which direnv >/dev/null && eval "$(direnv hook zsh)"
 

@@ -56,9 +56,15 @@
 {{-   end -}}
 {{- end -}}
 
+{{- $email := "twpayne@gmail.com" -}}
+{{- if $flarm -}}
+{{-   $email = "tom.payne@flarm.com" -}}
+{{- end -}}
+
 [data]
     docker = {{ $docker }}
     ephemeral = {{ $ephemeral }}
+    email = {{ $email | quote }}
     flarm = {{ $flarm }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}

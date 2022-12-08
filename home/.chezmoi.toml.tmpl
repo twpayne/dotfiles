@@ -33,10 +33,7 @@
 {{- end -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "elitedesk" -}}
-{{-     $docker = true -}}
-{{-     $personal = true -}}
-{{-   else if eq $hostname "legion" -}}
+{{-   if eq $hostname "legion" -}}
 {{-     $docker = true -}}
 {{-     $flarm = true -}}
 {{-   else if eq $hostname "raspberrypi4" -}}

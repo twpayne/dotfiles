@@ -7,26 +7,13 @@ Host *
   UseKeychain yes
 {{- end }}
 
-{{- if .flarm }}
-
-Host eddie
-  HostName 10.42.1.30
-  IdentityFile ~/.ssh/id_flarm_root
-  User root
-
-Host marvin
-  HostName 10.42.1.31
-  IdentityFile ~/.ssh/id_flarm_root
-  User root
-
-Host osm.flarm.com
-  IdentityFile ~/.ssh/id_flarm_root
-  User root
-{{- end }}
-
 Host github.com
   User git
 
 Host legion
   ForwardAgent yes
   User twp
+
+{{- if .flarm }}
+{{ onepasswordRead "op://FLARM/SSH Config/notesPlain" .onepasswordAccount }}
+{{- end }}

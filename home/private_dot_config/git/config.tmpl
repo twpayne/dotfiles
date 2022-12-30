@@ -86,6 +86,10 @@
 	autostash = true
 [receive]
 	fsckobjects = true
+{{ if eq .chezmoi.os "windows" -}}
+[safe]
+	directory = {{ .chezmoi.workingTree }}
+{{ end -}}
 [status]
 	submoduleSummary = true
 [transfer]

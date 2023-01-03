@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 {{- $paths := list }}
 {{- $homeDir := .chezmoi.homeDir }}
-{{- range $_, $relPath := list "bin" ".cargo/bin" ".local/bin" }}
+{{- range $_, $relPath := list "bin" "go/bin" ".cargo/bin" ".local/bin" }}
 {{    $path := joinPath $homeDir $relPath }}
 {{-   if stat $path }}
 {{-     $paths = mustAppend $paths $path }}

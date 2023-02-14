@@ -43,18 +43,12 @@ set -eufo pipefail
 
 {{ if .personal -}}
 {{   $brews = concat $brews (list
-       "bitwarden-cli"
-       "gopass"
-       "lastpass-cli"
-       "pass"
        "postgis"
        "postgresql"
-       "pspg"
-       "vault") -}}
+       "pspg") -}}
 {{   $casks = concat $casks (list
        "1password-cli"
        "balenaetcher"
-       "keepassxc"
        "signal"
        "telegram"
        "transmission"

@@ -65,6 +65,9 @@ alias cat=bat
 {{- else if lookPath "batcat" }}
 alias cat=batcat
 {{- end }}
+{{- if lookPath "fdfind" }}
+alias fd=fdfind
+{{- end }}
 {{- if lookPath "exa" }}
 alias ls=exa
 {{- end }}

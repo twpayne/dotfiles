@@ -1,8 +1,10 @@
 {{ if eq .osid "linux-debian" "linux-raspbian" "linux-pop" "linux-ubuntu" -}}
 
 {{ $packages := list
+     "bat"
      "curl"
      "direnv"
+     "fd-find"
      "git-lfs"
      "jq"
      "neovim"

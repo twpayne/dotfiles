@@ -19,6 +19,13 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.18.0.tar.gz"
     exact = true
     stripComponents = 1
+{{ if eq .osid "linux-ubuntu" }}
+[".local/bin/nvim"]
+    type = "file"
+    url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
+    refreshPeriod = "672h"
+    executable = true
+{{ end }}
 {{- if and (eq .chezmoi.os "linux") .personal (not .ephemeral) }}
 {{- $ageVersion := "1.0.0" }}
 [".local/bin/age"]

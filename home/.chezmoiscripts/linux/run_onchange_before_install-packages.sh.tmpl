@@ -51,10 +51,10 @@ set -eufo pipefail
 
 {{ if lookPath "snap" }}
 {{   range $snaps }}
-snap info {{ . }} || {{ $sudo }}snap install {{ . }}
+( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install {{ . }}
 {{   end }}
 {{   range $classicSnaps }}
-snap info {{ . }} || {{ $sudo }}snap install --classic {{ . }}
+( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install --classic {{ . }}
 {{   end }}
 {{ end }}
 

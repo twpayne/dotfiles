@@ -1,0 +1,28 @@
+{{ if eq .osid "linux-ubuntu" -}}
+
+{{ $packages := list
+     "aisleriot"
+     "gnome-mahjongg"
+     "gnome-mines"
+     "gnome-sudoku"
+     "thunderbird" -}}
+{{ $snaps := list "firefox" -}}
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $sudo }}apt-get remove -y {{ $packages | join " " }}
+
+{{ if lookPath "snap" }}
+{{   range $snaps }}
+snap info {{ . }} && {{ $sudo }}snap remove {{ . }}
+{{   end }}
+{{ end }}
+
+{{ end -}}

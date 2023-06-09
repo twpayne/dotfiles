@@ -1,16 +1,22 @@
-{{ if eq .osid "linux-debian" "linux-raspbian" "linux-pop" "linux-ubuntu" -}}
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
 
 {{ $packages := list
      "bat"
+     "btop"
+     "build-essential"
      "curl"
      "direnv"
      "fd-find"
+     "fuse"
+     "git"
      "git-lfs"
      "jq"
-     "neovim"
+     "openssh-server"
      "ripgrep"
+     "shellcheck"
      "units"
      "zsh" -}}
+{{ $snaps := list -}}
 {{ $classicSnaps := list -}}
 
 {{ if not .headless -}}
@@ -19,7 +25,16 @@
 {{ end -}}
 
 {{ if .personal -}}
-{{   $classicSnaps = mustAppend $classicSnaps "goreleaser" -}}
+{{   $classicSnaps = concat $classicSnaps (list "goreleaser" "snapcraft") -}}
+{{ end -}}
+
+{{ if eq .osid "linux-ubuntu" -}}
+{{   $packages = concat $packages (list "gdal-bin" "libgeos-dev" "libproj-dev" "postgis" "postgresql" "qgis") -}}
+{{ end -}}
+
+{{ if eq .hostname "legion" -}}
+{{   $packages = concat $packages (list "python3-dev" "python3-pip") -}}
+{{   $snaps = mustAppend $snaps "dbeaver-ce" -}}
 {{ end -}}
 
 {{ $sudo := "sudo " -}}
@@ -35,8 +50,11 @@ set -eufo pipefail
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
 
 {{ if lookPath "snap" }}
+{{   range $snaps }}
+snap info {{ . }} || {{ $sudo }}snap install {{ . }}
+{{   end }}
 {{   range $classicSnaps }}
-{{ $sudo }}snap install --classic {{ . }}
+snap info {{ . }} || {{ $sudo }}snap install --classic {{ . }}
 {{   end }}
 {{ end }}
 

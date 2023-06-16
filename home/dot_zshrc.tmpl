@@ -73,7 +73,11 @@ alias fd=fdfind
 alias ls=exa
 {{- end }}
 
+{{ if eq .osid "linux-ubuntu" -}}
+export EDITOR=$HOME/.local/bin/nvim
+{{ else -}}
 export EDITOR=nvim
+{{ end -}}
 export GOPATH=$HOME
 export GO111MODULE=on
 {{- if eq .chezmoi.os "darwin" }}

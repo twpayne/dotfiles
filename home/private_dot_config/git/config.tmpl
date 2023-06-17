@@ -25,6 +25,7 @@
 	dc = diff --cached
 	dom = diff origin/master
 	fo = fetch origin
+	fu = "!git log -n 16 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 	g = grep --line-number
 	mbhom = merge-base HEAD origin/master
 	mff = merge --ff-only

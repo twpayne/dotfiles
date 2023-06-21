@@ -8,6 +8,7 @@ fc-cache
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
 profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ preserve-working-directory never
 
 gsettings set org.gnome.shell favorite-apps "[ \
 	'google-chrome.desktop', \

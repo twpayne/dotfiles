@@ -25,6 +25,11 @@
     url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
     refreshPeriod = "672h"
     executable = true
+{{- $ezaVersion := "0.11.0" }}
+[".local/bin/eza"]
+    type = "file"
+    url = "https://github.com/eza-community/eza/releases/download/v{{ $ezaVersion }}/x86_64-unknown-linux-gnu-eza"
+    executable = true
 {{ end }}
 {{- if and (eq .chezmoi.os "linux") .personal (not .ephemeral) }}
 {{- $ageVersion := "1.1.1" }}

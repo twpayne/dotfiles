@@ -30,6 +30,12 @@
     type = "file"
     url = "https://github.com/eza-community/eza/releases/download/v{{ $ezaVersion }}/x86_64-unknown-linux-gnu-eza"
     executable = true
+{{- $gduVersion := "5.25.0" }}
+[".local/bin/gdu"]
+    type = "archive-file"
+    url = "https://github.com/dundee/gdu/releases/download/v{{ $gduVersion }}/gdu_linux_amd64.tgz"
+    executable = true
+    path = "gdu_linux_amd64"
 {{ end }}
 {{- if and (eq .chezmoi.os "linux") .personal (not .ephemeral) }}
 {{- $ageVersion := "1.1.1" }}

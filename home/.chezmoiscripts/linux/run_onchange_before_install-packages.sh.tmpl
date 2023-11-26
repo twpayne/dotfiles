@@ -2,7 +2,6 @@
 
 {{ $packages := list
      "bat"
-     "btop"
      "build-essential"
      "curl"
      "direnv"
@@ -19,6 +18,10 @@
      "zsh" -}}
 {{ $snaps := list -}}
 {{ $classicSnaps := list -}}
+
+{{ if eq .osid "linux-ubuntu" -}}
+{{   $packages = mustAppend $packages "btop" -}}
+{{ end -}}
 
 {{ if not .headless -}}
 {{   $packages = mustAppend $packages "xclip" -}}

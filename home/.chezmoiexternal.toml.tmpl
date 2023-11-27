@@ -27,9 +27,10 @@
     executable = true
 {{- $ezaVersion := "0.16.1" }}
 [".local/bin/eza"]
-    type = "file"
-    url = "https://github.com/eza-community/eza/releases/download/v{{ $ezaVersion }}/x86_64-unknown-linux-gnu-eza"
+    type = "archive-file"
+    url = "https://github.com/eza-community/eza/releases/download/v{{ $ezaVersion }}/eza_x86_64-unknown-linux-gnu.tar.gz"
     executable = true
+    path = "./eza"
 {{- $gduVersion := "5.25.0" }}
 [".local/bin/gdu"]
     type = "archive-file"

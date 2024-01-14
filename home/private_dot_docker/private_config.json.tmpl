@@ -1,9 +1,0 @@
-{{- $username := onepasswordRead "op://FLARM/glcr.flarm.com Personal Access Token/username" .onepasswordAccount | trim -}}
-{{- $credential := onepasswordRead "op://FLARM/glcr.flarm.com Personal Access Token/credential" .onepasswordAccount | trim -}}
-{
-	"auths": {
-		"glcr.flarm.com": {
-			"auth": {{ printf "%s:%s" $username $credential | b64enc | quote }}
-		}
-	}
-}

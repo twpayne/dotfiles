@@ -1,5 +1,4 @@
 {{/* boolean feature tags */}}
-{{- $docker := false -}}{{/* true if this machine should have Docker installed */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{- $flarm := false -}}{{/* true if this machine is used for FLARM */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
@@ -34,7 +33,6 @@
 
 {{- if not $ephemeral -}}
 {{-   if eq $hostname "legion" -}}
-{{-     $docker = true -}}
 {{-     $flarm = true -}}
 {{-   else if eq $hostname "raspberrypi4" -}}
 {{-     $headless = true -}}
@@ -46,9 +44,6 @@
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBoolOnce . "headless" "headless" -}}
 {{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
-{{-     if not $ephemeral -}}
-{{-       $docker = promptBoolOnce . "docker" "docker" -}}
-{{-     end -}}
 {{-   else -}}
 {{-     $ephemeral = true -}}
 {{-     $headless = true -}}
@@ -61,7 +56,6 @@
 {{- end -}}
 
 [data]
-    docker = {{ $docker }}
     ephemeral = {{ $ephemeral }}
     email = {{ $email | quote }}
     flarm = {{ $flarm }}

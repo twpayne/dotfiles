@@ -110,37 +110,6 @@ export IDF_TOOLS_PATH=${TOOLCHAIN_PATH}/esp32
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-github-cd() {
-	local dir="${HOME}/src/github.com/$1"
-	cd "${dir}"
-}
-
-github-clone-cd() {
-	local prefix=https://github.com/
-	if [ "$1" = "--ssh" ]; then
-		prefix=git@github.com:
-		shift
-	fi
-	local dir="${HOME}/src/github.com/$1"
-	if [ ! -d "${dir}" ]; then
-		git clone "${prefix}$1.git" "${dir}"
-	fi
-	cd "${dir}"
-}
-
-github-clone-code() {
-	local prefix=https://github.com/
-	if [ "$1" = "--ssh" ]; then
-		prefix=git@github.com:
-		shift
-	fi
-	local dir="${HOME}/src/github.com/$1"
-	if [ ! -d "${dir}" ]; then
-		git clone "${prefix}$1.git" "${dir}"
-	fi
-	code "${dir}"
-}
-
 {{ if stat (joinPath .chezmoi.homeDir ".nvm") }}
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

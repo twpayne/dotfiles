@@ -103,10 +103,6 @@ export TOOLCHAIN_PATH=${HOME}/toolchain_bin
 export IDF_TOOLS_PATH=${TOOLCHAIN_PATH}/esp32
 {{- end }}
 
-{{- if lookPath "direnv" }}
-{{ output "direnv" "hook" "zsh" | trim }}
-{{- end }}
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

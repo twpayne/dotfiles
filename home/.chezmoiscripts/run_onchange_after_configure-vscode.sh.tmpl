@@ -28,6 +28,4 @@ set -eufo pipefail
 code --force --install-extension {{ . }}
 {{ end -}}
 
-code --force --uninstall-extension ms-azuretools.vscode-docker || true
-
 {{ end -}}

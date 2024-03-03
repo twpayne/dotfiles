@@ -3,11 +3,14 @@
 set -eufo pipefail
 
 {{ $brews := list
+     "age"
      "bat"
+     "btop"
      "curl"
      "eza"
      "fd"
      "ffmpeg"
+     "fzf"
      "gdu"
      "gh"
      "git"
@@ -20,43 +23,36 @@ set -eufo pipefail
      "node"
      "openjdk"
      "pinentry-mac"
+     "pkg-config"
+     "postgis"
+     "postgresql@14"
+     "pspg"
      "ripgrep"
+     "shellcheck"
      "tmux"
      "wget"
      "xz"
      "yt-dlp" -}}
 {{ $casks := list
+     "1password-cli"
+     "balenaetcher"
+     "battery"
      "google-chrome"
      "google-earth-pro"
      "hammerspoon"
      "iterm2"
      "karabiner-elements"
+     "microsoft-remote-desktop"
+     "signal"
      "spotify"
+     "tailscale"
+     "telegram"
+     "transmission"
      "vagrant"
+     "viber"
      "visual-studio-code"
-     "vlc" -}}
-
-{{ if eq .chezmoi.arch "amd64" -}}
-{{   $brews = concat $brews (list
-       "shellcheck") -}}
-{{   $casks = concat $casks (list
-       "virtualbox") -}}
-{{ end -}}
-
-{{ if .personal -}}
-{{   $brews = concat $brews (list
-       "postgis"
-       "postgresql"
-       "pspg") -}}
-{{   $casks = concat $casks (list
-       "1password-cli"
-       "balenaetcher"
-       "signal"
-       "telegram"
-       "transmission"
-       "viber"
-       "whatsapp") -}}
-{{ end -}}
+     "vlc"
+     "whatsapp" -}}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}

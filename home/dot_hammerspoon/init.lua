@@ -75,6 +75,12 @@ function launchOrFocus(app)
   end
 end
 
+function moveFocusedWindowToScreen()
+  local window = hs.window.focusedWindow()
+  local screen = window:screen()
+  window:move(window:frame():toUnitRect(screen:frame()), screen:next(), true, 0)
+end
+
 local bindings = {
   [{'alt', 'ctrl'}] = {
     [1] = moveFrontmostWindow(grid.rightTopHalf),
@@ -118,6 +124,7 @@ local bindings = {
 
     ['space'] = moveFrontmostWindow(grid.tenTwelfes),
     ['return'] = moveFrontmostWindow(grid.fullScreen),
+    ['\\'] = moveFocusedWindowToScreen,
   },
 
   [{'alt', 'cmd', 'ctrl'}] = {

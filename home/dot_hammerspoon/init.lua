@@ -75,6 +75,12 @@ function launchOrFocus(app)
   end
 end
 
+function runCommand(command)
+  return function()
+    hs.task.new(command, nil):start()
+  end
+end
+
 function moveFocusedWindowToScreen()
   local window = hs.window.focusedWindow()
   local screen = window:screen()
@@ -145,6 +151,7 @@ local bindings = {
     f = launchOrFocus('Finder'),
     i = launchOrFocus('Visual Studio Code'),
     l = launchOrFocus('Telegram'),
+    j = runCommand("/Users/twp/bin/forge-gui"),
     s = launchOrFocus('Slack'),
     t = launchOrFocus('iTerm'),
     w = launchOrFocus('WhatsApp'),

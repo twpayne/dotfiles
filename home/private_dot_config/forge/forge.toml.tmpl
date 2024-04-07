@@ -14,3 +14,8 @@ sourceDir = "{{ .chezmoi.homeDir }}/src"
 [alias.skylens]
     repoDir = "{{ .chezmoi.homeDir }}/src/src/skylens"
 {{- end }}
+{{- if ne .chezmoi.hostname "legion" }}
+[remote.legion]
+    hostname = "legion"
+    sourceDir = "/home/twp/src"
+{{- end }}

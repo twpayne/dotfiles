@@ -20,7 +20,9 @@
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-{{-   if eq $computerName "Tom’s MacBook Air" -}}
+{{-   if eq $computerName "Tom’s Laptop" -}}
+{{-     $hostname = "toms-laptop" -}}
+{{-   else if eq $computerName "Tom’s MacBook Air" -}}
 {{-     $hostname = "toms-mba" -}}
 {{-   else -}}
 {{-     $hostname = $computerName -}}
@@ -38,6 +40,8 @@
 {{-     $headless = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "toms-laptop" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mba" -}}
 {{-     $personal = true -}}

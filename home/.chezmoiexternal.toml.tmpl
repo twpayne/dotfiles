@@ -10,12 +10,23 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+    exclude = [
+        "*/.*",
+        "*/templates",
+        "*/themes",
+    ]
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
     type = "archive"
     url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+    exclude = [
+        "*/.editorconfig",
+        "*/.gitattributes",
+        "*/.github",
+        "*/.gitignore",
+    ]
 {{- $powerlevel10kVersionTag := (gitHubLatestRelease "romkatv/powerlevel10k").TagName }}
 [".oh-my-zsh/custom/themes/powerlevel10k"]
     type = "archive"

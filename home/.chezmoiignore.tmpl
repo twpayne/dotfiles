@@ -1,4 +1,11 @@
+!.oh-my-zsh/plugins
+{{ range .zshPlugins }}
+!.oh-my-zsh/plugins/{{ . }}
+!.oh-my-zsh/plugins/{{ . }}/**
+{{- end }}
 .oh-my-zsh/cache/**
+.oh-my-zsh/plugins/**
+.oh-my-zsh/templates/**
 .oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc
 
 {{ if ne .chezmoi.os "darwin" }}

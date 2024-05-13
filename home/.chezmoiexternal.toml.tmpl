@@ -39,29 +39,26 @@
     url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
     refreshPeriod = "672h"
     executable = true
-{{- $ezaVersionTag := (gitHubLatestRelease "eza-community/eza").TagName }}
 [".local/bin/eza"]
     type = "archive-file"
-    url = "https://github.com/eza-community/eza/releases/download/{{ $ezaVersionTag }}/eza_x86_64-unknown-linux-gnu.tar.gz"
+    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" "eza_x86_64-unknown-linux-gnu.tar.gz" | quote }}
     executable = true
     path = "./eza"
-{{- $gduVersionTag := (gitHubLatestRelease "dundee/gdu").TagName }}
 [".local/bin/gdu"]
     type = "archive-file"
-    url = "https://github.com/dundee/gdu/releases/download/{{ $gduVersionTag }}/gdu_linux_amd64.tgz"
+    url = {{ gitHubLatestReleaseAssetURL "dundee/gdu" "gdu_linux_amd64.tgz" | quote }}
     executable = true
     path = "gdu_linux_amd64"
 {{- end }}
 {{- if and (eq .chezmoi.os "linux") .personal (not .ephemeral) }}
-{{- $ageVersionTag := (gitHubLatestRelease "FiloSottile/age").TagName }}
 [".local/bin/age"]
     type = "archive-file"
-    url = "https://github.com/FiloSottile/age/releases/download/{{ $ageVersionTag }}/age-{{ $ageVersionTag }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    url = {{ gitHubLatestReleaseAssetURL "FiloSottile/age" (printf "age-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
     executable = true
     path = "age/age"
 [".local/bin/age-keygen"]
     type = "archive-file"
-    url = "https://github.com/FiloSottile/age/releases/download/{{ $ageVersionTag }}/age-{{ $ageVersionTag }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    url = {{ gitHubLatestReleaseAssetURL "FiloSottile/age" (printf "age-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
     executable = true
     path = "age/age-keygen"
 {{- end }}

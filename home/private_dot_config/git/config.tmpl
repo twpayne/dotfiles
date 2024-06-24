@@ -43,7 +43,7 @@
 	rpo = remote prune origin
 	s = status -sb
 	sh = "!git log -n 16 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git show"
-	ss = commit --message snapshot --no-gpg-sign
+	ss = "commit --message 'chore: snapshot' --no-gpg-sign"
 	su = submodule update
 	wd = diff --patience --word-diff
 	# https://golang.org/doc/contribute.html

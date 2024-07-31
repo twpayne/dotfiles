@@ -14,8 +14,18 @@ sourceDir = "{{ .chezmoi.homeDir }}/src"
 [alias.skylens]
     repoDir = "{{ .chezmoi.homeDir }}/src/src/skylens"
 {{- end }}
+{{- if ne .chezmoi.hostname "fedora" }}
+[remote.fedora]
+    hostname = "fedora"
+    sourceDir = "/home/twp/src"
+{{- end }}
 {{- if ne .chezmoi.hostname "legion" }}
 [remote.legion]
     hostname = "legion"
+    sourceDir = "/home/twp/src"
+{{- end }}
+{{- if ne .chezmoi.hostname "ubuntu" }}
+[remote.ubuntu]
+    hostname = "ubuntu"
     sourceDir = "/home/twp/src"
 {{- end }}

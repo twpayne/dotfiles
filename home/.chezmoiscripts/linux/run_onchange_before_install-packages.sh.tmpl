@@ -33,7 +33,11 @@
 {{ end -}}
 
 {{ if eq .osid "linux-ubuntu" -}}
-{{   $packages = concat $packages (list "gdal-bin" "libgeos-dev" "libproj-dev" "postgis" "postgresql" "qgis") -}}
+{{   $packages = concat $packages (list "gdal-bin" "libgeos-dev" "libproj-dev" "postgis" "postgresql") -}}
+{{ end -}}
+
+{{ if and (eq .osid "linux-ubuntu") (not .headless) -}}
+{{   $packages = concat $packages (list "qgis") -}}
 {{ end -}}
 
 {{ if eq .hostname "legion" -}}

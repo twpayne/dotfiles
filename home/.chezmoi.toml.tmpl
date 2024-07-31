@@ -45,6 +45,9 @@
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-mba" -}}
 {{-     $personal = true -}}
+{{-   else if eq $hostname "ubuntu" -}}
+{{-     $headless = true -}}
+{{-     $personal = true -}}
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBoolOnce . "headless" "headless" -}}
 {{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}

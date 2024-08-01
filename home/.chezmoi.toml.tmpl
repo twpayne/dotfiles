@@ -36,9 +36,6 @@
 {{- if not $ephemeral -}}
 {{-   if eq $hostname "legion" -}}
 {{-     $flarm = true -}}
-{{-   else if eq $hostname "raspberrypi4" -}}
-{{-     $headless = true -}}
-{{-     $personal = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-laptop" -}}

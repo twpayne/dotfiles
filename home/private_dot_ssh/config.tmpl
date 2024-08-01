@@ -7,12 +7,18 @@ Host *
   UseKeychain yes
 {{- end }}
 
+Host fedora
+  HostName fedora
+
 Host github.com
   User git
 
 Host legion
   ForwardAgent yes
   User twp
+
+Host ubuntu
+  HostName ubuntu
 
 {{- if .flarm }}
 {{ onepasswordRead "op://FLARM/SSH Config/notesPlain" .onepasswordAccount }}

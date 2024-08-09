@@ -20,6 +20,10 @@ Host legion
 Host ubuntu
   HostName ubuntu
 
+Host windows
+  HostName windows
+  User twpay
+
 {{- if .flarm }}
 {{ onepasswordRead "op://FLARM/SSH Config/notesPlain" .onepasswordAccount }}
 {{- end }}

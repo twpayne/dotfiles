@@ -32,6 +32,10 @@ gsettings set org.gnome.shell favorite-apps "[ \
 	'org.gnome.Nautilus.desktop' \
 ]"
 
+gsettings set org.gnome.shell.extensions.ding show-home false
+gsettings set org.gnome.shell.extensions.ding show-trash false
+gsettings set org.gnome.shell.extensions.ding show-volumes false
+
 # https://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/1878953
 gsettings set org.gnome.mutter.keybindings switch-monitor "[]"
 {{ end -}}

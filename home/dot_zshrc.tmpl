@@ -78,6 +78,7 @@ export EDITOR=$HOME/.local/bin/nvim
 {{ else -}}
 export EDITOR=nvim
 {{ end -}}
+export GOBIN=$HOME/.local/bin
 export GOPATH=$HOME
 export GO111MODULE=on
 {{- if eq .chezmoi.os "darwin" }}

@@ -4,15 +4,15 @@ forge = "github.com"
 sourceDir = "{{ .chezmoi.homeDir }}/src"
 {{- if .flarm }}
 [alias.FLARM]
-    repoDir = "{{ .chezmoi.homeDir }}/src/src/FLARM"
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/src/FLARM"
 [alias.flarm-mate]
-    repoDir = "{{ .chezmoi.homeDir }}/src/products/flarm-mate"
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/products/flarm-mate"
 [alias.go]
-    repoDir = "{{ .chezmoi.homeDir }}/src/src/go"
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/src/go"
 [alias.python]
-    repoDir = "{{ .chezmoi.homeDir }}/src/src/python"
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/src/python"
 [alias.skylens]
-    repoDir = "{{ .chezmoi.homeDir }}/src/src/skylens"
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/src/skylens"
 {{- end }}
 {{- if ne .chezmoi.hostname "fedora" }}
 [remote.fedora]

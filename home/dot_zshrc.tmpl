@@ -1,3 +1,8 @@
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -86,6 +91,9 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 {{- end }}
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+{{ if lookPath "psql" -}}
+export PSQLRC=$XDG_CONFIG_HOME/psql/psqlrc
+{{ end -}}
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
 {{- if .personal }}

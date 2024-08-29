@@ -49,6 +49,11 @@
     url = {{ gitHubLatestReleaseAssetURL "dundee/gdu" "gdu_linux_amd64.tgz" | quote }}
     executable = true
     path = "gdu_linux_amd64"
+[".local/bin/croc"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "schollz/croc" "croc_v*_Linux-64bit.tar.gz" | quote }}
+    executable = true
+    path = "croc"
 {{- end }}
 {{- if and (eq .chezmoi.os "linux") .personal (not .ephemeral) }}
 [".local/bin/age"]

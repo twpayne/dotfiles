@@ -1,4 +1,9 @@
-# FIXME this script needs to be run as Administrator
+# To run this script:
+# 1. Run Windows PowerShell as Administrator
+# 2. Run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process`
+# 3. Run `chezmoi apply ~/.chezmoiscripts/windows/remove-bloat.ps1`
+#
+# FIXME automate running this script as Administrator
 
 # FIXME remove CoPilot
 # FIXME remove Spotify

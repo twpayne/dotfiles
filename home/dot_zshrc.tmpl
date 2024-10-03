@@ -86,9 +86,6 @@ export EDITOR=nvim
 export GOBIN=$HOME/.local/bin
 export GOPATH=$HOME
 export GO111MODULE=on
-{{- if eq .chezmoi.os "darwin" }}
-export HOMEBREW_NO_AUTO_UPDATE=1
-{{- end }}
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 {{ if lookPath "psql" -}}
@@ -100,7 +97,6 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
 export CHEZMOI_GITHUB_ACCESS_TOKEN={{ onepasswordRead "op://chezmoi/chezmoi GitHub API Token/credential" .onepasswordAccount | trim }}
 {{-   if eq .chezmoi.os "darwin" }}
-export HOMEBREW_GITHUB_API_TOKEN={{ onepasswordRead "op://Personal/Homebrew GitHub API Token/credential" .onepasswordAccount | trim }}
 {{-   end }}
 {{- end }}
 

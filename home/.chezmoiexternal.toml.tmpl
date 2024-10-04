@@ -55,7 +55,7 @@
     executable = true
     path = "croc"
 {{- end }}
-{{- if and (eq .chezmoi.os "linux") .personal (not .ephemeral) }}
+{{- if and (eq .chezmoi.os "linux") (not .ephemeral) }}
 [".local/bin/age"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "FiloSottile/age" (printf "age-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}

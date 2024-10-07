@@ -4,79 +4,59 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".oh-my-zsh"]
-    type = "archive"
-    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
-    exclude = [
-        "*/.*",
-        "*/templates",
-        "*/themes",
-    ]
-[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
-    type = "archive"
-    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
-    exclude = [
-        "*/.editorconfig",
-        "*/.gitattributes",
-        "*/.github",
-        "*/.gitignore",
-    ]
-{{- $powerlevel10kVersionTag := (gitHubLatestRelease "romkatv/powerlevel10k").TagName }}
-[".oh-my-zsh/custom/themes/powerlevel10k"]
-    type = "archive"
-    url = "https://github.com/romkatv/powerlevel10k/archive/{{ $powerlevel10kVersionTag }}.tar.gz"
-    exact = true
-    stripComponents = 1
+
 {{- if eq .osid "linux-ubuntu" }}
-[".local/bin/nvim"]
-    type = "file"
-    url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
-    refreshPeriod = "672h"
-    executable = true
-[".local/bin/cue"]
-    type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "cue-lang/cue" (printf "cue_v*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
-    executable = true
-    path = "cue"
-[".local/bin/cuepls"]
-    type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "cue-lang/cue" (printf "cue_v*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
-    executable = true
-    path = "cuepls"
-[".local/bin/eza"]
-    type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" "eza_x86_64-unknown-linux-gnu.tar.gz" | quote }}
-    executable = true
-    path = "./eza"
-[".local/bin/gdu"]
-    type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "dundee/gdu" "gdu_linux_amd64.tgz" | quote }}
-    executable = true
-    path = "gdu_linux_amd64"
-[".local/bin/croc"]
-    type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "schollz/croc" "croc_v*_Linux-64bit.tar.gz" | quote }}
-    executable = true
-    path = "croc"
-{{- end }}
-{{- if and (eq .chezmoi.os "linux") (not .ephemeral) }}
+
 [".local/bin/age"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "FiloSottile/age" (printf "age-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
     executable = true
     path = "age/age"
+
 [".local/bin/age-keygen"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "FiloSottile/age" (printf "age-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
     executable = true
     path = "age/age-keygen"
+
+[".local/bin/croc"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "schollz/croc" "croc_v*_Linux-64bit.tar.gz" | quote }}
+    executable = true
+    path = "croc"
+
+[".local/bin/cue"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "cue-lang/cue" (printf "cue_v*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+    executable = true
+    path = "cue"
+
+[".local/bin/cuepls"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "cue-lang/cue" (printf "cue_v*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+    executable = true
+    path = "cuepls"
+
+[".local/bin/eza"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" "eza_x86_64-unknown-linux-gnu.tar.gz" | quote }}
+    executable = true
+    path = "./eza"
+
+[".local/bin/gdu"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "dundee/gdu" (printf "gdu_%s_%s.tgz" .chezmoi.os .chezmoi.arch) | quote }}
+    executable = true
+    path = "gdu_linux_amd64"
+
+[".local/bin/nvim"]
+    type = "file"
+    url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
+    refreshPeriod = "672h"
+    executable = true
+
 {{- end }}
+
 {{- if and (not .ephemeral) (not .headless) }}
 {{-   $fontDir := "" }}
 {{-   if eq .chezmoi.os "darwin" }}
@@ -95,3 +75,35 @@
     refreshPeriod = "168h"
 {{-   end }}
 {{- end }}
+
+[".oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+    exclude = [
+        "*/.*",
+        "*/templates",
+        "*/themes",
+    ]
+
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+    exclude = [
+        "*/.editorconfig",
+        "*/.gitattributes",
+        "*/.github",
+        "*/.gitignore",
+    ]
+
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/{{ (gitHubLatestRelease "romkatv/powerlevel10k").TagName }}.tar.gz"
+    exact = true
+    stripComponents = 1
+

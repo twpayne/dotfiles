@@ -55,6 +55,13 @@
     refreshPeriod = "672h"
     executable = true
 
+[".local/bin/sqlc"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "sqlc-dev/sqlc" (printf "sqlc_*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+    refreshPeriod = "672h"
+    executable = true
+    path = "sqlc"
+
 {{- end }}
 
 {{- if and (not .ephemeral) (not .headless) }}

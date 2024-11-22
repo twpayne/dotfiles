@@ -31,12 +31,6 @@
     executable = true
     path = "cue"
 
-[".local/bin/cuepls"]
-    type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "cue-lang/cue" (printf "cue_v*_%s_%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
-    executable = true
-    path = "cuepls"
-
 [".local/bin/eza"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" "eza_x86_64-unknown-linux-gnu.tar.gz" | quote }}

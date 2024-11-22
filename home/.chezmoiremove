@@ -1,3 +1,4 @@
+.local/bin/cuepls
 .inputrc
 .psqlrc
 .tmux.conf

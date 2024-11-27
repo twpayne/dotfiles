@@ -43,6 +43,12 @@
     executable = true
     path = "gdu_linux_amd64"
 
+[".local/bin/jless"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "PaulJuliusMartinez/jless" "jless-v*-x86_64-unknown-linux-gnu.zip" | quote }}
+    executable = true
+    path = "jless"
+
 [".local/bin/nvim"]
     type = "file"
     url = "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"

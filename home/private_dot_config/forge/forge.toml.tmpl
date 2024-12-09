@@ -2,11 +2,15 @@ user = "twpayne"
 editor = "code"
 forge = "github.com"
 sourceDir = "{{ .chezmoi.homeDir }}/src"
-{{- if .flarm }}
-[alias.FLARM]
-    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/src/FLARM"
+{{- if .work }}
+[alias.doc]
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/other/doc"
+[alias.recurring_customers]
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/obstacle/recurring_customers"
 [alias.flarm-mate]
     repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/products/flarm-mate"
+[alias.FLARM]
+    repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/src/FLARM"
 [alias.go]
     repoDir = "{{ .chezmoi.homeDir }}/src/git.flarm.com/src/go"
 [alias.python]

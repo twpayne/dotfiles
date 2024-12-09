@@ -1,6 +1,6 @@
 {{/* boolean feature tags */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
-{{- $flarm := false -}}{{/* true if this machine is used for FLARM */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
 {{- "" -}}
@@ -35,7 +35,7 @@
 
 {{- if not $ephemeral -}}
 {{-   if eq $hostname "legion" -}}
-{{-     $flarm = true -}}
+{{-     $work = true -}}
 {{-   else if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-laptop" -}}
@@ -55,14 +55,14 @@
 {{- end -}}
 
 {{- $email := "twpayne@gmail.com" -}}
-{{- if $flarm -}}
+{{- if $work -}}
 {{-   $email = "tom.payne@flarm.com" -}}
 {{- end -}}
 
 [data]
     ephemeral = {{ $ephemeral }}
     email = {{ $email | quote }}
-    flarm = {{ $flarm }}
+    work = {{ $work }}
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}

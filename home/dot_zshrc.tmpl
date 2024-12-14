@@ -97,8 +97,6 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 {{- if .personal }}
 
 export CHEZMOI_GITHUB_ACCESS_TOKEN={{ onepasswordRead "op://chezmoi/chezmoi GitHub API Token/credential" | trim }}
-{{-   if eq .chezmoi.os "darwin" }}
-{{-   end }}
 {{- end }}
 
 {{- if .work }}

@@ -83,6 +83,7 @@ export EDITOR=$HOME/.local/bin/nvim
 {{ else -}}
 export EDITOR=nvim
 {{ end -}}
+export GITHUB_ACCESS_TOKEN={{ onepasswordRead "op://Personal/GitHub Metadata Read-Only Access Token/credential" .onepasswordAccount | trim }}
 export GOBIN=$HOME/.local/bin
 export GOPATH=$HOME
 export GO111MODULE=on

@@ -43,6 +43,13 @@
     executable = true
     path = "gdu_linux_amd64"
 
+[".local/bin/golangci-lint"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "golangci/golangci-lint" (printf "golangci-lint-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}
+    executable = true
+    stripComponents = 1
+    path = "golangci-lint"
+
 [".local/bin/jless"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "PaulJuliusMartinez/jless" "jless-v*-x86_64-unknown-linux-gnu.zip" | quote }}

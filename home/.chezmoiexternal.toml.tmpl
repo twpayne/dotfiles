@@ -69,6 +69,13 @@
     executable = true
     path = "sqlc"
 
+[".local/bin/uv"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "astral-sh/uv" "uv-x86_64-unknown-linux-gnu.tar.gz" | quote }}
+    refreshPeriod = "72h"
+    executable = true
+    path = "uv-x86_64-unknown-linux-gnu/uv"
+
 {{- end }}
 
 {{- if and (not .ephemeral) (not .headless) }}

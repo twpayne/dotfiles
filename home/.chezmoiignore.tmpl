@@ -10,7 +10,6 @@
 
 {{ if ne .chezmoi.os "darwin" }}
 .chezmoiscripts/darwin/**
-.config/ghostty
 .config/homebrew
 .config/karabiner
 .hammerspoon
@@ -28,6 +27,7 @@
 Documents
 {{ else }}
 .bash_aliases
+.config/ghostty
 .config/git/cookies
 .config/psql
 .config/readline

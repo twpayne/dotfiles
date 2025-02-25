@@ -43,6 +43,13 @@
     executable = true
     path = "gdu_linux_amd64"
 
+[".local/bin/glow"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "charmbracelet/glow" "glow_*_Linux_x86_64.tar.gz" | quote }}
+    executable = true
+    stripComponents = 1
+    path = "glow"
+
 [".local/bin/golangci-lint"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "golangci/golangci-lint" (printf "golangci-lint-*-%s-%s.tar.gz" .chezmoi.os .chezmoi.arch) | quote }}

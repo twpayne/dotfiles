@@ -53,18 +53,24 @@
 	pending = codereview pending
 	submit = codereview submit
 	sync = codereview sync
-[color]
+[branch]
+	sort = -committerdate
+[column]
 	ui = auto
 [core]
 	editor = nvim
 	whitespace = trailing-space,space-before-tab
 [diff]
 	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
 	renamelimit = 8192
-	renames = copies
+	renames = true
 [fetch]
+	all = true
 	fsckobjects = false
 	prune = true
+	pruneTags = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -77,15 +83,21 @@
 	cookiefile = ~/.config/git/cookies
 {{ end -}}
 [init]
-	defaultBranch = "master"
+	defaultBranch = master
+[merge]
+	conflictStyle = zdiff3
 [pager]
 	branch = false
 	grep = false
+[pull]
+	rebase = true
 [push]
+	autoSetupRemote = true
 	default = current
 [rebase]
-	autosquash = true
-	autostash = true
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [receive]
 	fsckobjects = true
 {{ if eq .chezmoi.os "windows" -}}
@@ -94,6 +106,8 @@
 {{ end -}}
 [status]
 	submoduleSummary = true
+[tag]
+	sort = version:refname
 [transfer]
 	fsckobjects = true
 [trim]

@@ -78,10 +78,12 @@ alias fd=fdfind
 alias ls=eza
 {{- end }}
 
-{{ if eq .osid "linux-ubuntu" -}}
+{{ if stat (printf "%s/.local/bin/nvim" .chezmoi.homeDir) -}}
 export EDITOR=$HOME/.local/bin/nvim
-{{ else -}}
+{{ else if lookPath "nvim" -}}
 export EDITOR=nvim
+{{ else -}}
+export EDITOR=vim
 {{ end -}}
 export GITHUB_ACCESS_TOKEN={{ onepasswordRead "op://Personal/GitHub Metadata Read-Only Access Token/credential" | trim }}
 export GOBIN=$HOME/.local/bin

@@ -147,7 +147,7 @@ local bindings = {
   },
 
   [{'alt', 'cmd', 'ctrl', 'shift'}] = {
-    c = launchOrFocus('Google Chrome'),
+    c = launchOrFocus('Firefox'),
     f = launchOrFocus('Finder'),
     i = launchOrFocus('Visual Studio Code'),
     l = launchOrFocus('Telegram'),

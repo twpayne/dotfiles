@@ -1,7 +1,0 @@
-{{ if and (eq .chezmoi.arch "amd64") (not .headless) (not .ephemeral) -}}
-#!/bin/sh
-
-trap "rm -rf google-chrome-stable_current_amd64.deb" EXIT
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
-{{ end -}}

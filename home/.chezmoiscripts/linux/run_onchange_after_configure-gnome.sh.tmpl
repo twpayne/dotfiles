@@ -7,11 +7,6 @@ fc-cache
 
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 
-gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
-profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ font "MesloLGS NF"
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles/${profile}/ preserve-working-directory never
-
 gsettings set org.gnome.shell favorite-apps "[ \
 {{ if lookPath "firefox" -}}
 	'firefox.desktop', \
@@ -28,7 +23,7 @@ gsettings set org.gnome.shell favorite-apps "[ \
 {{ if lookPath "virtualbox" -}}
 	'virtualbox.desktop', \
 {{ end -}}
-	'org.gnome.Terminal.desktop', \
+	'com.mitchellh.ghostty.desktop', \
 	'org.gnome.Nautilus.desktop' \
 ]"
 

@@ -1,0 +1,9 @@
+{{ if eq .osid "linux-ubuntu" -}}
+#!/bin/bash
+
+tmpdeb="$(mktemp)"
+trap 'rm -f -- "${tmpdeb}"' EXIT
+curl -L -o "${tmpdeb}" {{ gitHubLatestReleaseAssetURL "mkasberg/ghostty-ubuntu" (printf "ghostty_*_%s_%s.deb" .chezmoi.arch .chezmoi.osRelease.versionID) | quote }}
+sudo dpkg -i "${tmpdeb}"
+
+{{ end -}}

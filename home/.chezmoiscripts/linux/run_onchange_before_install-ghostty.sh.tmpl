@@ -1,4 +1,4 @@
-{{ if eq .osid "linux-ubuntu" -}}
+{{ if and (eq .osid "linux-ubuntu") (not .headless) -}}
 #!/bin/bash
 
 tmpdeb="$(mktemp)"

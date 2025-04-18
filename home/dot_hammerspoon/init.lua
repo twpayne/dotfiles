@@ -152,6 +152,7 @@ local bindings = {
     i = launchOrFocus('Visual Studio Code'),
     l = launchOrFocus('Telegram'),
     j = runCommand(os.getenv('HOME') .. '/.local/bin/forge-gui'),
+    o = launchOrFocus('1Password'),
     s = launchOrFocus('Slack'),
     t = launchOrFocus('Ghostty'),
     w = launchOrFocus('WhatsApp'),

@@ -19,14 +19,7 @@
 {{/* work around unreliable hostname on darwin */}}
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
-{{-   if eq $computerName "Tom’s Laptop" -}}
-{{-     $hostname = "toms-laptop" -}}
-{{-   else if eq $computerName "Tom’s MacBook Air" -}}
-{{-     $hostname = "toms-mba" -}}
-{{-   else -}}
-{{-     $hostname = $computerName -}}
-{{-   end -}}
+{{-   $hostname := output "scutil" "--get" "LocalHostName" | trim -}}
 {{- end -}}
 
 {{- if eq .chezmoi.os "windows" -}}
@@ -34,11 +27,9 @@
 {{- end -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "thinkpad" -}}
+{{-   if eq $hostname "macbook-air-m3" -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "toms-laptop" -}}
-{{-     $personal = true -}}
-{{-   else if eq $hostname "toms-mba" -}}
+{{-   else if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "ubuntu" -}}
 {{-     $headless = true -}}

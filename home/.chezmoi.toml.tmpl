@@ -34,9 +34,7 @@
 {{- end -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "legion" -}}
-{{-     $work = true -}}
-{{-   else if eq $hostname "thinkpad" -}}
+{{-   if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "toms-laptop" -}}
 {{-     $personal = true -}}
@@ -55,9 +53,6 @@
 {{- end -}}
 
 {{- $email := "twpayne@gmail.com" -}}
-{{- if $work -}}
-{{-   $email = "tom.payne@flarm.com" -}}
-{{- end -}}
 
 [data]
     ephemeral = {{ $ephemeral }}

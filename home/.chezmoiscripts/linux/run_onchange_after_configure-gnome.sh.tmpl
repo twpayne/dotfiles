@@ -8,9 +8,6 @@ fc-cache
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 
 gsettings set org.gnome.shell favorite-apps "[ \
-{{ if .work -}}
-	'google-chrome.desktop', \
-{{ end -}}
 {{ if lookPath "firefox" -}}
 	'firefox.desktop', \
 {{ end -}}

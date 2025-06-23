@@ -1,5 +1,3 @@
-{{- if .work -}}
-{{-   onepasswordRead "op://FLARM/SSH Key/private key" -}}
-{{- else if .personal -}}
+{{- if .personal -}}
 {{-   onepasswordRead "op://Personal/SSH Key/private key" -}}
 {{- end -}}

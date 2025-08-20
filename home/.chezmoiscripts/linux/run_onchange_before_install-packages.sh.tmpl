@@ -32,11 +32,11 @@
 {{   $classicSnaps = concat $classicSnaps (list "goreleaser" "snapcraft") -}}
 {{ end -}}
 
-{{ if eq .osid "linux-ubuntu" -}}
+{{ if and (eq .osid "linux-ubuntu") (not .ephemeral) -}}
 {{   $packages = concat $packages (list "gdal-bin" "libgeos-dev" "libproj-dev" "postgis" "postgresql") -}}
 {{ end -}}
 
-{{ if and (eq .osid "linux-ubuntu") (not .headless) -}}
+{{ if and (eq .osid "linux-ubuntu") (not .headless) (not .ephemeral) -}}
 {{   $packages = concat $packages (list "qgis") -}}
 {{ end -}}
 

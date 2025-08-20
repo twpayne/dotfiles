@@ -40,11 +40,6 @@
 {{   $packages = concat $packages (list "qgis") -}}
 {{ end -}}
 
-{{ if eq .hostname "legion" -}}
-{{   $packages = concat $packages (list "clang" "clang-format" "libstdc++-12-dev" "ninja-build" "pgformatter" "python3-dev" "python3-pip" "python3-venv") -}}
-{{   $snaps = mustAppend $snaps "dbeaver-ce" -}}
-{{ end -}}
-
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
 {{   $sudo = "" -}}

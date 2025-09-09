@@ -25,7 +25,7 @@ defaults write -g com.apple.swipescrolldirection -int 0
 defaults write -g com.apple.trackpad.forceClick -int 0
 
 defaults write com.apple.dock autohide -int 1
-defaults write com.apple.dock orientation -string left
+defaults write com.apple.dock orientation -string bottom
 defaults write com.apple.dock show-recents -int 0
 defaults write com.apple.dock showDesktopGestureEnabled -int 0
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0

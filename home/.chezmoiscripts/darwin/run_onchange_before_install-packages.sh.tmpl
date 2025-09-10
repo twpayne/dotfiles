@@ -33,7 +33,7 @@ set -eufo pipefail
      "visual-studio-code" -}}
 
 {{ if .personal -}}
-{{   $brews = mustAppend $brews
+{{   $brews = concat $brews (list
        "ffmpeg"
        "node"
        "openjdk"
@@ -41,8 +41,8 @@ set -eufo pipefail
        "postgresql@14"
        "pspg"
        "sqlc"
-       "yt-dlp" -}}
-{{   $casks = mustAppend $casks
+       "yt-dlp") -}}
+{{   $casks = concat $casks (list
        "balenaetcher"
        "battery"
        "firefox"
@@ -56,7 +56,7 @@ set -eufo pipefail
        "transmission"
        "vagrant"
        "vlc"
-       "whatsapp" -}}
+       "whatsapp") -}}
 {{ end -}}
 
 brew bundle --file=/dev/stdin <<EOF

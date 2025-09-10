@@ -46,6 +46,9 @@
 {{- end -}}
 
 {{- $email := "twpayne@gmail.com" -}}
+{{- if $work -}}
+{{-   $email = "tpayne@akamai.com" -}}
+{{- end -}}
 
 [data]
     ephemeral = {{ $ephemeral }}

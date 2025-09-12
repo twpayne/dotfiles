@@ -16,6 +16,7 @@ defaults write -g NSAutomaticPeriodSubstitutionEnabled -int 0
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -int 0
 defaults write -g NSAutomaticSpellingCorrectionEnabled -int 0
 defaults write -g NSAutomaticTextCorrectionEnabled -int 0
+defaults write -g NSAutomaticWindowAnimationsEnabled -int 0
 defaults write -g NSDocumentSaveNewDocumentsToCloud -int 0
 defaults write -g NSUserDictionaryReplacementItems '()'
 defaults write -g WebAutomaticSpellingCorrectionEnabled -int 0

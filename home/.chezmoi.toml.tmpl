@@ -64,5 +64,11 @@
         "zsh-syntax-highlighting",
     ]
 
+{{- if lookPath "podman" }}
+
+[docker]
+    command = "podman"
+{{- end }}
+
 [github]
     refreshPeriod = "12h"

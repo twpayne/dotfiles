@@ -93,6 +93,8 @@ export GOPATH=$HOME
 export GO111MODULE=on
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export LESS=FRX
+export PAGER=less
 {{ if lookPath "psql" -}}
 export PSQLRC=$XDG_CONFIG_HOME/psql/psqlrc
 {{ end -}}

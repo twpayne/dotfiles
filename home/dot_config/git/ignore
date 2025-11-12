@@ -4,6 +4,7 @@
 .Python
 .envrc
 .idea
+.jj
 .pc
 .svn
 .vscode

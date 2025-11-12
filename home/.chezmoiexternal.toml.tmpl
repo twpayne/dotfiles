@@ -66,6 +66,12 @@
     stripComponents = 1
     path = "golangci-lint"
 
+[".local/bin/jj"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "jj-vcs/jj" "jj-*.0-x86_64-unknown-linux-musl.tar.gz" | quote }}
+    executable = true
+    path = "./jj"
+
 [".local/bin/jless"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "PaulJuliusMartinez/jless" "jless-v*-x86_64-unknown-linux-gnu.zip" | quote }}

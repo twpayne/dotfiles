@@ -12,6 +12,9 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 {{- $paths := list }}
+{{- if and (eq .chezmoi.os "darwin") (lookPath "brew") }}
+{{-   $paths = mustAppend $paths (printf "%s/bin" (output "brew" "--prefix" "rustup" | trim)) }}
+{{- end }}
 {{- $homeDir := .chezmoi.homeDir }}
 {{- range $_, $relPath := list "bin" "go/bin" ".cargo/bin" ".local/bin" ".gem/ruby/2.6.0/bin" }}
 {{    $path := joinPath $homeDir $relPath }}

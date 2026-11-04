@@ -1,17 +1,14 @@
 HashKnownHosts no
 
-{{- if eq .chezmoi.os "darwin" }}
-
+{{ if eq .hostname "macbook-air-m3" -}}
 Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-{{- end }}
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+{{ end -}}
 
 Host cachyos
   HostName cachyos
-
-Host fedora
-  HostName fedora
+  ForwardAgent yes
 
 Host github.com
   User git
@@ -26,8 +23,9 @@ Host proxmox
   HostName proxmox
   User root
 
-Host ubuntu
-  HostName ubuntu
+Host ubuntu-26
+  ForwardAgent yes
+  HostName ubuntu-26
 
 Host windows
   HostName windows

@@ -103,7 +103,7 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
 {{- if .personal }}
 
-export CHEZMOI_GITHUB_ACCESS_TOKEN={{ onepasswordRead "op://chezmoi/chezmoi GitHub API Token/credential" | trim }}
+export CHEZMOI_ACCESS_TOKEN={{ onepasswordRead "op://chezmoi/chezmoi GitHub API Token/credential" | trim }}
 {{- end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

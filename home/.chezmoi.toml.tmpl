@@ -5,6 +5,9 @@
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
 {{- "" -}}
 
+{{- $shells := list "fish" "zsh" -}}
+{{- $shell := "zsh" -}}
+
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
@@ -34,11 +37,15 @@
 {{-   else if eq $hostname "ubuntu" "ubuntu-26" -}}
 {{-     $headless = true -}}
 {{-     $personal = true -}}
+{{-   else if eq $hostname "cachyos" -}}
+{{-     $headless = true -}}
+{{-     $shell = "fish" -}}
 {{-   else if eq $hostname "zrh-mpl3s" -}}
 {{-     $work = true -}}
 {{-   else if stdinIsATTY -}}
 {{-     $headless = promptBoolOnce . "headless" "headless" -}}
 {{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
+{{-     $shell = promptChoiceOnce . "shell" "shell" $shells -}}
 {{-   else -}}
 {{-     $ephemeral = true -}}
 {{-     $headless = true -}}
@@ -57,6 +64,7 @@
     headless = {{ $headless }}
     hostname = {{ $hostname | quote }}
     personal = {{ $personal }}
+    shell = {{ $shell | quote }}
     osid = {{ $osID | quote }}
     zshPlugins = [
         "per-directory-history",

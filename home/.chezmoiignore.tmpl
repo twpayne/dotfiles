@@ -1,3 +1,4 @@
+{{ if eq .shell "zsh" }}
 !.oh-my-zsh/plugins
 {{ range .zshPlugins }}
 !.oh-my-zsh/plugins/{{ . }}
@@ -7,6 +8,11 @@
 .oh-my-zsh/plugins/**
 .oh-my-zsh/templates/**
 .oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc
+{{ else }}
+.oh-my-zsh
+.p10k.zsh
+.zshrc
+{{ end }}
 
 {{ if ne .chezmoi.os "darwin" }}
 .chezmoiscripts/darwin/**
@@ -54,4 +60,8 @@ Documents
 .psqlrc
 .ssh
 .ssh/**
+{{ end }}
+
+{{ if ne .shell "fish" }}
+.config/fish
 {{ end }}

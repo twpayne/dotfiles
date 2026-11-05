@@ -1,4 +1,4 @@
-{{- if (not .ephemeral) -}}
+{{- if and (not .ephemeral) (eq .shell "zsh") -}}
 #!/bin/bash
 
 set -eufo pipefail

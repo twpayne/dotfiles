@@ -107,6 +107,7 @@
 {{-   end }}
 {{- end }}
 
+{{- if eq .shell "zsh" }}
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
@@ -137,5 +138,6 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/{{ (gitHubLatestRelease "romkatv/powerlevel10k").TagName }}.tar.gz"
     exact = true
     stripComponents = 1
+{{- end }}
 
 {{ end }}

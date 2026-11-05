@@ -1,0 +1,14 @@
+{{ if eq .osid "linux-cachyos" -}}
+source /usr/share/cachyos-fish-config/cachyos-config.fish
+
+# overwrite greeting
+# potentially disabling fastfetch
+function fish_greeting
+end
+
+{{ end -}}
+alias g git
+
+set -gx GOBIN ~/.local/bin
+
+fish_add_path $GOBIN
